@@ -14,9 +14,9 @@
     "description": "Learn Web Development, UX UI Design and Data Analytics, and let us guide you through our extensive hiring network in the US and the rest of the world!",
     "programs": ["Web Development", "UX/UI Design", "Data Analytics"],
     "pointOfContact": {
-      "name": "",
-      "number": "",
-      "email": ""
+      "name": "John Doe",
+      "number": "(555) 555-5555",
+      "email": "john.doe@ironhack.com"
     }
   },
   {

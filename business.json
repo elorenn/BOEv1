@@ -1,120 +1,118 @@
-{
-  "Business": [
-    {
-      "name": "Ironhack",
-      "pictureUrl": "",
-      "_id": "",
-      "type": "Technical",
-      "location": {
-        "state": "Florida",
-        "city": "Miami"
-      },
-      "description": "Learn Web Development, UX UI Design and Data Analytics, and let us guide you through our extensive hiring network in the US and the rest of the world!",
-      "programs": ["Web Development", "UX/UI Design", "Data Analytics"],
-      "pointOfContact": {
-        "name": "",
-        "number": "",
-        "email": ""
-      },
-      "applyUrl": ""
+[
+  {
+    "name": "Ironhack",
+    "pictureUrl": "",
+    "_id": "",
+    "type": "Technical",
+    "location": {
+      "state": "Florida",
+      "city": "Miami"
     },
-    {
-      "name": "Cambridge College",
-      "pictureUrl": "",
-      "_id": "",
-      "type": "Vocational",
-      "location": {
-        "state": "Florida",
-        "city": "Miami"
-      },
-      "description": "The Miami-area campus of Cambridge College of Healthcare and Technology is located centrally for easy access in Miami on Park Centre Boulevard. Each of our campuses houses classrooms, technology labs and offices, the perfect atmosphere to jumpstart your career. Whether you’re looking for a degree program or a diploma, we have a program to fit your needs. ",
-      "programs": ["Patient Care Technician", "Nursing assistant"],
-      "pointOfContact": {
-        "name": "",
-        "number": "",
-        "email": ""
-      },
-      "applyUrl": ""
+    "description": "Learn Web Development, UX UI Design and Data Analytics, and let us guide you through our extensive hiring network in the US and the rest of the world!",
+    "programs": ["Web Development", "UX/UI Design", "Data Analytics"],
+    "pointOfContact": {
+      "name": "",
+      "number": "",
+      "email": ""
     },
-    {
-      "name": "Paul Mitchell",
-      "pictureUrl": "",
-      "_id": "",
-      "type": "Vocational School",
-      "location": {
-        "state": "Florida",
-        "city": "Miami"
-      },
-      "description": "Whether you dream of becoming a cosmetologist, barber, esthetician or other beauty professional, we know choosing a school is a big decision, but it should also be a fun one! Students tell us all the time that the moment they walked through our doors in Miami, something just felt different. We pride ourselves on our welcoming culture, inclusive environment and our commitment to bringing out the best in all of our students. We know that you’ll succeed when you feel supported, so our Learning Leaders do everything they can to help you prepare to pass the state board examination and launch your beauty industry career.",
-      "programs": ["Cosmetology", "Barbering"],
-      "pointOfContact": {
-        "name": "",
-        "number": "",
-        "email": ""
-      },
-      "applyUrl": ""
+    "applyUrl": ""
+  },
+  {
+    "name": "Cambridge College",
+    "pictureUrl": "",
+    "_id": "",
+    "type": "Vocational",
+    "location": {
+      "state": "Florida",
+      "city": "Miami"
     },
-    {
-      "name": "ABC Institute",
-      "pictureUrl": "",
-      "_id": "",
-      "type": "",
-      "location": {
-        "state": "Florida",
-        "city": "Coconut Creek"
-      },
-      "description": "We are an IRS 501(c)3, not-for-profit teaching and training arm of the local chapter of Associated Builders and Contractors (ABC), 1 of 70 nation-wide, which represents over 21,000 corporate members. Since 1950, ABC has focused on creating and retaining high quality, trained workforce.",
-      "programs": ["Construction Training", "Leadership", "Safety"],
-      "pointOfContact": {
-        "name": "",
-        "number": "",
-        "email": ""
-      },
-      "applyUrl": ""
+    "description": "The Miami-area campus of Cambridge College of Healthcare and Technology is located centrally for easy access in Miami on Park Centre Boulevard. Each of our campuses houses classrooms, technology labs and offices, the perfect atmosphere to jumpstart your career. Whether you’re looking for a degree program or a diploma, we have a program to fit your needs. ",
+    "programs": ["Patient Care Technician", "Nursing assistant"],
+    "pointOfContact": {
+      "name": "",
+      "number": "",
+      "email": ""
     },
-    {
-      "name": "Plumbers 519",
-      "pictureUrl": "",
-      "_id": "",
-      "type": "",
-      "location": {
-        "state": "Florida",
-        "city": "Miami"
-      },
-      "description": "Plumbers protect the health of the nation and the highly skilled members of Local 519 are no different. We specialize in both commercial and residential work, and also in medical gas certification and back-flow testing. We work on everything from the stadiums to your residential home and small business.",
-      "programs": [
-        "Plan reading and interpretation",
-        "Basic Electrical concepts",
-        "Design and drawing"
-      ],
-      "pointOfContact": {
-        "name": "",
-        "number": "",
-        "email": ""
-      },
-      "applyUrl": ""
+    "applyUrl": ""
+  },
+  {
+    "name": "Paul Mitchell",
+    "pictureUrl": "",
+    "_id": "",
+    "type": "Vocational School",
+    "location": {
+      "state": "Florida",
+      "city": "Miami"
     },
-    {
-      "name": "Atlantis Aviation",
-      "pictureUrl": "",
-      "_id": "",
-      "type": "",
-      "location": {
-        "state": "Florida",
-        "city": "Pembroke Pines"
-      },
-      "description": "We specialize in aviation as a career, providing the best training for pilots and cabin crew, including University education, a dedicated personal tutor, the possibility of building up flight hours whilst being remunerated and an interview with an airline once the Professional Pilot Program is completed successfully.",
-      "programs": [
-        "AIRLINE CAREER PROGRAM",
-        "FLIGHT INSTRUCTOR PROGRAM",
-        "CONVERSION & AIRLINE CAREER PROGRAM"
-      ],
-      "pointOfContact": {
-        "name": "",
-        "number": "",
-        "email": ""
-      },
-      "applyUrl": ""
-    }
-  ]
-}
+    "description": "Whether you dream of becoming a cosmetologist, barber, esthetician or other beauty professional, we know choosing a school is a big decision, but it should also be a fun one! Students tell us all the time that the moment they walked through our doors in Miami, something just felt different. We pride ourselves on our welcoming culture, inclusive environment and our commitment to bringing out the best in all of our students. We know that you’ll succeed when you feel supported, so our Learning Leaders do everything they can to help you prepare to pass the state board examination and launch your beauty industry career.",
+    "programs": ["Cosmetology", "Barbering"],
+    "pointOfContact": {
+      "name": "",
+      "number": "",
+      "email": ""
+    },
+    "applyUrl": ""
+  },
+  {
+    "name": "ABC Institute",
+    "pictureUrl": "",
+    "_id": "",
+    "type": "",
+    "location": {
+      "state": "Florida",
+      "city": "Coconut Creek"
+    },
+    "description": "We are an IRS 501(c)3, not-for-profit teaching and training arm of the local chapter of Associated Builders and Contractors (ABC), 1 of 70 nation-wide, which represents over 21,000 corporate members. Since 1950, ABC has focused on creating and retaining high quality, trained workforce.",
+    "programs": ["Construction Training", "Leadership", "Safety"],
+    "pointOfContact": {
+      "name": "",
+      "number": "",
+      "email": ""
+    },
+    "applyUrl": ""
+  },
+  {
+    "name": "Plumbers 519",
+    "pictureUrl": "",
+    "_id": "",
+    "type": "",
+    "location": {
+      "state": "Florida",
+      "city": "Miami"
+    },
+    "description": "Plumbers protect the health of the nation and the highly skilled members of Local 519 are no different. We specialize in both commercial and residential work, and also in medical gas certification and back-flow testing. We work on everything from the stadiums to your residential home and small business.",
+    "programs": [
+      "Plan reading and interpretation",
+      "Basic Electrical concepts",
+      "Design and drawing"
+    ],
+    "pointOfContact": {
+      "name": "",
+      "number": "",
+      "email": ""
+    },
+    "applyUrl": ""
+  },
+  {
+    "name": "Atlantis Aviation",
+    "pictureUrl": "",
+    "_id": "",
+    "type": "",
+    "location": {
+      "state": "Florida",
+      "city": "Pembroke Pines"
+    },
+    "description": "We specialize in aviation as a career, providing the best training for pilots and cabin crew, including University education, a dedicated personal tutor, the possibility of building up flight hours whilst being remunerated and an interview with an airline once the Professional Pilot Program is completed successfully.",
+    "programs": [
+      "AIRLINE CAREER PROGRAM",
+      "FLIGHT INSTRUCTOR PROGRAM",
+      "CONVERSION & AIRLINE CAREER PROGRAM"
+    ],
+    "pointOfContact": {
+      "name": "",
+      "number": "",
+      "email": ""
+    },
+    "applyUrl": ""
+  }
+]

@@ -61,8 +61,8 @@
   },
   {
     "name": "ABC Institute",
-    "logoUrl": "",
-    "siteUrl": "#",
+    "logoUrl": "../images/company-logos/abc-institue.png",
+    "siteUrl": "https://www.wetrain.org/",
     "applyUrl": "#",
     "premiumMembership": false,
     "_id": "",
@@ -81,8 +81,8 @@
   },
   {
     "name": "Plumbers 519",
-    "logoUrl": "",
-    "siteUrl": "#",
+    "logoUrl": "../images/company-logos/plumbers-519.png",
+    "siteUrl": "http://plumbers519.com/",
     "applyUrl": "#",
     "premiumMembership": false,
     "_id": "",
@@ -105,8 +105,8 @@
   },
   {
     "name": "Atlantis Aviation",
-    "logoUrl": "",
-    "siteUrl": "#",
+    "logoUrl": "../images/company-logos/atlantis-aviation.png",
+    "siteUrl": "https://globalatlantis.com/",
     "applyUrl": "#",
     "premiumMembership": false,
     "_id": "",

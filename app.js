@@ -6,6 +6,7 @@ const https = require("https");
 const File = require("./model/fileSchema");
 const multer = require("multer");
 const http = require("http");
+const schools = require("./business.json");
 
 const app = express();
 
@@ -16,7 +17,9 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
-  res.render("pages/index");
+  res.render("pages/index", {
+    schools: schools,
+  });
 });
 app.get("/subscribe", (req, res) => {
   res.render("pages/subscribe");

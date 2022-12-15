@@ -35,22 +35,12 @@
       <strong class="tradesofferedlabel">Programs</strong>
       <p class="tradesoffered"><%= school.programs %></p>
       <hr />
-      <strong class="pointofcontactlabel">Point of Contact</strong>
-      <p class="pointofcontact">
-        Name: <%= school.pointOfContact.name %>
-        <br />
-        Number: <%= school.pointOfContact.number %>
-        <br />
-        Email: <%= school.pointOfContact.email %>
-      </p>
+      <%- include('./point-of-contact', {school: school}); %>
       <hr />
 
-      <% if (school.premiumMembership) { %> 
-        <%- include('./application-premium', {school: school}); %> 
-      <% } else { %> 
-        <%- include('./application', {school: school}); %> 
-      <% } %>
-
+      <% if (school.premiumMembership) { %> <%- include('./application-premium',
+      {school: school}); %> <% } else { %> <%- include('./application', {school:
+      school}); %> <% } %>
     </li>
     <% }); %>
   </ul>

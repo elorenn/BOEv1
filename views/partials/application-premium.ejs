@@ -1,0 +1,62 @@
+<strong class="applicationheader">Apply Now</strong>
+<form
+  action="/"
+  class="applicationform"
+  method="post"
+  enctype="multipart/form-data"
+>
+  <input
+    class="organizationtextbox"
+    type="text"
+    name="organization"
+    value="<%= school.name %>"
+  />
+  <br />
+  <br />
+  <em class="applicationlabel">First Name: </em>
+  <input class="nameinput" type="text" name="firstname" value="" required />
+  <br />
+  <br />
+  <em class="applicationlabel">Last Name: </em>
+  <input class="nameinput" type="text" name="lastname" value="" required />
+  <br />
+  <br />
+  <em class="applicationlabel">Email: </em>
+  <input class="emailinput" type="text" name="email" value="" required />
+  <br />
+  <br />
+  <em class="applicationlabel">Trade of Interest: </em>
+  <input type="text" name="appliedForTrade" value="" required />
+  <br />
+  <br />
+  <div class="custom-file mb-3">
+    <label for="resume" class="applicationlabel custom-file-label"
+      ><em>Resume (upload as image):</em></label
+    >
+    <input
+      type="file"
+      name="resume"
+      class="custom-file-input"
+      id="myFile"
+      accept="image/*"
+      required
+    />
+  </div>
+  <br />
+  <br />
+  <textarea
+    class="additionalcomments"
+    placeholder="Additional Comments/Messages"
+    name="additionalcomments"
+    rows="6"
+    cols="50"
+  ></textarea>
+  <br />
+  <br />
+  <button name="apply" type="submit" class="applybtn btn btn-primary">
+    Submit Application
+  </button>
+  <br />
+  <br />
+  <br />
+</form>

@@ -1,5 +1,20 @@
+:root {
+  --logo-color: #557c5d;
+  --bg-main-color: #f4f4f6;
+  --bg-secondary-color: #e6e6e9;
+  --bg-color-a: #f3f2ef;
+  --bg-color-b: #f9fafb;
+  --bg-color-b: #fafaf9;
+  --bg-color-c: #fdfaf5;
+  --text-color: #0f0f0f;
+  --icon-inactive-color: #2d2e2e;
+  --color-a: #a5243d;
+  --color-b: #134074;
+  --color-c: #914d76;
+}
+
 body {
-  background-color: #ffeeee;
+  background-color: var(--bg-secondary-color);
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -28,7 +43,6 @@ body {
 .navlist {
   margin-left: 5rem;
 }
-
 
 @media (min-width: 1000px) {
   .navicon1 {
@@ -261,7 +275,7 @@ h1 {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   overflow: auto;
   padding: 0;
-  background: #eaeaea;
+  background-color: var(--bg-main-color);
 }
 .indepthlistitemb {
   height: 20rem;

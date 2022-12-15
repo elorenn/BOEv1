@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <%- include('../partials/head'); %>
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav><%- include('../partials/nav'); %></nav>
+
+    <!-- Top Section -->
+    <div class="row">
+      <!-- Search Bar -->
+      <div class="col-lg-3 col-md-3 col-sm-12 searchbar">
+        <h3 class="Searchbarheader">Browse</h3>
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-12">
+            <input
+              class="searchinput"
+              type="text"
+              id="searchInput"
+              onkeyup="searchbarfunction()"
+              placeholder="Search..."
+            />
+          </div>
+        </div>
+      </div>
+      <!-- Banner -->
+      <div class="banner">
+        <h1>Looking to kickstart a career in a skilled trade? Search below!</h1>
+      </div>
+    </div>
+
+    <!-- Main Section -->
+    <div class="row">
+      <!-- Basic Gallery -->
+      <%- include('../partials/listings-basic'); %>
+
+      <!-- In Depth Gallery  -->
+      <%- include('../partials/listings-depth'); %>
+    </div>
+
+    <!-- Footer Section -->
+    <%- include('../partials/footer'); %>
+
+    <!-- External JavaScript and jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="server.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </body>
+</html>

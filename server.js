@@ -1,6 +1,7 @@
 const app = require("./app");
 const mongoose = require("mongoose");
 const http = require("http");
+const http = require("http");
 const https = require("https");
 const path = require("path");
 
@@ -10,6 +11,8 @@ process.on("uncaughtException", (err) => {
   process.exit(1);
 });
 
+const DB =
+  "mongodb+srv://boepartners:missyangus123@cluster0.dm8gvgf.mongodb.net/BOE";
 const DB =
   "mongodb+srv://boepartners:missyangus123@cluster0.dm8gvgf.mongodb.net/BOE";
 

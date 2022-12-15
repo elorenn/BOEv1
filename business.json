@@ -1,9 +1,9 @@
 [
   {
     "name": "Ironhack",
-    "pictureUrl": "",
+    "pictureUrl": "../images/company-logos/ironhack.png",
     "_id": "",
-    "type": "Technical",
+    "type": "Technical School",
     "location": {
       "state": "Florida",
       "city": "Miami"
@@ -19,9 +19,9 @@
   },
   {
     "name": "Cambridge College",
-    "pictureUrl": "",
+    "pictureUrl": "../images/company-logos/cambridge.jpeg",
     "_id": "",
-    "type": "Vocational",
+    "type": "Vocational School",
     "location": {
       "state": "Florida",
       "city": "Miami"
@@ -37,7 +37,7 @@
   },
   {
     "name": "Paul Mitchell",
-    "pictureUrl": "",
+    "pictureUrl": "../images/company-logos/paul-mitchell-mia.jpeg",
     "_id": "",
     "type": "Vocational School",
     "location": {
@@ -55,7 +55,7 @@
   },
   {
     "name": "ABC Institute",
-    "pictureUrl": "",
+    "pictureUrl": "Technical School",
     "_id": "",
     "type": "",
     "location": {
@@ -75,7 +75,7 @@
     "name": "Plumbers 519",
     "pictureUrl": "",
     "_id": "",
-    "type": "",
+    "type": "Vocational School",
     "location": {
       "state": "Florida",
       "city": "Miami"
@@ -95,7 +95,7 @@
   },
   {
     "name": "Atlantis Aviation",
-    "pictureUrl": "",
+    "pictureUrl": "Vocational School",
     "_id": "",
     "type": "",
     "location": {
@@ -108,6 +108,24 @@
       "FLIGHT INSTRUCTOR PROGRAM",
       "CONVERSION & AIRLINE CAREER PROGRAM"
     ],
+    "pointOfContact": {
+      "name": "",
+      "number": "",
+      "email": ""
+    },
+    "applyUrl": ""
+  },
+  {
+    "name": "Paul Mitchell",
+    "pictureUrl": "../images/company-logos/paul-mitchell-ftl.png",
+    "_id": "",
+    "type": "Vocational School",
+    "location": {
+      "state": "Florida",
+      "city": "Fort Lauderdale"
+    },
+    "description": "Whether you dream of becoming a cosmetologist, barber, esthetician or other beauty professional, we know choosing a school is a big decision, but it should also be a fun one! Students tell us all the time that the moment they walked through our doors in Miami, something just felt different. We pride ourselves on our welcoming culture, inclusive environment and our commitment to bringing out the best in all of our students. We know that you’ll succeed when you feel supported, so our Learning Leaders do everything they can to help you prepare to pass the state board examination and launch your beauty industry career.",
+    "programs": ["Cosmetology", "Barbering"],
     "pointOfContact": {
       "name": "",
       "number": "",

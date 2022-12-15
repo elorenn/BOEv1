@@ -1,7 +1,10 @@
 [
   {
     "name": "Ironhack",
-    "pictureUrl": "../images/company-logos/ironhack.png",
+    "logoUrl": "../images/company-logos/ironhack.png",
+    "siteUrl": "https://www.ironhack.com/en/miami",
+    "applyUrl": "https://www.ironhack.com/en/courses/apply",
+    "premiumMembership": false,
     "_id": "",
     "type": "Technical School",
     "location": {
@@ -14,12 +17,14 @@
       "name": "",
       "number": "",
       "email": ""
-    },
-    "applyUrl": ""
+    }
   },
   {
     "name": "Cambridge College",
-    "pictureUrl": "../images/company-logos/cambridge.jpeg",
+    "logoUrl": "../images/company-logos/cambridge.jpeg",
+    "siteUrl": "https://www.cambridgehealth.edu/",
+    "applyUrl": "https://www.cambridgehealth.edu/apply/",
+    "premiumMembership": true,
     "_id": "",
     "type": "Vocational School",
     "location": {
@@ -32,12 +37,14 @@
       "name": "",
       "number": "",
       "email": ""
-    },
-    "applyUrl": ""
+    }
   },
   {
     "name": "Paul Mitchell",
-    "pictureUrl": "../images/company-logos/paul-mitchell-mia.jpeg",
+    "logoUrl": "../images/company-logos/paul-mitchell-mia.jpeg",
+    "siteUrl": "https://paulmitchell.edu/miami",
+    "applyUrl": "#",
+    "premiumMembership": true,
     "_id": "",
     "type": "Vocational School",
     "location": {
@@ -50,14 +57,16 @@
       "name": "",
       "number": "",
       "email": ""
-    },
-    "applyUrl": ""
+    }
   },
   {
     "name": "ABC Institute",
-    "pictureUrl": "Technical School",
+    "logoUrl": "",
+    "siteUrl": "#",
+    "applyUrl": "#",
+    "premiumMembership": false,
     "_id": "",
-    "type": "",
+    "type": "Technical School",
     "location": {
       "state": "Florida",
       "city": "Coconut Creek"
@@ -68,12 +77,14 @@
       "name": "",
       "number": "",
       "email": ""
-    },
-    "applyUrl": ""
+    }
   },
   {
     "name": "Plumbers 519",
-    "pictureUrl": "",
+    "logoUrl": "",
+    "siteUrl": "#",
+    "applyUrl": "#",
+    "premiumMembership": false,
     "_id": "",
     "type": "Vocational School",
     "location": {
@@ -90,14 +101,16 @@
       "name": "",
       "number": "",
       "email": ""
-    },
-    "applyUrl": ""
+    }
   },
   {
     "name": "Atlantis Aviation",
-    "pictureUrl": "Vocational School",
+    "logoUrl": "",
+    "siteUrl": "#",
+    "applyUrl": "#",
+    "premiumMembership": false,
     "_id": "",
-    "type": "",
+    "type": "Vocational School",
     "location": {
       "state": "Florida",
       "city": "Pembroke Pines"
@@ -112,12 +125,14 @@
       "name": "",
       "number": "",
       "email": ""
-    },
-    "applyUrl": ""
+    }
   },
   {
     "name": "Paul Mitchell",
-    "pictureUrl": "../images/company-logos/paul-mitchell-ftl.png",
+    "logoUrl": "../images/company-logos/paul-mitchell-ftl.png",
+    "siteUrl": "https://paulmitchell.edu/fortlauderdale",
+    "applyUrl": "https://paulmitchell.edu/fortlauderdale/get-started",
+    "premiumMembership": false,
     "_id": "",
     "type": "Vocational School",
     "location": {
@@ -130,7 +145,6 @@
       "name": "",
       "number": "",
       "email": ""
-    },
-    "applyUrl": ""
+    }
   }
 ]

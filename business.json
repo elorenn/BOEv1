@@ -1,120 +1,178 @@
-{
-  "Business": [
-    {
-      "name": "Ironhack",
-      "pictureUrl": "",
-      "_id": "",
-      "type": "Technical",
-      "location": {
-        "state": "Florida",
-        "city": "Miami"
-      },
-      "description": "Learn Web Development, UX UI Design and Data Analytics, and let us guide you through our extensive hiring network in the US and the rest of the world!",
-      "programs": ["Web Development", "UX/UI Design", "Data Analytics"],
-      "pointOfContact": {
-        "name": "",
-        "number": "",
-        "email": ""
-      },
-      "applyUrl": ""
+[
+  {
+    "name": "Ironhack",
+    "logoUrl": "../images/company-logos/ironhack.png",
+    "siteUrl": "https://www.ironhack.com/en/miami",
+    "applyUrl": "https://www.ironhack.com/en/courses/apply",
+    "premiumMembership": false,
+    "_id": "",
+    "type": "Technical School",
+    "location": {
+      "state": "Florida",
+      "city": "Miami"
     },
-    {
-      "name": "Cambridge College",
-      "pictureUrl": "",
-      "_id": "",
-      "type": "Vocational",
-      "location": {
-        "state": "Florida",
-        "city": "Miami"
-      },
-      "description": "The Miami-area campus of Cambridge College of Healthcare and Technology is located centrally for easy access in Miami on Park Centre Boulevard. Each of our campuses houses classrooms, technology labs and offices, the perfect atmosphere to jumpstart your career. Whether you’re looking for a degree program or a diploma, we have a program to fit your needs. ",
-      "programs": ["Patient Care Technician", "Nursing assistant"],
-      "pointOfContact": {
-        "name": "",
-        "number": "",
-        "email": ""
-      },
-      "applyUrl": ""
-    },
-    {
-      "name": "Paul Mitchell",
-      "pictureUrl": "",
-      "_id": "",
-      "type": "Vocational School",
-      "location": {
-        "state": "Florida",
-        "city": "Miami"
-      },
-      "description": "Whether you dream of becoming a cosmetologist, barber, esthetician or other beauty professional, we know choosing a school is a big decision, but it should also be a fun one! Students tell us all the time that the moment they walked through our doors in Miami, something just felt different. We pride ourselves on our welcoming culture, inclusive environment and our commitment to bringing out the best in all of our students. We know that you’ll succeed when you feel supported, so our Learning Leaders do everything they can to help you prepare to pass the state board examination and launch your beauty industry career.",
-      "programs": ["Cosmetology", "Barbering"],
-      "pointOfContact": {
-        "name": "",
-        "number": "",
-        "email": ""
-      },
-      "applyUrl": ""
-    },
-    {
-      "name": "ABC Institute",
-      "pictureUrl": "",
-      "_id": "",
-      "type": "",
-      "location": {
-        "state": "Florida",
-        "city": "Coconut Creek"
-      },
-      "description": "We are an IRS 501(c)3, not-for-profit teaching and training arm of the local chapter of Associated Builders and Contractors (ABC), 1 of 70 nation-wide, which represents over 21,000 corporate members. Since 1950, ABC has focused on creating and retaining high quality, trained workforce.",
-      "programs": ["Construction Training", "Leadership", "Safety"],
-      "pointOfContact": {
-        "name": "",
-        "number": "",
-        "email": ""
-      },
-      "applyUrl": ""
-    },
-    {
-      "name": "Plumbers 519",
-      "pictureUrl": "",
-      "_id": "",
-      "type": "",
-      "location": {
-        "state": "Florida",
-        "city": "Miami"
-      },
-      "description": "Plumbers protect the health of the nation and the highly skilled members of Local 519 are no different. We specialize in both commercial and residential work, and also in medical gas certification and back-flow testing. We work on everything from the stadiums to your residential home and small business.",
-      "programs": [
-        "Plan reading and interpretation",
-        "Basic Electrical concepts",
-        "Design and drawing"
-      ],
-      "pointOfContact": {
-        "name": "",
-        "number": "",
-        "email": ""
-      },
-      "applyUrl": ""
-    },
-    {
-      "name": "Atlantis Aviation",
-      "pictureUrl": "",
-      "_id": "",
-      "type": "",
-      "location": {
-        "state": "Florida",
-        "city": "Pembroke Pines"
-      },
-      "description": "We specialize in aviation as a career, providing the best training for pilots and cabin crew, including University education, a dedicated personal tutor, the possibility of building up flight hours whilst being remunerated and an interview with an airline once the Professional Pilot Program is completed successfully.",
-      "programs": [
-        "AIRLINE CAREER PROGRAM",
-        "FLIGHT INSTRUCTOR PROGRAM",
-        "CONVERSION & AIRLINE CAREER PROGRAM"
-      ],
-      "pointOfContact": {
-        "name": "",
-        "number": "",
-        "email": ""
-      },
-      "applyUrl": ""
+    "description": "Learn Web Development, UX UI Design and Data Analytics, and let us guide you through our extensive hiring network in the US and the rest of the world!",
+    "programs": ["Web Development", "UX/UI Design", "Data Analytics"],
+    "pointOfContact": {
+      "name": "",
+      "number": "(305) 907-7086",
+      "email": "",
+      "contactUrl": "https://www.ironhack.com/en/contact"
     }
-  ]
-}
+  },
+  {
+    "name": "Cambridge College of Healthcare and Technology",
+    "logoUrl": "../images/company-logos/cambridge.jpeg",
+    "siteUrl": "https://www.cambridgehealth.edu/",
+    "applyUrl": "https://www.cambridgehealth.edu/apply/",
+    "premiumMembership": true,
+    "_id": "",
+    "type": "Vocational School",
+    "location": {
+      "state": "Florida",
+      "city": "Miami"
+    },
+    "description": "The Miami-area campus of Cambridge College of Healthcare and Technology is located centrally for easy access in Miami on Park Centre Boulevard. Each of our campuses houses classrooms, technology labs and offices, the perfect atmosphere to jumpstart your career. Whether you’re looking for a degree program or a diploma, we have a program to fit your needs. ",
+    "programs": ["Patient Care Technician", "Nursing assistant"],
+    "pointOfContact": {
+      "name": "",
+      "number": "(305) 627-3001",
+      "email": "",
+      "contactUrl": "https://www.cambridgehealth.edu/contact/"
+    }
+  },
+  {
+    "name": "Paul Mitchell",
+    "logoUrl": "../images/company-logos/paul-mitchell-mia.jpeg",
+    "siteUrl": "https://paulmitchell.edu/miami",
+    "applyUrl": "https://paulmitchell.edu/miami/get-started",
+    "premiumMembership": true,
+    "_id": "",
+    "type": "Vocational School",
+    "location": {
+      "state": "Florida",
+      "city": "Miami"
+    },
+    "description": "Whether you dream of becoming a cosmetologist, barber, esthetician or other beauty professional, we know choosing a school is a big decision, but it should also be a fun one! Students tell us all the time that the moment they walked through our doors in Miami, something just felt different. We pride ourselves on our welcoming culture, inclusive environment and our commitment to bringing out the best in all of our students. We know that you’ll succeed when you feel supported, so our Learning Leaders do everything they can to help you prepare to pass the state board examination and launch your beauty industry career.",
+    "programs": ["Cosmetology", "Barbering"],
+    "pointOfContact": {
+      "name": "Amanda Ambrose",
+      "number": "305-487-9997 x5615",
+      "email": "amanda@miami.paulmitchell.edu",
+      "contactUrl": "https://paulmitchell.edu/miami/request-enrollment-information"
+    }
+  },
+  {
+    "name": "ABC Institute",
+    "logoUrl": "../images/company-logos/abc-institute.png",
+    "siteUrl": "https://www.wetrain.org/",
+    "applyUrl": "https://www.wetrain.org/construction-education/construction-training/",
+    "premiumMembership": false,
+    "_id": "",
+    "type": "Technical School",
+    "location": {
+      "state": "Florida",
+      "city": "Coconut Creek"
+    },
+    "description": "We are an IRS 501(c)3, not-for-profit teaching and training arm of the local chapter of Associated Builders and Contractors (ABC), 1 of 70 nation-wide, which represents over 21,000 corporate members. Since 1950, ABC has focused on creating and retaining high quality, trained workforce.",
+    "programs": ["Construction Training", "Leadership", "Safety"],
+    "pointOfContact": {
+      "name": "",
+      "number": "954-633-7367",
+      "email": "",
+      "contactUrl": "https://www.wetrain.org/contact-us/"
+    }
+  },
+  {
+    "name": "Local 519 Plumbers Union",
+    "logoUrl": "../images/company-logos/plumbers-519.png",
+    "siteUrl": "http://plumbers519.com/",
+    "applyUrl": "https://plumbers519apprenticeship.com/apprentice-applicants",
+    "premiumMembership": false,
+    "_id": "",
+    "type": "Vocational School",
+    "location": {
+      "state": "Florida",
+      "city": "Miami"
+    },
+    "description": "Plumbers protect the health of the nation and the highly skilled members of Local 519 are no different. We specialize in both commercial and residential work, and also in medical gas certification and back-flow testing. We work on everything from the stadiums to your residential home and small business.",
+    "programs": [
+      "Plan reading and interpretation",
+      "Basic Electrical concepts",
+      "Design and drawing"
+    ],
+    "pointOfContact": {
+      "name": "Taylor Nelson",
+      "number": "954-669-6461",
+      "email": "",
+      "contactUrl": "http://plumbers519.com/contact-local-519/"
+    }
+  },
+  {
+    "name": "Atlantis Aviation",
+    "logoUrl": "../images/company-logos/atlantis-aviation.png",
+    "siteUrl": "https://globalatlantis.com/",
+    "applyUrl": "https://globalatlantis.com/contact-us/",
+    "premiumMembership": false,
+    "_id": "",
+    "type": "Vocational School",
+    "location": {
+      "state": "Florida",
+      "city": "Pembroke Pines"
+    },
+    "description": "We specialize in aviation as a career, providing the best training for pilots and cabin crew, including University education, a dedicated personal tutor, the possibility of building up flight hours whilst being remunerated and an interview with an airline once the Professional Pilot Program is completed successfully.",
+    "programs": [
+      "AIRLINE CAREER PROGRAM",
+      "FLIGHT INSTRUCTOR PROGRAM",
+      "CONVERSION & AIRLINE CAREER PROGRAM"
+    ],
+    "pointOfContact": {
+      "name": "Paul Madera",
+      "number": "",
+      "email": "paul.madera@globalatlantis.com",
+      "contactUrl": "https://globalatlantis.com/contact-us/"
+    }
+  },
+  {
+    "name": "Paul Mitchell",
+    "logoUrl": "../images/company-logos/paul-mitchell-ftl.png",
+    "siteUrl": "https://paulmitchell.edu/fortlauderdale",
+    "applyUrl": "https://paulmitchell.edu/fortlauderdale/get-started",
+    "premiumMembership": false,
+    "_id": "",
+    "type": "Technical School",
+    "location": {
+      "state": "Florida",
+      "city": "Fort Lauderdale"
+    },
+    "description": "Whether you dream of becoming a cosmetologist, barber, esthetician or other beauty professional, we know choosing a school is a big decision, but it should also be a fun one! Students tell us all the time that the moment they walked through our doors in Miami, something just felt different. We pride ourselves on our welcoming culture, inclusive environment and our commitment to bringing out the best in all of our students. We know that you’ll succeed when you feel supported, so our Learning Leaders do everything they can to help you prepare to pass the state board examination and launch your beauty industry career.",
+    "programs": ["Cosmetology", "Barbering"],
+    "pointOfContact": {
+      "name": "",
+      "number": "954-686-0040",
+      "email": "",
+      "contactUrl": "https://paulmitchell.edu/fortlauderdale/request-enrollment-information"
+    }
+  },
+  {
+    "name": "Youth Automotive Training Center",
+    "logoUrl": "../images/company-logos/yatc.png",
+    "siteUrl": "https://yatc.org/",
+    "applyUrl": "https://yatc.org/apply/",
+    "premiumMembership": false,
+    "_id": "",
+    "type": "Vocational School",
+    "location": {
+      "state": "Florida",
+      "city": "Deerfield Beach"
+    },
+    "description": "Through YATC's intensive hands-on curriculum and individual instruction, students gain the skills needed to begin a successful career in the automotive industry or use the knowledge they’ve gained to build a career that interests them most. Students receive intensive instruction in automotive theory, as well as practical skills. Technical skills are taught in the classroom in both large and small group formats. The focus of YATC's approach is to meet the individual needs of each student to help them strengthen their toolbox for the future, preparing them for professional success.",
+    "programs": ["Automotive Technician "],
+    "pointOfContact": {
+      "name": "",
+      "number": "(954) 428-0909",
+      "email": "troutley@yatc.org",
+      "contactUrl": ""
+    }
+  }
+]

@@ -45,9 +45,12 @@
       </p>
       <hr />
 
-      <% if (school.premiumMembership) { %> <%- include('./application-premium',
-      {school: school}); %> <% } else { %> <%- include('./application', {school:
-      school}); %> <% } %>
+      <% if (school.premiumMembership) { %> 
+        <%- include('./application-premium', {school: school}); %> 
+      <% } else { %> 
+        <%- include('./application', {school: school}); %> 
+      <% } %>
+
     </li>
     <% }); %>
   </ul>

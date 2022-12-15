@@ -1,0 +1,27 @@
+<div class="basiclist list-group">
+  <ul class="galleryUL" id="gallery1">
+    <% schools.forEach(function(school, i) { %>
+    <li class="listentry">
+      <a
+        class="basiclistitema list-group-item list-group-item-action"
+        href="#Item<%= i %>"
+      >
+        <img class="companylogo" src="<%= school.logoUrl %>" alt="Logo" />
+        <div class="basiclistitemtextcontainer">
+          <strong class="basiclistitemOrganization"><%= school.name %></strong>
+          <br />
+          <em class="basiclistitemCategory"><%= school.type %></em>
+          <br />
+          <em class="basiclistitemTrade"
+            ><%= school.programs %>
+            <br />
+            <em class="basiclistitemCity">
+              <%= school.location.city %>, <%= school.location.state %></em
+            ></em
+          >
+        </div>
+      </a>
+    </li>
+    <% }); %>
+  </ul>
+</div>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <%- include('../partials/head'); %>
+    <link rel="stylesheet" href="../css/subscribe.css" />
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav><%- include('../partials/nav'); %></nav>
+
+    <!-- Calendly inline widget begin -->
+    <div
+      class="calendly-inline-widget"
+      data-url="https://calendly.com/boepartners/discovery?hide_gdpr_banner=1&primary_color=00c4ff"
+      style="min-width: 25rem; height: 40rem"
+    ></div>
+    <script
+      type="text/javascript"
+      src="https://assets.calendly.com/assets/external/widget.js"
+      async
+    ></script>
+    <!-- Calendly inline widget end -->
+
+    <!-- Footer Section -->
+    <%- include('../partials/footer'); %>
+
+    <!-- External JavaScript and jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="index.js" charset="utf-8"></script>
+  </body>
+</html>

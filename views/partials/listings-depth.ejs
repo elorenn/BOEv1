@@ -1,0 +1,57 @@
+<div class="indepthlist list-group">
+  <ul class="galleryUL" id="gallery2">
+    <% schools.forEach(function(school, i) { %>
+    <li
+      id="Item<%= i %>"
+      class="indepthlistitema list-group-item list-group-item-action"
+      href="#list-item-<%= i %>"
+    >
+      <div class="indepthlistitemcontainer">
+        <img class="companylogo" src="<%= school.logoUrl %>" alt="Logo" />
+        <div class="indepthlistitemtextcontainer">
+          <a
+            class="indepthlistitemOrganization"
+            href="<%= school.siteUrl %>"
+            target="_blank"
+          >
+            <strong><%= school.name %></strong></a
+          >
+          <br />
+          <em class="indepthlistitemCategory"><%= school.type %></em>
+          <br />
+          <em class="indepthlistitemTrade"><%= school.programs %></em>
+          <br />
+          <em class="indepthlistitemCity"
+            ><%= school.location.city %>, <%= school.location.state %></em
+          >
+        </div>
+      </div>
+      <br />
+      <br />
+      <hr />
+      <strong class="descriptionlabel"> Description</strong>
+      <p class="description"><%= school.description %></p>
+      <hr />
+      <strong class="tradesofferedlabel">Programs</strong>
+      <p class="tradesoffered"><%= school.programs %></p>
+      <hr />
+      <strong class="pointofcontactlabel">Point of Contact</strong>
+      <p class="pointofcontact">
+        Name: <%= school.pointOfContact.name %>
+        <br />
+        Number: <%= school.pointOfContact.number %>
+        <br />
+        Email: <%= school.pointOfContact.email %>
+      </p>
+      <hr />
+
+      <% if (school.premiumMembership) { %> 
+        <%- include('./application-premium', {school: school}); %> 
+      <% } else { %> 
+        <%- include('./application', {school: school}); %> 
+      <% } %>
+
+    </li>
+    <% }); %>
+  </ul>
+</div>

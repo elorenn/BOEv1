@@ -1,6 +1,6 @@
 const app = require("./app");
 const mongoose = require("mongoose");
-const http = require('http');
+const http = require("http");
 const https = require("https");
 const path = require("path");
 
@@ -10,7 +10,8 @@ process.on("uncaughtException", (err) => {
   process.exit(1);
 });
 
-const DB = "mongodb+srv://boepartners:missyangus123@cluster0.dm8gvgf.mongodb.net/BOE";
+const DB =
+  "mongodb+srv://boepartners:missyangus123@cluster0.dm8gvgf.mongodb.net/BOE";
 
 mongoose
   .connect(DB, {
@@ -22,11 +23,11 @@ mongoose
     console.log("DB connected successfully");
   });
 
-  let port = process.env.PORT;
-  if (port == null || port == "") {
-    port = 3000;
-  }
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 3000;
+}
 
-  app.listen(port, function(){
-    console.log("Server has started");
-  });
+app.listen(port, function () {
+  console.log("Server has started");
+});

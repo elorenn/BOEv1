@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const http = require("http");
 const https = require("https");
 const path = require("path");
+const schools = require("./business.json");
 
 process.on("uncaughtException", (err) => {
   console.log("UNCAUGHT EXCEPTION, APP SHUTTING NOW!!");
@@ -69,18 +70,39 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(methodOverride("_method"));
 
-app.get("/", checkAuthenticated, (req, res) => {
-  res.render("index.ejs", { name: req.user.name });
+app.get("/", (req, res) => {
+  res.render("pages/index", {
+    schools: schools,
+    isAuthenticated: req.isAuthenticated(),
+  });
 });
- 
-app.get("/profile",checkAuthenticated, (req, res) => {
-  res.render("pages/profile");
+app.get("/subscribe", (req, res) => {
+  res.render("pages/subscribe", {
+    isAuthenticated: req.isAuthenticated(),
+  });
+});
+app.get("/resources", (req, res) => {
+  res.render("pages/resources", {
+    isAuthenticated: req.isAuthenticated(),
+  });
+});
+app.get("/contact", (req, res) => {
+  res.render("pages/contact", {
+    isAuthenticated: req.isAuthenticated(),
+  });
+});
+app.get("/profile", checkAuthenticated, (req, res) => {
+  res.render("pages/profile", {
+    name: req.user.name,
+    isAuthenticated: req.isAuthenticated(),
+  });
 });
 
 app.get("/login", checkNotAuthenticated, (req, res) => {
-  res.render("./pages/login");
+  res.render("./pages/login", {
+    isAuthenticated: req.isAuthenticated(),
+  });
 });
-
 
 app.post(
   "/login",
@@ -93,7 +115,9 @@ app.post(
 );
 
 app.get("/register", checkNotAuthenticated, (req, res) => {
-  res.render("./pages/register");
+  res.render("./pages/register", {
+    isAuthenticated: req.isAuthenticated(),
+  });
 });
 
 app.post("/register", checkNotAuthenticated, async (req, res) => {
@@ -109,7 +133,7 @@ app.post("/register", checkNotAuthenticated, async (req, res) => {
   } catch {
     res.redirect("/register");
   }
-  console.log(users)
+  console.log(users);
 });
 
 app.delete("/logout", (req, res, next) => {
@@ -123,12 +147,12 @@ app.delete("/logout", (req, res, next) => {
 
 function checkAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
-    return next()
+    return next();
   }
   res.redirect("/login");
 }
 
-function checkNotAuthenticated(req, res, next) {  
+function checkNotAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     return res.redirect("/");
   }

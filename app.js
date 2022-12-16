@@ -30,9 +30,9 @@ app.get("/resources", (req, res) => {
 app.get("/contact", (req, res) => {
   res.render("pages/contact");
 });
-app.get("/profile", (req, res) => {
-  res.render("pages/profile");
-});
+// app.get("/profile",checkAuthenticated, (req, res) => {
+//   res.render("pages/profile");
+// });
 app.get("/applicationSubmitted.html", (req, res) => {
   res.sendFile(__dirname + "/views/applicationSubmitted.html");
 });

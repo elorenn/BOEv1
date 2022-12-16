@@ -119,7 +119,7 @@ const upload = multer({
   fileFilter: multerFilter,
 });
 
-// Get applicatoni data
+// Get application data
 app.post("/", upload.single("resume"), async (req, res) => {
   const postedDate = new Date().toLocaleDateString("en-us", {
     year: "numeric",

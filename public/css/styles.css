@@ -4,8 +4,8 @@
   --bg-secondary-color: #e6e6e9;
   --bg-color-a: #f3f2ef;
   --bg-color-b: #f9fafb;
-  --bg-color-b: #fafaf9;
-  --bg-color-c: #fdfaf5;
+  --bg-color-c: #fafaf9;
+  --bg-color-d: #fdfaf5;
   --text-color: #0f0f0f;
   --icon-inactive-color: #2d2e2e;
   --color-a: #a5243d;
@@ -14,7 +14,7 @@
 }
 
 body {
-  background-color: var(--bg-secondary-color);
+  background-color: var(--bg-color-d);
   font-family: Arial, Helvetica, sans-serif;
 }
 

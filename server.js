@@ -74,7 +74,7 @@ app.get("/", checkAuthenticated, (req, res) => {
 });
 
 app.get("/login", checkNotAuthenticated, (req, res) => {
-  res.render("login.ejs");
+  res.render("./pages/login");
 });
 
 app.post(
@@ -88,7 +88,7 @@ app.post(
 );
 
 app.get("/register", checkNotAuthenticated, (req, res) => {
-  res.render("register.ejs");
+  res.render("./pages/register");
 });
 
 app.post("/register", checkNotAuthenticated, async (req, res) => {
@@ -111,7 +111,7 @@ app.delete("/logout", (req, res, next) => {
     if (err) {
       return next(err);
     }
-    res.redirect("/login");
+    res.redirect("/");
   });
 });
 

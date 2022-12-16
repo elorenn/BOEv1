@@ -70,17 +70,20 @@ app.use(passport.session());
 app.use(methodOverride("_method"));
 
 app.get("/", checkAuthenticated, (req, res) => {
-  res.render("index.ejs", { name: req.user.name });
+  res.render("index.ejs", {
+    isAuthenticated: req.isAuthenticated(),
+  });
 });
- 
-app.get("/profile",checkAuthenticated, (req, res) => {
-  res.render("pages/profile");
+
+app.get("/profile", checkAuthenticated, (req, res) => {
+  res.render("pages/profile", {
+    name: req.user.name,
+  });
 });
 
 app.get("/login", checkNotAuthenticated, (req, res) => {
   res.render("./pages/login");
 });
-
 
 app.post(
   "/login",
@@ -109,7 +112,7 @@ app.post("/register", checkNotAuthenticated, async (req, res) => {
   } catch {
     res.redirect("/register");
   }
-  console.log(users)
+  console.log(users);
 });
 
 app.delete("/logout", (req, res, next) => {
@@ -123,12 +126,12 @@ app.delete("/logout", (req, res, next) => {
 
 function checkAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
-    return next()
+    return next();
   }
   res.redirect("/login");
 }
 
-function checkNotAuthenticated(req, res, next) {  
+function checkNotAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     return res.redirect("/");
   }

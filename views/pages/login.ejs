@@ -4,27 +4,26 @@
     <%- include('../partials/head'); %>
     <link rel="stylesheet" href="../css/login.css" />
   </head>
-  <body>
+  <body class="lo-body">
     <%- include('../partials/nav'); %>
 
-    <h1>Login</h1>
-    <% if (messages.error) { %> <%= messages.error %> <% } %>
-    <form action="/login" method="POST">
-      <div>
+    <h3>Kickstart a career in a skilled trade.</h3>
+    <div class="lo-container">
+      <% if (messages.error) { %> <%= messages.error %> <% } %>
+      <form action="/login" method="POST">
         <label for="email">Email</label>
         <input type="email" id="email" name="email" required />
-      </div>
-      <div>
+
         <label for="password">Password</label>
         <input type="password" id="password" name="password" required />
-      </div>
-      <button type="submit">Login</button>
-    </form>
-    <a href="/register">Register</a>
 
-    <form action="/logout?_method=DELETE" method="POST">
-      <button type="submit">Log Out</button>
-    </form>
+        <button type="submit">Login</button>
+      </form>
+      <section>
+        <span>Don't have an account?</span>
+        <a href="/register">Sign Up</a>
+      </section>
+    </div>
 
     <!-- Footer Section -->
     <%- include('../partials/footer'); %>

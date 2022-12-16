@@ -1,3 +1,18 @@
+:root {
+  --logo-color: #557c5d;
+  --bg-main-color: #f4f4f6;
+  --bg-secondary-color: #e6e6e9;
+  --bg-color-a: #f3f2ef;
+  --bg-color-b: #f9fafb;
+  --bg-color-c: #fafaf9;
+  --bg-color-d: #fdfaf5;
+  --text-color: #0f0f0f;
+  --icon-inactive-color: #2d2e2e;
+  --color-a: #a5243d;
+  --color-b: #134074;
+  --color-c: #914d76;
+}
+
 button.nav-btn.fa-sign-in {
   border: none;
   background-color: transparent;
@@ -6,3 +21,94 @@ button.nav-btn.fa-sign-in {
   display: inline-block;
   /* text-transform: capitalize; */
 }
+
+body.lo-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--bg-secondary-color);
+}
+
+.lo-body nav {
+  display: flex;
+  flex-direction: row;
+  height: 100px;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 5;
+}
+
+.lo-body nav .logo {
+  height: 40px;
+}
+
+.lo-body nav h1 {
+  margin-left: 50px;
+}
+
+.lo-body nav a {
+  margin-right: 50px;
+}
+
+.lo-body .lo-container {
+  background-color: #ffffff;
+  width: 350px;
+  height: 400px;
+  border-radius: 10px;
+  box-shadow: rgb(0 0 0 / 10%) 0px 4px 6px -1px,
+    rgb(0 0 0 / 6%) 0px 2px 4px -1px;
+  padding: 25px;
+  margin: 25px;
+  position: relative;
+}
+
+.lo-body .lo-container input,
+.lo-body .lo-container button {
+  width: 100%;
+  margin: 10px 0px;
+  border-radius: 5px;
+  height: 35px;
+}
+
+.lo-body .lo-container button {
+  background-color: green;
+  border: none;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.lo-body .lo-container section {
+  position: absolute;
+  bottom: 0;
+  margin: 25px;
+}
+
+/* #signUpBtn, #loginBtn {
+  text-transform: uppercase;
+  align-self: center;
+  margin-top: 10px;
+}
+
+.logInPage span, .signUpPage span {
+  position: absolute;
+  bottom: 0;
+}
+
+
+.signUpPage input[type=text], .signUpPage input[type=password], .signUpPage  button,
+.logInPage input[type=text], .logInPage input[type=password], .logInPage  button,
+.postPage button {
+  margin: 10px 0px;
+}
+
+.signUpPage button, .logInPage button, .postPage button {
+  width: 100%;
+  font-size: 1em;
+} */

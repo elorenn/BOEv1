@@ -7,8 +7,6 @@ function searchBar() {
   ul = document.getElementById("gallery1");
   li = ul.getElementsByTagName("li");
 
-  console.log("searchbar function has been called");
-
   // Loop through all list items, and hide those who don't match the search query
   for (i = 0; i < li.length; i++) {
     a = li[i].getElementsByTagName("a")[0];

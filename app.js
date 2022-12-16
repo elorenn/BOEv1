@@ -6,7 +6,6 @@ const https = require("https");
 const File = require("./model/fileSchema");
 const multer = require("multer");
 const http = require("http");
-const schools = require("./business.json");
 
 const app = express();
 
@@ -16,23 +15,24 @@ app.set("views", "views");
 app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get("/", (req, res) => {
-  res.render("pages/index", {
-    schools: schools,
-  });
-});
-app.get("/subscribe", (req, res) => {
-  res.render("pages/subscribe");
-});
-app.get("/resources", (req, res) => {
-  res.render("pages/resources");
-});
-app.get("/contact", (req, res) => {
-  res.render("pages/contact");
-});
+// app.get("/", (req, res) => {
+//   res.render("pages/index", {
+//     schools: schools,
+//   });
+// });
+// app.get("/subscribe", (req, res) => {
+//   res.render("pages/subscribe");
+// });
+// app.get("/resources", (req, res) => {
+//   res.render("pages/resources");
+// });
+// app.get("/contact", (req, res) => {
+//   res.render("pages/contact");
+// });
 // app.get("/profile",checkAuthenticated, (req, res) => {
 //   res.render("pages/profile");
 // });
+
 app.get("/applicationSubmitted.html", (req, res) => {
   res.sendFile(__dirname + "/views/applicationSubmitted.html");
 });

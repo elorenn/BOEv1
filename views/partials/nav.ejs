@@ -12,7 +12,7 @@
         <li class="navitem nav-item">
           <a class="nav-link active" aria-current="page" href="/"><i class="navicon1 fa-solid fa-house"></i>
           <br>Home</a>
-        </li>
+        </li>    
         <li class="nav-item">
           <a style="color: white;"class="navitem nav-link" href="/subscribe"><i class="navicon2 fa-solid fa-bell"></i>
             <br> Subscribe</a>
@@ -30,11 +30,12 @@
           <br>  Profile</a>         
         </li>
         <li class="nav-item">
-          <%- include('./login-link'); %>
-        </li> 
-        <li>
-          <%- include('./logout-link'); %>
-        </li>              
+          <% if (isAuthenticated) { %>
+            <%- include('./logout-link'); %>
+          <% } else { %>
+            <%- include('./login-link'); %>
+          <% } %>         
+        </li>            
       </ul>
     </div>
   </div>

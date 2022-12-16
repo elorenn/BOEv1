@@ -1,6 +1,8 @@
 <div class="basiclist list-group">
   <ul class="galleryUL" id="gallery1">
-    <% schools.forEach(function(school, i) { %>
+    <% let sortedSchools = [...schools] %> <% sortedSchools.sort((a, b) => { %>
+    <% if (a.name < b.name) { %> <% return -1; %> <% } %> <% }); %> <%
+    sortedSchools.forEach(function(school, i) { %>
     <li class="listentry">
       <a
         class="basiclistitema list-group-item list-group-item-action"

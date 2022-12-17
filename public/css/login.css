@@ -1,5 +1,5 @@
 :root {
-  --logo-color: #557c5d;
+  --logo-color: #437e58;
   --bg-main-color: #f4f4f6;
   --bg-secondary-color: #e6e6e9;
   --bg-color-a: #f3f2ef;
@@ -43,6 +43,7 @@ body.lo-body {
   left: 0;
   width: 100vw;
   z-index: 5;
+  background-color: var(--logo-color);
 }
 
 .lo-body nav .logo {
@@ -78,7 +79,7 @@ body.lo-body {
 }
 
 .lo-body .lo-container button {
-  background-color: green;
+  background-color: var(--logo-color);
   border: none;
   text-transform: uppercase;
   color: #fff;

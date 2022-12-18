@@ -70,6 +70,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(methodOverride("_method"));
 
+// --------------------------------------------------------------------- //
+
 app.get("/", (req, res) => {
   res.render("pages/index", {
     schools: schools,
@@ -98,8 +100,10 @@ app.get("/profile", checkAuthenticated, (req, res) => {
   });
 });
 
+// --------------------------------------------------------------------- //
+
 app.get("/login", checkNotAuthenticated, (req, res) => {
-  res.render("./pages/login", {
+  res.render("pages/login", {
     isAuthenticated: req.isAuthenticated(),
   });
 });
@@ -114,28 +118,106 @@ app.post(
   })
 );
 
+// --------------------------------------------------------------------- //
+
 app.get("/register", checkNotAuthenticated, (req, res) => {
   res.render("./pages/register", {
     isAuthenticated: req.isAuthenticated(),
   });
 });
 
+// app.post("/register", checkNotAuthenticated, async (req, res) => {
+//   try {
+//     const hashedPassword = await bcrypt.hash(req.body.password, 10);
+//     users.push({
+//       id: Date.now().toString(),
+//       name: req.body.name,
+//       email: req.body.email,
+//       password: hashedPassword,
+//     });
+//     res.redirect("/login");
+//   } catch {
+//     res.redirect("/register");
+//   }
+//   console.log(users);
+// });
+
+// --------------------------------------------------------------------- //
+// Register / Sign Up Page Schema - LO
+
+const UserSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+    minlength: 1,
+    maxlength: 30,
+  },
+  email: {
+    type: String,
+    required: true,
+    minlength: 2,
+    maxlength: 50,
+    unique: true,
+  },
+  password: {
+    type: String,
+    required: true,
+    minlength: 1,
+    // maxlength: 15,
+  },
+});
+
+// --------------------------------------------------------------------- //
 app.post("/register", checkNotAuthenticated, async (req, res) => {
   try {
+    const postedDate = new Date().toLocaleDateString("en-us", {
+      year: "numeric",
+      month: "numeric",
+      day: "numeric",
+    });
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
-    users.push({
-      id: Date.now().toString(),
+    const User = mongoose.model("User", UserSchema);
+    const user = new User({
+      // id: Date.now().toString(),
       name: req.body.name,
       email: req.body.email,
       password: hashedPassword,
+      date: postedDate,
     });
+    user.save();
+    users.push(user);
     res.redirect("/login");
   } catch {
     res.redirect("/register");
   }
   console.log(users);
 });
- 
+// --------------------------------------------------------------------- //
+// Register / Sign Up Page - Save to Database - LO
+
+// app.post("/loginuserlist", function (req, res) {
+//   const userName = req.body.name;
+//   const userEmail = req.body.email;
+//   const userPassword = req.body.password;
+//   const postedDate = new Date().toLocaleDateString("en-us", {
+//     year: "numeric",
+//     month: "numeric",
+//     day: "numeric",
+//   });
+
+// // store in BOE database
+//   const User = mongoose.model("User", UserSchema);
+//   const user = new User({
+//     Name: userName,
+//     Email: userEmail,
+//     Password: userPassword,
+//     Date: postedDate,
+//   });
+//   user.save();
+// });
+
+// --------------------------------------------------------------------- //
+
 app.delete("/logout", (req, res, next) => {
   req.logOut((err) => {
     if (err) {

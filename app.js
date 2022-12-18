@@ -6,6 +6,7 @@ const https = require("https");
 const File = require("./model/fileSchema");
 const multer = require("multer");
 const http = require("http");
+// const UserSchema = require("./model/userSchema");
 
 const app = express();
 
@@ -14,24 +15,6 @@ app.set("view engine", "ejs");
 app.set("views", "views");
 app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.urlencoded({ extended: true }));
-
-// app.get("/", (req, res) => {
-//   res.render("pages/index", {
-//     schools: schools,
-//   });
-// });
-// app.get("/subscribe", (req, res) => {
-//   res.render("pages/subscribe");
-// });
-// app.get("/resources", (req, res) => {
-//   res.render("pages/resources");
-// });
-// app.get("/contact", (req, res) => {
-//   res.render("pages/contact");
-// });
-// app.get("/profile",checkAuthenticated, (req, res) => {
-//   res.render("pages/profile");
-// });
 
 app.get("/applicationSubmitted.html", (req, res) => {
   res.sendFile(__dirname + "/views/applicationSubmitted.html");
@@ -42,6 +25,9 @@ const mongoURL =
   "mongodb+srv://boepartners:missyangus123@cluster0.dm8gvgf.mongodb.net/BOE";
 
 mongoose.connect(mongoURL, { useNewUrlParser: true, useUnifiedTopology: true });
+
+// --------------------------------------------------------------------- //
+// Subscribe Page Schema
 
 const BOESchema = new mongoose.Schema({
   Organization: String,
@@ -60,8 +46,8 @@ const BOESchema = new mongoose.Schema({
   AppliedForTrade: String,
   Resume: String,
   SubscriberTradeOfInterest1: String,
-  subscriberTradeOfInterest2: String,
-  subscriberTradeOfInterest3: String,
+  SubscriberTradeOfInterest2: String,
+  SubscriberTradeOfInterest3: String,
   City: String,
   Zipcode: {
     type: Number,
@@ -70,6 +56,33 @@ const BOESchema = new mongoose.Schema({
   Additional_Comments: String,
   Date: String,
 });
+
+// --------------------------------------------------------------------- //
+// Register / Sign Up Page Schema - LO
+
+// const UserSchema = new mongoose.Schema({
+//   Name: {
+//     type: String,
+//     required: true,
+//     minlength: 1,
+//     maxlength: 20,
+//   },
+//   Email: {
+//     type: String,
+//     required: true,
+//     minlength: 2,
+//     maxlength: 20,
+//     unique: true,
+//   },
+//   Password: {
+//     type: String,
+//     required: true,
+//     minlength: 1,
+//     maxlength: 7,
+//   },
+// });
+
+// --------------------------------------------------------------------- //
 
 // Multer file storage
 const multerStorage = multer.diskStorage({
@@ -138,7 +151,9 @@ app.post("/index.html2", function (req, res) {
   res.redirect(req.body.orgApplicationURL);
 });
 
-// Subcriber Page
+// --------------------------------------------------------------------- //
+// Subcriber Page - Save to Database
+
 app.post("/usersignup", function (req, res) {
   const userFirstName = req.body.fname;
   const userLastName = req.body.lname;
@@ -206,6 +221,7 @@ app.post("/usersignup", function (req, res) {
   request.write(jsonData);
   request.end();
 });
+
 app.post("/failure", function (req, res) {
   res.redirect("/subscribe.ejs");
 });
@@ -213,5 +229,30 @@ app.post("/failure", function (req, res) {
 app.post("/success", function (req, res) {
   res.redirect("/");
 });
+
+// --------------------------------------------------------------------- //
+// Register / Sign Up Page - Save to Database - LO
+// app.post("/loginuserlist", function (req, res) {
+//   const userName = req.body.name;
+//   const userEmail = req.body.email;
+//   const userPassword = req.body.password;
+//   const postedDate = new Date().toLocaleDateString("en-us", {
+//     year: "numeric",
+//     month: "numeric",
+//     day: "numeric",
+//   });
+
+//   // store in BOE database
+//   const User = mongoose.model("User", UserSchema);
+//   const user = new User({
+//     Name: userName,
+//     Email: userEmail,
+//     Password: userPassword,
+//     Date: postedDate,
+//   });
+//   user.save();
+// });
+
+// --------------------------------------------------------------------- //
 
 module.exports = app;

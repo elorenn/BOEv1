@@ -27,15 +27,15 @@ body {
     max-height: 4rem;
   }
 }
-.navitem {
+.nav-item {
   font-size: 2.5rem;
   font-family: "Futura";
-  color: white;
+  color: red;
   margin-right: 1.5rem;
 }
 
 @media (min-width: 1000px) {
-  .navitem {
+  .nav-item {
     font-size: 1.2rem;
   }
 }

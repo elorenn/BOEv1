@@ -44,18 +44,26 @@ body.lo-body {
   width: 100vw;
   z-index: 5;
   background-color: var(--logo-color);
+  background-color: #fff;
+  border-bottom: 1px solid rgb(0 0 0 / 15%);
+  box-shadow: rgb(9 30 66 / 25%) 0px 1px 1px, rgb(9 30 66 / 13%) 0px 0px 1px 1px;
+  box-shadow: rgb(0 0 0 / 18%) 0px 2px 4px;
 }
 
 .lo-body nav .logo {
   height: 40px;
 }
-
+/* 
 .lo-body nav h1 {
   margin-left: 50px;
 }
 
 .lo-body nav a {
   margin-right: 50px;
+} */
+
+.lo-body nav * {
+  color: var(--icon-inactive-color);
 }
 
 .lo-body .lo-container {
@@ -63,11 +71,19 @@ body.lo-body {
   width: 350px;
   height: 400px;
   border-radius: 10px;
-  box-shadow: rgb(0 0 0 / 10%) 0px 4px 6px -1px,
-    rgb(0 0 0 / 6%) 0px 2px 4px -1px;
+  border: 1px solid rgb(0 0 0 / 15%);
+  /* box-shadow: rgb(0 0 0 / 10%) 0px 4px 6px -1px,
+    rgb(0 0 0 / 6%) 0px 2px 4px -1px; */
   padding: 25px;
   margin: 25px;
   position: relative;
+  /* box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px,
+    rgba(9, 30, 66, 0.13) 0px 0px 1px 1px; */
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+}
+
+.lo-body .lo-container input {
+  border: 1px solid rgb(0 0 0 / 15%);
 }
 
 .lo-body .lo-container input,
@@ -85,31 +101,30 @@ body.lo-body {
   color: #fff;
 }
 
+.lo-body .lo-container button:hover {
+  background-color: #3f915c;
+}
+
 .lo-body .lo-container section {
   position: absolute;
   bottom: 0;
   margin: 25px;
 }
 
-/* #signUpBtn, #loginBtn {
-  text-transform: uppercase;
-  align-self: center;
-  margin-top: 10px;
+.lo-body footer {
+  background-color: #ffffff;
+  border-top: 1px solid rgb(0 0 0 / 15%);
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+  z-index: 3;
 }
 
-.logInPage span, .signUpPage span {
-  position: absolute;
-  bottom: 0;
+.lo-body footer .footercontainer {
+  padding: 10px;
+  text-align: center;
 }
 
-
-.signUpPage input[type=text], .signUpPage input[type=password], .signUpPage  button,
-.logInPage input[type=text], .logInPage input[type=password], .logInPage  button,
-.postPage button {
-  margin: 10px 0px;
+.lo-body footer .footercontainer > * {
+  margin: 0 15px;
+  color: var(--icon-inactive-color);
+  font-size: 1.5em;
 }
-
-.signUpPage button, .logInPage button, .postPage button {
-  width: 100%;
-  font-size: 1em;
-} */

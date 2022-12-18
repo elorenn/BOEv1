@@ -4,28 +4,31 @@
     <%- include('../partials/head'); %>
     <link rel="stylesheet" href="../css/login.css" />
   </head>
-  <body>
+  <body class="lo-body">
     <%- include('../partials/nav'); %>
 
-    <h1>Looking to kickstart a career in a skilled trade? Join BOE:</h1>
-
-    <form class="form" action="/register" method="POST">
-      <div>
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" required />
-      </div>
-      <div>
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required />
-      </div>
-      <div>
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" required />
-      </div>
-      <button type="submit">Register</button>
-    </form>
-
-    <a href="/login">Login</a>
+    <h3>Looking to kickstart a career in a skilled trade? Join BOE:</h3gi>
+    <div class="lo-container">
+      <form class="form" action="/register" method="POST">
+        <div>
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div>
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required />
+        </div>
+        <button type="submit">Register</button>
+      </form>
+      <section>
+        <span>Already have an account?</span>
+        <a href="/login">Log In</a>
+      </section>
+    </div>
 
     <!-- Footer Section -->
     <%- include('../partials/footer'); %>

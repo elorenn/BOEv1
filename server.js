@@ -157,7 +157,7 @@ const UserSchema = new mongoose.Schema({
     required: true,
     minlength: 2,
     maxlength: 50,
-    unique: true,
+    unique: false,
   },
   password: {
     type: String,
@@ -165,6 +165,7 @@ const UserSchema = new mongoose.Schema({
     minlength: 1,
     // maxlength: 15,
   },
+  date: String,
 });
 
 // --------------------------------------------------------------------- //

@@ -29,7 +29,7 @@ function initialize(passport, getUserByEmail, getUserById) {
   passport.serializeUser((user, done) => done(null, user._id));
   passport.deserializeUser((_id, done) => {
     return done(null, getUserById(_id));
-  });
+  }); 
 }
 
 module.exports = initialize;

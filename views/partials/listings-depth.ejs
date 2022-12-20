@@ -18,7 +18,7 @@
             href="<%= school.siteUrl %>"
             target="_blank"
           >
-            <strong><%= school.name %></strong></a
+            <h2><%= school.name %></h2></a
           >
           <br />
           <em class="indepthlistitemCategory"><%= school.type %></em>
@@ -45,6 +45,9 @@
       <% if (school.premiumMembership) { %> <%- include('./application-premium',
       {school: school}); %> <% } else { %> <%- include('./application', {school:
       school}); %> <% } %>
+      <aside class="lo-save-listing">
+        <i class="fa-solid fa-heart"></i>
+      </aside>
     </li>
     <% }); %>
   </ul>

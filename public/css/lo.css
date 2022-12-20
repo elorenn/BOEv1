@@ -517,6 +517,11 @@ section.lo-section-half .lo-basic-list li .lo-list-text-side {
   margin-bottom: 8px;
 }
 
+.lo-in-depth-list p {
+  font-size: 14px;
+  color: #000000e6;
+}
+
 .lo-basic-list .lo-list-text-side p:first-of-type {
   font-size: 14px;
   color: #000000e6;
@@ -534,19 +539,21 @@ section.lo-section-half .lo-basic-list li .lo-list-text-side {
 
 /* ------------------------------ INDEX FAVORITES ------------------------------ */
 
-.lo-save-listing {
+.lo-body .lo-save-listing {
   position: absolute;
   z-index: 5;
   top: 0;
   right: 0;
 }
 
-.lo-body .lo-container .lo-basic-list aside {
+.lo-body aside.lo-save-listing {
   cursor: pointer;
   margin: 10px;
 }
 
-.lo-body .lo-container .lo-basic-list aside i:hover {
+.lo-body .lo-save-listing i:hover,
+.lo-body .lo-save-listing i:focus,
+.lo-body .lo-save-listing i:active {
   color: var(--color-a);
 }
 
@@ -558,7 +565,7 @@ section.lo-search-wrapper {
   width: 100%;
   padding: 25px 10px;
   border-bottom: 1px solid rgb(0 0 0 / 15%);
-  box-shadow: rgb(0 0 0 / 18%) 0px 2px 4px;
+  /* box-shadow: rgb(0 0 0 / 18%) 0px 2px 4px; */
 }
 
 .lo-search-wrapper i.fa-solid.fa-magnifying-glass {

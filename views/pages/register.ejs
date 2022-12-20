@@ -4,9 +4,8 @@
     <%- include('../partials/head'); %>
     <link rel="stylesheet" href="../css/lo.css" />
   </head>
-  <body class="lo-body">
+  <body class="lo-body lo-body-pop">
     <%- include('../partials/nav'); %>
-
     <h3>Looking to kickstart a career in a skilled trade? Join BOE.</h3>
     <div class="lo-container">
       <form class="form" action="/register" method="POST">
@@ -24,12 +23,11 @@
         </div>
         <button type="submit">Sign Up</button>
       </form>
-      <section>
+      <aside>
         <span>Already have an account?</span>
         <a href="/login">Log In</a>
-      </section>
+      </aside>
     </div>
-
     <!-- Footer Section -->
     <%- include('../partials/footer'); %>
 

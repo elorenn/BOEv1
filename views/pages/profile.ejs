@@ -6,18 +6,23 @@
   </head>
   <body class="lo-body">
     <%- include('../partials/nav'); %>
-
-    <div class="sidebar">
-      <h1>Welcome <%= name %></h1>
-      <div class="section">
-        <div class="item">favorites</div>
-        <div class="item">User Profiles</div>
+    <section class="lo-section-main">
+      <div class="lo-container lo-container-big">
+        <h1>Welcome <%= name %></h1>
+        <section class="lo-profile-card lo-profile-card-avatar">
+          <p>HELLO</p>
+        </section>
+        <section class="lo-profile-card lo-profile-card-info">
+          <p class="item">Favorites</p>
+          <p class="item">User Profiles</p>
+          <p class="item">Settings</p>
+          <p class="item">Concerns</p>
+        </section>
       </div>
-      <div class="section">
-        <div class="item">Settings</div>
-        <div class="item">Concerns?</div>
-      </div>
-    </div>
+      <div class="lo-container lo-container-big"></div>
+      <div class="lo-container lo-container-big"></div>
+      <div class="lo-container lo-container-big"></div>
+    </section>
     <%- include('../partials/footer'); %>
   </body>
 </html>

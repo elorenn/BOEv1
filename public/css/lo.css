@@ -7,12 +7,25 @@
   --bg-color-c: #fafaf9;
   --bg-color-d: #fdfaf5;
   --text-color: #0f0f0f;
+  --text-color-min: rgba(0, 0, 0, 60%);
   --icon-inactive-color: #2d2e2e;
   --color-a: #a5243d;
   --color-b: #134074;
   --color-c: #914d76;
 
   font-family: Arial, Helvetica, sans-serif;
+}
+
+body.lo-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  min-height: 100vh;
+  background-color: var(--bg-secondary-color);
+  padding: 0;
+  margin: 0;
 }
 
 button.nav-btn.fa-sign-in {
@@ -24,44 +37,85 @@ button.nav-btn.fa-sign-in {
   /* text-transform: capitalize; */
 }
 
-body.lo-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
-  background-color: var(--bg-secondary-color);
-  padding: 0;
-  margin: 0;
-}
-
 .lo-body nav {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  position: absolute;
+  position: sticky;
   top: 0;
   height: 64px;
   width: 100vw;
-  z-index: 5;
+  /* z-index: 5; */
   background-color: var(--logo-color);
   background-color: #fff;
   border-bottom: 1px solid rgb(0 0 0 / 15%);
   box-shadow: rgb(9 30 66 / 25%) 0px 1px 1px, rgb(9 30 66 / 13%) 0px 0px 1px 1px;
   box-shadow: rgb(0 0 0 / 18%) 0px 2px 4px;
+  background-color: #3f915c;
+  background: linear-gradient(
+    139deg,
+    rgba(67, 126, 88, 1) 35%,
+    rgba(144, 222, 171, 1) 100%
+  );
+}
+
+.lo-body.lo-body-pop nav {
+  z-index: 0;
+  position: absolute;
+  align-items: start;
+  background-color: var(--logo-color);
+  height: 45vh;
+  background: linear-gradient(
+    139deg,
+    rgba(67, 126, 88, 1) 35%,
+    rgba(144, 222, 171, 1) 100%
+  );
+}
+
+.lo-body.lo-body-pop nav .lo-nav-links-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 15px 30px;
+}
+
+.lo-body.lo-body-pop nav .slogan {
+  display: none;
+}
+
+.lo-body.lo-body-pop nav * {
+  color: #ffffff;
+}
+
+.lo-body nav .lo-logo-wrapper {
+  height: 45px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.lo-body.lo-body-pop nav .lo-logo-wrapper {
+  height: 150px;
 }
 
 .lo-body nav .logo {
-  height: 40px;
+  height: 100%;
 }
 
 .lo-body nav * {
   color: var(--icon-inactive-color);
   display: inline-block;
   text-decoration: none;
-  /* color: #fff; */
+}
+
+.lo-body .lo-section-main {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 75px auto 75px;
 }
 
 .lo-body .lo-container {
@@ -71,14 +125,40 @@ body.lo-body {
   border-radius: 10px;
   box-sizing: border-box;
   border: 1px solid rgb(0 0 0 / 15%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   /* box-shadow: rgb(0 0 0 / 10%) 0px 4px 6px -1px,
     rgb(0 0 0 / 6%) 0px 2px 4px -1px; */
   padding: 25px;
   margin: 25px;
-  position: relative;
+  /* position: relative; */
   /* box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px,
     rgba(9, 30, 66, 0.13) 0px 0px 1px 1px; */
   box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+}
+
+.lo-body .lo-container-big {
+  width: 650px;
+  height: 400px;
+  /* border-radius: 20px; */
+  display: flex;
+  flex-direction: row;
+}
+
+.lo-body.lo-body-pop .lo-container,
+.lo-body.lo-body-pop h3 {
+  position: relative;
+  z-index: 2;
+}
+
+.lo-body.lo-body-pop h3 {
+  color: #ffffff;
+  font-weight: 100;
+}
+
+.lo-container form {
+  color: var(--text-color-min);
 }
 
 .lo-body .lo-container input {
@@ -104,19 +184,18 @@ body.lo-body {
   background-color: #3f915c;
 }
 
-.lo-body .lo-container section {
-  position: absolute;
-  bottom: 0;
+.lo-body .lo-container aside {
   margin: 25px;
+  color: var(--text-color-min);
 }
 
 .lo-body footer {
   background-color: #ffffff;
   border-top: 1px solid rgb(0 0 0 / 15%);
   box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
-  z-index: 3;
+  z-index: 3000;
   width: 100vw;
-  position: absolute;
+  position: fixed;
   bottom: 0;
 }
 
@@ -140,4 +219,10 @@ body.lo-body {
   line-height: inherit;
   cursor: pointer;
   padding: 0.5rem 1rem;
+}
+
+.lo-profile-card {
+  border: 1px solid rgb(0 0 0 / 15%);
+  border-radius: 5px;
+  padding: 15px;
 }

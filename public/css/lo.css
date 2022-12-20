@@ -11,7 +11,7 @@
   --icon-inactive-color: #2d2e2e;
   --color-a: #a5243d;
   --color-b: #134074;
-  --color-c: #914d76;
+  --color-c: #a05482;
 
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -48,13 +48,19 @@ button.nav-btn.fa-sign-in {
   height: 65px;
   width: 100vw;
   z-index: 5;
-  background-color: var(--logo-color);
+  background-color: var(--logo-color) !important;
   border-bottom: 1px solid rgb(0 0 0 / 15%);
   box-shadow: rgb(0 0 0 / 18%) 0px 2px 4px;
   background: linear-gradient(
     139deg,
     var(--logo-color) 35%,
     rgba(144, 222, 171, 1) 100%
+  );
+  background: linear-gradient(
+    150deg,
+    hsla(141, 31%, 38%, 1) 24%,
+    hsla(141, 54%, 72%, 1) 42%,
+    hsla(141, 31%, 38%, 1) 75%
   );
 }
 
@@ -113,6 +119,12 @@ button.nav-btn.fa-sign-in {
     var(--logo-color) 35%,
     rgba(144, 222, 171, 1) 100%
   );
+  /* background: linear-gradient(
+    150deg,
+    hsla(141, 31%, 38%, 1) 24%,
+    hsla(141, 54%, 72%, 1) 42%,
+    hsla(141, 31%, 38%, 1) 75%
+  ); */
 }
 
 .lo-body nav .lo-nav-links-wrapper {
@@ -150,6 +162,26 @@ button.nav-btn.fa-sign-in {
   flex-direction: row;
   align-items: center;
   text-align: center;
+}
+
+.lo-body nav .lo-nav-links-wrapper ul.navlist .nav-link,
+.lo-body nav .lo-nav-links-wrapper ul.navlist button,
+.lo-body nav .lo-nav-links-wrapper ul.navlist i.fa-solid {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.lo-body nav .lo-nav-links-wrapper ul.navlist li:hover i.fa-solid,
+.lo-body nav .lo-nav-links-wrapper ul.navlist li:hover button,
+.lo-body nav .lo-nav-links-wrapper ul.navlist li:hover .nav-link,
+.lo-body nav .lo-nav-links-wrapper ul.navlist li .nav-link:focus i.fa-solid,
+.lo-body nav .lo-nav-links-wrapper ul.navlist button:focus,
+.lo-body nav .lo-nav-links-wrapper ul.navlist button:focus i.fa-solid,
+.lo-body nav .lo-nav-links-wrapper ul.navlist li .nav-link:focus,
+.lo-body nav .lo-nav-links-wrapper ul.navlist li .nav-link:active i.fa-solid,
+.lo-body nav .lo-nav-links-wrapper ul.navlist button:active,
+.lo-body nav .lo-nav-links-wrapper ul.navlist button:active i.fa-solid,
+.lo-body nav .lo-nav-links-wrapper ul.navlist li .nav-link:active {
+  color: rgba(255, 255, 255, 1);
 }
 
 .lo-body.lo-body-pop nav .lo-nav-links-wrapper ul.navlist {

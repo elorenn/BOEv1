@@ -45,7 +45,7 @@ button.nav-btn.fa-sign-in {
   align-items: center;
   position: sticky;
   top: 0;
-  height: 64px;
+  height: 65px;
   width: 100vw;
   z-index: 5;
   background-color: var(--logo-color);
@@ -58,6 +58,21 @@ button.nav-btn.fa-sign-in {
   );
 }
 
+.lo-body nav i::before {
+  font-size: 1.25em;
+}
+
+.lo-body nav .navbar-brand {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  font-weight: 200;
+}
+
+.lo-body nav .navbar-brand .slogan {
+  padding: 0 15px;
+}
+
 .lo-body.lo-body-pop nav {
   z-index: 9;
   position: absolute;
@@ -65,10 +80,6 @@ button.nav-btn.fa-sign-in {
   background: transparent !important;
   border: none;
   box-shadow: none;
-}
-
-.lo-body .lo-nav-extension {
-  display: none;
 }
 
 .lo-body nav button {
@@ -80,6 +91,10 @@ button.nav-btn.fa-sign-in {
   line-height: inherit;
   cursor: pointer;
   padding: 0.5rem 1rem;
+}
+
+.lo-body .lo-nav-extension {
+  display: none;
 }
 
 .lo-body.lo-body-pop .lo-nav-extension {
@@ -100,13 +115,18 @@ button.nav-btn.fa-sign-in {
   );
 }
 
-.lo-body.lo-body-pop nav .lo-nav-links-wrapper {
+.lo-body nav .lo-nav-links-wrapper {
   position: absolute;
-  height: auto;
+  height: 100%;
   top: 0;
   right: 0;
-  padding: 15px 30px;
+  padding: 0 30px;
   transition: height 2s linear 1s;
+}
+
+.lo-body.lo-body-pop nav .lo-nav-links-wrapper {
+  padding: 15px 30px;
+  height: auto;
 }
 
 .lo-body.lo-body-pop nav .lo-nav-links-wrapper.show {
@@ -122,6 +142,14 @@ button.nav-btn.fa-sign-in {
   text-align: center;
   display: flex;
   justify-content: center;
+}
+
+.lo-body nav .lo-nav-links-wrapper ul.navlist {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
 }
 
 .lo-body.lo-body-pop nav .lo-nav-links-wrapper ul.navlist {
@@ -161,9 +189,10 @@ button.nav-btn.fa-sign-in {
 }
 
 .lo-body nav .lo-logo-wrapper {
-  height: 45px;
+  height: 64px;
   border-radius: 5px;
   overflow: hidden;
+  padding: 0px 15px;
 }
 
 .lo-body.lo-body-pop nav .lo-logo-wrapper {

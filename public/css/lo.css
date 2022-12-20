@@ -275,16 +275,15 @@ button.nav-btn.fa-sign-in {
   overflow: scroll;
 }
 
-.lo-body .lo-container-small {
+.lo-body .lo-container.lo-container-small {
   width: 350px;
   height: 420px;
 }
 
-.lo-body .lo-container-big {
-  width: 650px;
-  height: 400px;
+.lo-body .lo-container.lo-container-big {
+  width: auto;
+  height: auto;
   display: flex;
-  flex-direction: row;
 }
 
 .lo-body.lo-body-pop .lo-container,
@@ -357,6 +356,7 @@ button.nav-btn.fa-sign-in {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
+  justify-content: center;
   margin: 25px auto 75px;
 }
 
@@ -424,6 +424,84 @@ button.nav-btn.fa-sign-in {
 
 .lo-body .lo-image-gallery figcaption {
   color: var(--text-color-min);
+}
+
+/* ------------------------------ RESOURCES CAROUSEL ------------------------------ */
+
+.lo-body .lo-container.lo-carousel-wrapper {
+  max-width: fit-content;
+  max-width: 900px;
+}
+
+.carousel_image {
+  max-width: 100px;
+}
+
+/* ------------------------------ INDEX ------------------------------ */
+
+.basiclist li,
+.indepthlist li {
+  list-style: none;
+}
+
+.basiclist ul,
+.indepthlist ul {
+  padding: 0;
+}
+
+.lo-body section.lo-section-half .indepthlist {
+  flex: 2;
+}
+
+.lo-body .lo-container.basiclist {
+  margin-right: 0;
+  border-radius: 10px 0 0 10px;
+  padding: 0;
+  border-right: 0;
+  width: 150px;
+}
+
+.lo-body .lo-container.indepthlist {
+  margin-left: 0;
+  border-radius: 0 10px 10px 0;
+  padding: 0;
+  border-left: 0;
+  overflow: scroll;
+}
+
+.lo-container.basiclist .lo-logo-wrapper,
+.lo-container.indepthlist .lo-logo-wrapper {
+  width: 56px;
+}
+
+.lo-container.basiclist .lo-logo-wrapper img,
+.lo-container.indepthlist .lo-logo-wrapper img {
+  width: 100%;
+}
+
+.lo-container.basiclist li a {
+  display: flex;
+  padding: 10px;
+}
+
+.lo-container.basiclist li a,
+.lo-container.indepthlist li a {
+  border: 0;
+}
+
+.lo-container.basiclist li a:hover,
+.lo-container.indepthlist li a:hover,
+.list-group-item-action:focus,
+.list-group-item-action:hover {
+  background-color: rgba(67, 126, 88, 0.1);
+}
+
+.lo-container.basiclist li .lo-list-img-side {
+}
+
+.lo-container.basiclist li .lo-list-text-side {
+  padding: 0 10px;
+  border-bottom: 1px solid rgb(0 0 0 / 15%);
 }
 
 /* ------------------------------ FOOTER ------------------------------ */

@@ -1,4 +1,4 @@
-<div class="indepthlist list-group">
+<section class="indepthlist list-group lo-container lo-container-big">
   <ul class="galleryUL" id="gallery2">
     <% schools.forEach(function(school, i) { %>
     <li
@@ -7,7 +7,9 @@
       href="#list-item-<%= i %>"
     >
       <div class="indepthlistitemcontainer">
-        <img class="companylogo" src="<%= school.logoUrl %>" alt="Logo" />
+        <div class="lo-logo-wrapper">
+          <img class="companylogo" src="<%= school.logoUrl %>" alt="Logo" />
+        </div>
         <div class="indepthlistitemtextcontainer">
           <a
             class="indepthlistitemOrganization"
@@ -44,4 +46,4 @@
     </li>
     <% }); %>
   </ul>
-</div>
+</section>

@@ -22,7 +22,8 @@ body.lo-body {
   justify-content: center;
   align-items: center;
   width: 100vw;
-  min-height: 100vh;
+  /* min-height: 100vh; */
+  min-height: auto;
   background-color: var(--bg-secondary-color);
   padding: 0;
   margin: 0;
@@ -369,16 +370,41 @@ button.nav-btn.fa-sign-in {
   align-items: center;
 }
 
-.lo-body section.lo-section-half section:first-of-type {
-  flex: 2;
-}
-
-.lo-container .lo-trade-section {
+.lo-body .lo-container .lo-trade-section {
   margin: 15px 0;
 }
 
 .lo-container h3 {
   font-weight: normal;
+}
+
+/* ------------------------------ SUBSCRIBE GALLERY ------------------------------ */
+
+.lo-body .lo-image-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  height: auto;
+  padding: 25px;
+  margin: 25px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-sizing: border-box;
+  border: 1px solid rgb(0 0 0 / 15%);
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+  overflow: scroll;
+}
+
+.lo-body .lo-image-gallery > figure {
+  flex: 1;
+  margin: 10px;
+  height: fit-content;
+  min-width: 250px;
+}
+
+.lo-body .lo-image-gallery h1 {
+  width: 100%;
+  font-weight: normal;
+  text-align: center;
 }
 
 /* ------------------------------ FOOTER ------------------------------ */
@@ -406,4 +432,21 @@ button.nav-btn.fa-sign-in {
 
 .lo-body footer .footercontainer i:hover {
   color: var(--logo-color);
+}
+
+/* ------------------------------ MEDIA QUERY ------------------------------ */
+
+@media screen and (max-width: 991px) {
+  .lo-body nav {
+    height: 80px;
+  }
+
+  .lo-body section.lo-section-half {
+    flex-direction: column;
+  }
+
+  .lo-body .lo-container {
+    max-width: none;
+    width: 700px;
+  }
 }

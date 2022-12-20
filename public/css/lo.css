@@ -489,6 +489,12 @@ section.lo-section-half .lo-basic-list li a {
   padding: 10px;
 }
 
+section.lo-section-half .lo-basic-list h6 {
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--logo-color);
+}
+
 section.lo-section-half .lo-basic-list li a,
 section.lo-section-half .lo-in-depth-list li a {
   border: 0;
@@ -504,6 +510,26 @@ section.lo-section-half .lo-in-depth-list li a:hover,
 section.lo-section-half .lo-basic-list li .lo-list-text-side {
   padding: 0 10px 10px 10px;
   border-bottom: 1px solid rgb(0 0 0 / 15%);
+}
+
+.lo-basic-list .lo-list-text-side p {
+  text-transform: capitalize;
+  margin-bottom: 8px;
+}
+
+.lo-basic-list .lo-list-text-side p:first-of-type {
+  font-size: 14px;
+  color: #000000e6;
+}
+
+.lo-basic-list .lo-list-text-side p:nth-of-type(2) {
+  font-size: 14px;
+  color: #00000099;
+}
+
+.lo-basic-list .lo-list-text-side p:nth-of-type(3) {
+  font-size: 12px;
+  color: #00000099;
 }
 
 /* ------------------------------ INDEX FAVORITES ------------------------------ */

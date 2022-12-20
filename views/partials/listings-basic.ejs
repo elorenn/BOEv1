@@ -21,17 +21,12 @@
           </div>
         </section>
         <section class="basiclistitemtextcontainer lo-list-text-side">
-          <strong class="basiclistitemOrganization"><%= school.name %></strong>
-          <br />
-          <em class="basiclistitemCategory"><%= school.type %></em>
-          <br />
-          <em class="basiclistitemTrade"
-            ><%= school.programs %>
-            <br />
-            <em class="basiclistitemCity">
-              <%= school.location.city %>, <%= school.location.state %></em
-            ></em
-          >
+          <h6 class="basiclistitemOrganization"><%= school.name %></h6>
+          <p class="basiclistitemCategory"><%= school.type %></p>
+          <p class="basiclistitemTrade"><%= school.programs %></p>
+          <p class="basiclistitemCity">
+            <%= school.location.city %>, <%= school.location.state %>
+          </p>
         </section>
       </a>
       <aside class="lo-save-listing">

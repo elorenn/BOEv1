@@ -510,6 +510,7 @@ section.lo-section-half .lo-in-depth-list li a:hover,
 section.lo-section-half .lo-basic-list li .lo-list-text-side {
   padding: 0 10px 10px 10px;
   border-bottom: 1px solid rgb(0 0 0 / 15%);
+  width: 100%;
 }
 
 .lo-basic-list .lo-list-text-side p {

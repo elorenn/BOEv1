@@ -1,20 +1,24 @@
-<div class="indepthlist list-group">
+<section class="indepthlist list-group lo-in-depth-list">
   <ul class="galleryUL" id="gallery2">
-    <% schools.forEach(function(school, i) { %>
+    <% let sortedSchools = [...schools] %> <% sortedSchools.sort((a, b) => { %>
+    <% if (a.name < b.name) { %> <% return -1; %> <% } %> <% }); %> <%
+    sortedSchools.forEach(function(school, i) { %>
     <li
       id="Item<%= i %>"
       class="indepthlistitema list-group-item list-group-item-action"
       href="#list-item-<%= i %>"
     >
       <div class="indepthlistitemcontainer">
-        <img class="companylogo" src="<%= school.logoUrl %>" alt="Logo" />
+        <div class="lo-logo-wrapper">
+          <img class="companylogo" src="<%= school.logoUrl %>" alt="Logo" />
+        </div>
         <div class="indepthlistitemtextcontainer">
           <a
             class="indepthlistitemOrganization"
             href="<%= school.siteUrl %>"
             target="_blank"
           >
-            <strong><%= school.name %></strong></a
+            <h2><%= school.name %></h2></a
           >
           <br />
           <em class="indepthlistitemCategory"><%= school.type %></em>
@@ -41,7 +45,10 @@
       <% if (school.premiumMembership) { %> <%- include('./application-premium',
       {school: school}); %> <% } else { %> <%- include('./application', {school:
       school}); %> <% } %>
+      <aside class="lo-save-listing">
+        <i class="fa-solid fa-heart"></i>
+      </aside>
     </li>
     <% }); %>
   </ul>
-</div>
+</section>

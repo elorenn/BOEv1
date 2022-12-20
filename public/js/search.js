@@ -4,7 +4,7 @@ function searchBar() {
   var input, filter, ul, li, a, i, txtValue;
   input = document.getElementById("searchInput");
   filter = input.value.toUpperCase();
-  ul = document.getElementById("gallery1");
+  ul = document.getElementById("lo-basic-list");
   li = ul.getElementsByTagName("li");
 
   // Loop through all list items, and hide those who don't match the search query

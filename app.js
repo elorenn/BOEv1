@@ -6,6 +6,8 @@ const https = require("https");
 const File = require("./model/fileSchema");
 const multer = require("multer");
 const http = require("http");
+const session = require('express-session')
+
 // const UserSchema = require("./model/userSchema");
 
 const app = express();
@@ -21,10 +23,10 @@ app.get("/applicationSubmitted.html", (req, res) => {
 });
 
 // Connect to Mongo DB
-const mongoURL =
-  "mongodb+srv://boepartners:missyangus123@cluster0.dm8gvgf.mongodb.net/BOE";
+// const mongoURL =
+//   "mongodb+srv://boepartners:missyangus123@cluster0.dm8gvgf.mongodb.net/BOE";
 
-mongoose.connect(mongoURL, { useNewUrlParser: true, useUnifiedTopology: true });
+// mongoose.connect(mongoURL, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // --------------------------------------------------------------------- //
 // Subscribe Page Schema
@@ -58,29 +60,6 @@ const BOESchema = new mongoose.Schema({
 });
 
 // --------------------------------------------------------------------- //
-// Register / Sign Up Page Schema - LO
-
-// const UserSchema = new mongoose.Schema({
-//   Name: {
-//     type: String,
-//     required: true,
-//     minlength: 1,
-//     maxlength: 20,
-//   },
-//   Email: {
-//     type: String,
-//     required: true,
-//     minlength: 2,
-//     maxlength: 20,
-//     unique: true,
-//   },
-//   Password: {
-//     type: String,
-//     required: true,
-//     minlength: 1,
-//     maxlength: 7,
-//   },
-// });
 
 // --------------------------------------------------------------------- //
 
@@ -140,7 +119,7 @@ app.post("/index.html2", function (req, res) {
   const postedDate = new Date().toLocaleDateString("en-us", {
     year: "numeric",
     month: "numeric",
-    day: "numeric",
+    // day: "numeric",
   });
   const External_Applicant = mongoose.model("External_Applicant", BOESchema);
   const external_applicant = new External_Applicant({

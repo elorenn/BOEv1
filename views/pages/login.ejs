@@ -6,9 +6,9 @@
   </head>
   <body class="lo-body lo-body-pop">
     <%- include('../partials/nav'); %>
-    
+
     <h3>Kickstart a career in a skilled trade.</h3>
-    <div class="lo-container">
+    <div class="lo-container lo-container-small">
       <% if (messages.error) { %> <%= messages.error %> <% } %>
       <form action="/login" method="POST">
         <label for="email">Email</label>

@@ -48,7 +48,7 @@ button.nav-btn.fa-sign-in {
   top: 0;
   height: 65px;
   width: 100vw;
-  z-index: 5;
+  z-index: 9999;
   background-color: var(--logo-color) !important;
   border-bottom: 1px solid rgb(0 0 0 / 15%);
   box-shadow: rgb(0 0 0 / 18%) 0px 2px 4px;
@@ -439,69 +439,100 @@ button.nav-btn.fa-sign-in {
 
 /* ------------------------------ INDEX ------------------------------ */
 
-.basiclist li,
-.indepthlist li {
+.lo-body section.lo-section-half.lo-container {
+  min-width: 80vw;
+  padding: 0;
+}
+
+.lo-basic-list li,
+.lo-in-depth-list li {
   list-style: none;
 }
 
-.basiclist ul,
-.indepthlist ul {
+.lo-basic-list ul,
+.lo-in-depth-list ul {
   padding: 0;
 }
 
-.lo-body section.lo-section-half .indepthlist {
+.lo-body section.lo-section-half .lo-basic-list {
+  border-right: 1px solid rgb(0 0 0 / 15%);
+  border-radius: 0;
+}
+
+.lo-body section.lo-section-half .lo-in-depth-list {
   flex: 2;
+  border-radius: 0;
 }
 
-.lo-body .lo-container.basiclist {
-  margin-right: 0;
-  border-radius: 10px 0 0 10px;
-  padding: 0;
-  border-right: 0;
-  width: 150px;
+/* .lo-body .lo-section-half .lo-in-depth-list ul li:first-of-type {
+  display: block;
 }
 
-.lo-body .lo-container.indepthlist {
-  margin-left: 0;
-  border-radius: 0 10px 10px 0;
-  padding: 0;
-  border-left: 0;
-  overflow: scroll;
-}
+.lo-body .lo-section-half .lo-in-depth-list ul li {
+  border: 0;
+  display: none;
+} */
 
-.lo-container.basiclist .lo-logo-wrapper,
-.lo-container.indepthlist .lo-logo-wrapper {
+section.lo-section-half .lo-basic-list .lo-logo-wrapper,
+section.lo-section-half .lo-in-depth-list .lo-logo-wrapper {
   width: 56px;
 }
 
-.lo-container.basiclist .lo-logo-wrapper img,
-.lo-container.indepthlist .lo-logo-wrapper img {
+section.lo-section-half .lo-basic-list .lo-logo-wrapper img,
+section.lo-section-half .lo-in-depth-list .lo-logo-wrapper img {
   width: 100%;
 }
 
-.lo-container.basiclist li a {
+section.lo-section-half .lo-basic-list li a {
   display: flex;
   padding: 10px;
 }
 
-.lo-container.basiclist li a,
-.lo-container.indepthlist li a {
+section.lo-section-half .lo-basic-list li a,
+section.lo-section-half .lo-in-depth-list li a {
   border: 0;
 }
 
-.lo-container.basiclist li a:hover,
-.lo-container.indepthlist li a:hover,
+section.lo-section-half .lo-basic-list li a:hover,
+section.lo-section-half .lo-in-depth-list li a:hover,
 .list-group-item-action:focus,
 .list-group-item-action:hover {
   background-color: rgba(67, 126, 88, 0.1);
 }
 
-.lo-container.basiclist li .lo-list-img-side {
+section.lo-section-half .lo-basic-list li .lo-list-img-side {
 }
 
-.lo-container.basiclist li .lo-list-text-side {
-  padding: 0 10px;
+section.lo-section-half .lo-basic-list li .lo-list-text-side {
+  padding: 0 10px 10px 10px;
   border-bottom: 1px solid rgb(0 0 0 / 15%);
+}
+
+/* ------------------------------ INDEX SEARCHBAR ------------------------------ */
+
+section.lo-search-wrapper {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 10px;
+  border-bottom: 1px solid rgb(0 0 0 / 15%);
+  box-shadow: rgb(0 0 0 / 18%) 0px 2px 4px;
+}
+
+.lo-search-wrapper i.fa-solid.fa-magnifying-glass {
+  position: absolute;
+  top: 30%;
+  left: 5%;
+  color: rgb(0 0 0 / 25%);
+}
+
+input#searchInput::placeholder {
+  color: rgb(0 0 0 / 25%);
+}
+
+input#searchInput[type="text"] {
+  padding-left: 25px;
+  color: var(--text-color-min);
 }
 
 /* ------------------------------ FOOTER ------------------------------ */

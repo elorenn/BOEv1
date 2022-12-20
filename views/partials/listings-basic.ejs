@@ -1,5 +1,15 @@
-<section class="basiclist list-group lo-container">
-  <ul class="galleryUL" id="gallery1">
+<section class="basiclist list-group lo-basic-list">
+  <section class="lo-search-wrapper">
+    <input
+      class="searchinput"
+      type="text"
+      id="searchInput"
+      onkeyup="searchBar()"
+      placeholder="Search by trade, city, or business..."
+    />
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </section>
+  <ul class="galleryUL" id="lo-basic-list">
     <% let sortedSchools = [...schools] %> <% sortedSchools.sort((a, b) => { %>
     <% if (a.name < b.name) { %> <% return -1; %> <% } %> <% }); %> <%
     sortedSchools.forEach(function(school, i) { %>

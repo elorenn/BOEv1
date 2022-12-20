@@ -1,6 +1,8 @@
 <section class="indepthlist list-group lo-in-depth-list">
   <ul class="galleryUL" id="gallery2">
-    <% schools.forEach(function(school, i) { %>
+    <% let sortedSchools = [...schools] %> <% sortedSchools.sort((a, b) => { %>
+    <% if (a.name < b.name) { %> <% return -1; %> <% } %> <% }); %> <%
+    sortedSchools.forEach(function(school, i) { %>
     <li
       id="Item<%= i %>"
       class="indepthlistitema list-group-item list-group-item-action"

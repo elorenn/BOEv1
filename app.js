@@ -206,6 +206,7 @@ app.post("/usersignup", function (req, res) {
   request.write(jsonData);
   request.end();
 });
+
 app.post("/failure", function (req, res) {
   res.redirect("/subscribe.ejs");
 });

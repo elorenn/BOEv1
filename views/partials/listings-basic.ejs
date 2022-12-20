@@ -1,29 +1,38 @@
-<div class="basiclist list-group">
-  <ul class="galleryUL" id="gallery1">
+<section class="basiclist list-group lo-basic-list">
+  <section class="lo-search-wrapper">
+    <input
+      class="searchinput"
+      type="text"
+      id="searchInput"
+      onkeyup="searchBar()"
+      placeholder="Search by trade, city, or business..."
+    />
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </section>
+  <ul class="galleryUL" id="lo-basic-list">
     <% let sortedSchools = [...schools] %> <% sortedSchools.sort((a, b) => { %>
     <% if (a.name < b.name) { %> <% return -1; %> <% } %> <% }); %> <%
     sortedSchools.forEach(function(school, i) { %>
     <li class="listentry">
-      <a
-        class="basiclistitema list-group-item list-group-item-action"
-        href="#Item<%= i %>"
-      >
-        <img class="companylogo" src="<%= school.logoUrl %>" alt="Logo" />
-        <div class="basiclistitemtextcontainer">
-          <strong class="basiclistitemOrganization"><%= school.name %></strong>
-          <br />
-          <em class="basiclistitemCategory"><%= school.type %></em>
-          <br />
-          <em class="basiclistitemTrade"
-            ><%= school.programs %>
-            <br />
-            <em class="basiclistitemCity">
-              <%= school.location.city %>, <%= school.location.state %></em
-            ></em
-          >
-        </div>
+      <a class="list-group-item list-group-item-action" href="#Item<%= i %>">
+        <section class="lo-list-img-side">
+          <div class="lo-logo-wrapper">
+            <img class="companylogo" src="<%= school.logoUrl %>" alt="Logo" />
+          </div>
+        </section>
+        <section class="basiclistitemtextcontainer lo-list-text-side">
+          <h6 class="basiclistitemOrganization"><%= school.name %></h6>
+          <p class="basiclistitemCategory"><%= school.type %></p>
+          <p class="basiclistitemTrade"><%= school.programs %></p>
+          <p class="basiclistitemCity">
+            <%= school.location.city %>, <%= school.location.state %>
+          </p>
+        </section>
       </a>
+      <aside class="lo-save-listing">
+        <i class="fa-solid fa-heart"></i>
+      </aside>
     </li>
     <% }); %>
   </ul>
-</div>
+</section>

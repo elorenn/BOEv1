@@ -2,30 +2,29 @@
 <html lang="en" dir="ltr">
   <head>
     <%- include('../partials/head'); %>
-    <link rel="stylesheet" href="../css/login.css" />
+    <link rel="stylesheet" href="../css/lo.css" />
   </head>
-  <body>
+  <body class="lo-body lo-body-pop">
     <%- include('../partials/nav'); %>
+    <section class="lo-section-main">
+      <h3>Kickstart a career in a skilled trade.</h3>
+      <div class="lo-container lo-container-small">
+        <% if (messages.error) { %> <%= messages.error %> <% } %>
+        <form action="/login" method="POST">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
 
-    <h1>Login</h1>
-    <% if (messages.error) { %> <%= messages.error %> <% } %>
-    <form action="/login" method="POST">
-      <div>
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required />
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required />
+
+          <button type="submit">Login</button>
+        </form>
+        <aside>
+          <span>Don't have an account?</span>
+          <a href="/register">Sign Up</a>
+        </aside>
       </div>
-      <div>
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" required />
-      </div>
-      <button type="submit">Login</button>
-    </form>
-    <a href="/register">Register</a>
-
-    <form action="/logout?_method=DELETE" method="POST">
-      <button type="submit">Log Out</button>
-    </form>
-
+    </section>
     <!-- Footer Section -->
     <%- include('../partials/footer'); %>
 

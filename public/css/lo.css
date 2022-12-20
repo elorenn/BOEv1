@@ -28,13 +28,14 @@ body.lo-body {
   margin: 0;
 }
 
+/* ------------------------------ NAV ------------------------------ */
+
 button.nav-btn.fa-sign-in {
   border: none;
   background-color: transparent;
   color: white;
   text-decoration: none;
   display: inline-block;
-  /* text-transform: capitalize; */
 }
 
 .lo-body nav {
@@ -46,38 +47,109 @@ button.nav-btn.fa-sign-in {
   top: 0;
   height: 64px;
   width: 100vw;
-  /* z-index: 5; */
+  z-index: 5;
   background-color: var(--logo-color);
-  background-color: #fff;
   border-bottom: 1px solid rgb(0 0 0 / 15%);
-  box-shadow: rgb(9 30 66 / 25%) 0px 1px 1px, rgb(9 30 66 / 13%) 0px 0px 1px 1px;
   box-shadow: rgb(0 0 0 / 18%) 0px 2px 4px;
-  background-color: #3f915c;
   background: linear-gradient(
     139deg,
-    rgba(67, 126, 88, 1) 35%,
+    var(--logo-color) 35%,
     rgba(144, 222, 171, 1) 100%
   );
 }
 
 .lo-body.lo-body-pop nav {
-  z-index: 0;
+  z-index: 9;
   position: absolute;
   align-items: start;
-  background-color: var(--logo-color);
+  background: transparent !important;
+  border: none;
+  box-shadow: none;
+}
+
+.lo-body .lo-nav-extension {
+  display: none;
+}
+
+.lo-body nav button {
+  font-size: 100%;
+  font-family: inherit;
+  font-weight: inherit;
+  border: 0;
+  background-color: transparent;
+  line-height: inherit;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+}
+
+.lo-body.lo-body-pop .lo-nav-extension {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
   height: 45vh;
+  z-index: 0;
+  background-color: var(--logo-color);
+  border-bottom: 1px solid rgb(0 0 0 / 15%);
+  box-shadow: rgb(0 0 0 / 18%) 0px 2px 4px;
   background: linear-gradient(
     139deg,
-    rgba(67, 126, 88, 1) 35%,
+    var(--logo-color) 35%,
     rgba(144, 222, 171, 1) 100%
   );
 }
 
 .lo-body.lo-body-pop nav .lo-nav-links-wrapper {
   position: absolute;
+  height: auto;
   top: 0;
   right: 0;
   padding: 15px 30px;
+  transition: height 2s linear 1s;
+}
+
+.lo-body.lo-body-pop nav .lo-nav-links-wrapper.show {
+  background-color: var(--logo-color);
+  background: linear-gradient(
+    139deg,
+    var(--logo-color) 35%,
+    rgba(144, 222, 171, 1) 100%
+  );
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.lo-body.lo-body-pop nav .lo-nav-links-wrapper ul.navlist {
+  height: auto;
+  transition: height 2s linear 1s;
+}
+
+.lo-body.lo-body-pop nav .lo-nav-links-wrapper.show ul.navlist {
+  margin: 0 !important;
+  /* background-color: var(--logo-color);
+  padding-top: 100px;
+  height: 100vh;
+  padding: 100px 30px 100px 30px; */
+}
+
+.lo-body.lo-body-pop nav .lo-nav-links-wrapper.show {
+  /* background-color: var(--logo-color);
+  padding-top: 100px;
+  height: 100vh; */
+  padding: 0;
+}
+
+.lo-body.lo-body-pop nav .navbar-toggler {
+  z-index: 3;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 25px 60px;
 }
 
 .lo-body.lo-body-pop nav .slogan {
@@ -102,11 +174,17 @@ button.nav-btn.fa-sign-in {
   height: 100%;
 }
 
-.lo-body nav * {
-  color: var(--icon-inactive-color);
-  display: inline-block;
-  text-decoration: none;
+.lo-body nav .navbar-toggler-icon {
+  color: #ffffff;
 }
+
+.lo-body nav * {
+  color: #ffffff;
+  text-decoration: none;
+  list-style: none;
+}
+
+/* ------------------------------ MAIN SECTION ------------------------------ */
 
 .lo-body .lo-section-main {
   min-height: 100vh;
@@ -189,6 +267,22 @@ button.nav-btn.fa-sign-in {
   color: var(--text-color-min);
 }
 
+.lo-profile-card {
+  border: 1px solid rgb(0 0 0 / 15%);
+  border-radius: 5px;
+  padding: 15px;
+}
+
+.lo-body .calendly-inline-widget {
+  position: relative;
+  min-width: 100vw;
+  height: 100vh;
+  margin: 20vh auto;
+  border-radius: 25px;
+}
+
+/* ------------------------------ FOOTER ------------------------------ */
+
 .lo-body footer {
   background-color: #ffffff;
   border-top: 1px solid rgb(0 0 0 / 15%);
@@ -208,29 +302,4 @@ button.nav-btn.fa-sign-in {
   margin: 0 15px;
   color: var(--icon-inactive-color);
   font-size: 1.5em;
-}
-
-.lo-body nav button {
-  font-size: 100%;
-  font-family: inherit;
-  font-weight: inherit;
-  border: 0;
-  background-color: transparent;
-  line-height: inherit;
-  cursor: pointer;
-  padding: 0.5rem 1rem;
-}
-
-.lo-profile-card {
-  border: 1px solid rgb(0 0 0 / 15%);
-  border-radius: 5px;
-  padding: 15px;
-}
-
-.lo-body .calendly-inline-widget {
-  position: relative;
-  min-width: 100vw;
-  height: 100vh;
-  margin: 20vh auto;
-  border-radius: 25px;
 }

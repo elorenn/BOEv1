@@ -6,7 +6,7 @@
   --bg-color-b: #f9fafb;
   --bg-color-c: #fafaf9;
   --bg-color-d: #fdfaf5;
-  --text-color: #0f0f0f;
+  --text-color: #212529;
   --text-color-min: rgba(0, 0, 0, 60%);
   --icon-inactive-color: #2d2e2e;
   --color-a: #a5243d;
@@ -368,6 +368,7 @@ button.nav-btn.fa-sign-in {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  color: var(--text-color);
 }
 
 .lo-body .lo-container .lo-trade-section {
@@ -376,6 +377,7 @@ button.nav-btn.fa-sign-in {
 
 .lo-container h3 {
   font-weight: normal;
+  color: var(--text-color);
 }
 
 /* ------------------------------ SUBSCRIBE GALLERY ------------------------------ */
@@ -401,10 +403,27 @@ button.nav-btn.fa-sign-in {
   min-width: 250px;
 }
 
-.lo-body .lo-image-gallery h1 {
+.lo-body .lo-image-gallery h3 {
+  color: var(--text-color);
+}
+
+.lo-body .lo-image-gallery h3 {
   width: 100%;
   font-weight: normal;
   text-align: center;
+}
+
+.lo-body .lo-image-gallery .img-thumbnail {
+  padding: 0;
+  background-color: #fff;
+  border: none;
+  border-radius: 10px;
+  max-width: 100%;
+  height: auto;
+}
+
+.lo-body .lo-image-gallery figcaption {
+  color: var(--text-color-min);
 }
 
 /* ------------------------------ FOOTER ------------------------------ */

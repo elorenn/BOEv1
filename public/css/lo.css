@@ -630,3 +630,8 @@ input#searchInput[type="text"] {
     width: 700px;
   }
 }
+
+
+div {
+  color: red;
+}

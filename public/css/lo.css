@@ -581,7 +581,7 @@ input#searchInput::placeholder {
 }
 
 input#searchInput[type="text"] {
-  padding-left: 25px;
+  padding-left: 2em;
   color: var(--text-color-min);
   background-color: #f8f9fa;
   border-color: rgb(0 0 0 / 5%);

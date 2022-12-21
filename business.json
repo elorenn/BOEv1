@@ -67,7 +67,7 @@
     "logoUrl": "../images/company-logos/abc-institute.png",
     "siteUrl": "https://www.wetrain.org/",
     "applyUrl": "https://www.wetrain.org/construction-education/construction-training/",
-    "premiumMembership": true,
+    "premiumMembership": false,
     "_id": "",
     "type": "Technical School",
     "location": {
@@ -124,7 +124,7 @@
     "programs": [
       "Airline Career Program",
       "Flight Instructor Program",
-      "Conversion & Airline Career Program"
+      "Conversion & Airline Careergit  Program"
     ],
     "pointOfContact": {
       "name": "Paul Madera",

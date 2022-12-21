@@ -1,10 +1,11 @@
-<strong class="pointofcontactlabel">Point of Contact</strong>
-<p class="pointofcontact">
-  <%= school.pointOfContact.name %>
-  <br />
-  <%= school.pointOfContact.number %>
-  <br />
-  <%= school.pointOfContact.email %>
-  <br />
+<section class="lo-section-contact">
+  <h6 class="pointofcontactlabel">Point of Contact</h6>
+  <p><%= school.pointOfContact.name %></p>
+  <a href="tel:<%= school.pointOfContact.number %>"
+    ><%= school.pointOfContact.number %></a
+  >
+  <a href="mailto:<%= school.pointOfContact.email %>"
+    ><%= school.pointOfContact.email %></a
+  >
   <a href="<%= school.pointOfContact.contactUrl %>">Request information</a>
-</p>
+</section>

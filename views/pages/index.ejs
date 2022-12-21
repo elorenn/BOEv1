@@ -9,20 +9,19 @@
   <body class="lo-body">
     <!-- Navigation Bar -->
     <%- include('../partials/nav'); %>
+    <section class="lo-section-main">
+      <h3>
+        Looking to kickstart a career in a skilled trade? Let BOE help you.
+      </h3>
 
-    <div class="banner">
-      <!-- <h3>Looking to kickstart a career in a skilled trade? Search below!</h3> -->
-    </div>
+      <section class="lo-section-half lo-container">
+        <!-- Basic Gallery -->
+        <%- include('../partials/listings-basic'); %>
 
-    <!-- Main Section -->
-    <section class="lo-section-half lo-container">
-      <!-- Basic Gallery -->
-      <%- include('../partials/listings-basic'); %>
-
-      <!-- In Depth Gallery  -->
-      <%- include('../partials/listings-depth'); %>
+        <!-- In Depth Gallery  -->
+        <%- include('../partials/listings-depth'); %>
+      </section>
     </section>
-
     <!-- Footer Section -->
     <%- include('../partials/footer'); %>
 

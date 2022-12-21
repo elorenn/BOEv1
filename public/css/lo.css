@@ -255,7 +255,7 @@ button.nav-btn.fa-sign-in {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 75px auto 75px;
+  margin: 5% auto 5%;
 }
 
 .lo-body .lo-container {
@@ -301,7 +301,8 @@ button.nav-btn.fa-sign-in {
   color: var(--text-color-min);
 }
 
-.lo-body .lo-container input {
+.lo-body .lo-container input,
+.lo-body .lo-container textarea {
   margin: 2px 0 15px;
   border: 1px solid rgb(0 0 0 / 15%);
 }
@@ -487,6 +488,8 @@ section.lo-section-half .lo-in-depth-list .lo-logo-wrapper {
 
 section.lo-section-half .lo-in-depth-list .lo-logo-wrapper {
   margin: 10px 0;
+  margin: 10px 15px 10px 0;
+  width: 72px;
 }
 
 section.lo-section-half .lo-basic-list .lo-logo-wrapper img,
@@ -497,6 +500,16 @@ section.lo-section-half .lo-in-depth-list .lo-logo-wrapper img {
 section.lo-section-half .lo-basic-list li a {
   display: flex;
   padding: 10px;
+}
+
+section.lo-section-half .lo-in-depth-list .lo-in-depth-list-top-info {
+  display: flex;
+  padding: 10px;
+}
+
+.lo-in-depth-list .lo-list-img-side {
+  display: flex;
+  align-items: center;
 }
 
 section.lo-section-half .lo-basic-list h6 {
@@ -591,9 +604,9 @@ section.lo-search-wrapper {
 }
 
 .lo-search-wrapper i.fa-solid.fa-magnifying-glass {
-  position: absolute;
-  top: 36%;
-  left: 5%;
+  position: relative;
+  left: 0.5em;
+  bottom: 2.7em;
   color: rgb(0 0 0 / 35%);
 }
 

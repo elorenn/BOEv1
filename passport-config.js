@@ -1,37 +1,61 @@
-const LocalStrategy = require("passport-local").Strategy;
+// const LocalStrategy = require("passport-local");
+const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
+const passport = require("passport");
+const { Strategy } = require("passport-local");
+const { UserSchema } = require('./model/userSchema')
 
-function initialize(passport, getUserByEmail, getUserById) {
-  const authenticateUser = async (email, password, done) => {
-    const user = getUserByEmail(email);
-    if (user == null) {
-      return done(null, false, { message: "No user with that email" });
-    }
+let User = null;
 
+const isValidPassword = async (userInput, password) => {
+  return await bcrypt.compare(userInput, password);
+
+};
+
+const LoginStrategy = new Strategy(
+  { usernameField: "email", passwordField: "password", passReqToCallback: true },
+  async (req, email, password, done) => {
     try {
-      if (await bcrypt.compare(password, user.password)) {
-        return done(null, user);
-        // return done(null, results[0].id);
-      } else {
-        return done(null, false, { message: "Password incorrect" });
+      User = req.app.get("UserModel");
+      const user = await User.findOne({ email: email });
+      if (!user) {
+        return done(null, false, {
+          message:
+            "No user found with those credentials. Please try again."
+        });
       }
+
+      if (!isValidPassword(password, user.password)) {
+        return done(null, false, {
+          message: "Incorrect password. Please try again."
+        });
+      }
+      return done(null, user);
     } catch (e) {
-      return done(e);
+      return done(null, false, {
+        message: "Something went wrong with your sign in. Please try again."
+      });
     }
-  };
+  }
+);
 
-  passport.use(
-    new LocalStrategy(
-      { usernameField: "email", passwordField: "password" },
-      authenticateUser
-    )
-  );
-  passport.serializeUser((user, done) => done(null, user._id));
-  passport.deserializeUser((_id, done) => {
-    return done(null, getUserById(_id));
-  }); 
-}
-
-module.exports = initialize;
+passport.serializeUser((user, done) => {
+  // This saves the whole user obj into the session cookie,
+  // but typically you will see just user.id passed in.
+  done(null, user);
+});
 
 
+
+passport.deserializeUser(async ({ _id }, done) => {
+  const User = mongoose.model("User", UserSchema);
+  User.findById(_id).then((user) => {
+    if (user) {
+      return done(null, user);
+    } else {
+      done(user.errors, null);
+    }
+  });
+});
+
+passport.use("local-signin", LoginStrategy);  

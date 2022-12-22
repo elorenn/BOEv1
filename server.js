@@ -4,6 +4,7 @@ const http = require("http");
 const https = require("https");
 const path = require("path");
 const schools = require("./business.json");
+const { UserModel, UserSchema } = require('./model/userSchema')
 const users = [];
 const DB =
   "mongodb+srv://boepartners:missyangus123@cluster0.dm8gvgf.mongodb.net/BOE";
@@ -48,14 +49,6 @@ const session = require("express-session");
 const methodOverride = require("method-override");
 const MongoStore = require("connect-mongo");
 
-const initializePassport = require("./passport-config");
-
-initializePassport(
-  passport,
-  (email) => users.find((user) => user.email === email),
-  (id) => users.find((user) => user.id === id)
-);
-
 app.set("view-engine", "ejs");
 app.use(express.urlencoded({ extended: false }));
 app.use(flash());
@@ -75,6 +68,7 @@ app.use(
     },
   })
 );
+require("./passport-config");
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(methodOverride("_method"));
@@ -122,11 +116,35 @@ app.get("/login", checkNotAuthenticated, (req, res) => {
 app.post(
   "/login",
   checkNotAuthenticated,
-  passport.authenticate("local", {
-    successRedirect: "/profile",
-    failureRedirect: "/login",
-    failureFlash: true,
-  })
+  (req, res, next) => {
+    passport.authenticate("local-signin", (error, user, msg) => {
+      if (error) {
+        next(error);
+      }
+
+      if (!user) {
+        // @TODO: Display login feedback to user on login screen
+        console.log("Error logging in: ", msg.message);
+      }
+
+      // Call passport logIn method
+      req.logIn(user, error => {
+        if (error) {
+          // @TODO: Handle errors
+        }
+        req.app.set('user', {
+          id: user.id,
+          name: user.name,
+          email: user.email
+        });
+        console.log("REQ>USER", req.user)
+        res.render("pages/profile", {
+          name: req.user.name,
+          isAuthenticated: req.isAuthenticated(),
+        });
+      })
+    })(req, res, next);
+  }
 );
 
 // --------------------------------------------------------------------- //
@@ -156,30 +174,8 @@ app.get("/register", checkNotAuthenticated, (req, res) => {
 // --------------------------------------------------------------------- //
 // Register / Sign Up Page Schema - LO
 
-const UserSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-    minlength: 1,
-    maxlength: 30,
-  },
-  email: {
-    type: String,
-    required: true,
-    minlength: 2,
-    maxlength: 50,
-    unique: false,
-  },
-  password: {
-    type: String,
-    required: true,
-    minlength: 1,
-    // maxlength: 15,
-  },
-  date: String,
-  favorites: [],
-});
-
+// Set User Modal for easy fetch in request like: req.app.get("UserModel");
+app.set("UserModel", UserModel);
 // --------------------------------------------------------------------- //
 app.post("/register", checkNotAuthenticated, async (req, res) => {
   try {
@@ -189,7 +185,10 @@ app.post("/register", checkNotAuthenticated, async (req, res) => {
       day: "numeric",
     });
     const favSchools = [];
-    const hashedPassword = await bcrypt.hash(req.body.password, 10);
+    const hashedPassword = await bcrypt.hash(
+      req.body.password,
+      bcrypt.genSaltSync(8)
+    );
     const User = mongoose.model("User", UserSchema);
     const user = new User({
       name: req.body.name,
@@ -233,6 +232,7 @@ app.post("/register", checkNotAuthenticated, async (req, res) => {
 
 app.delete("/logout", (req, res, next) => {
   req.logOut((err) => {
+    req.app.set('user', null);
     if (err) {
       return next(err);
     }

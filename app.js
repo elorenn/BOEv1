@@ -6,6 +6,9 @@ const https = require("https");
 const File = require("./model/fileSchema");
 const multer = require("multer");
 const http = require("http");
+const session = require("express-session");
+
+// const UserSchema = require("./model/userSchema");
 
 const app = express();
 
@@ -20,10 +23,13 @@ app.get("/applicationSubmitted.html", (req, res) => {
 });
 
 // Connect to Mongo DB
-const mongoURL =
-  "mongodb+srv://boepartners:missyangus123@cluster0.dm8gvgf.mongodb.net/BOE";
+// const mongoURL =
+//   "mongodb+srv://boepartners:missyangus123@cluster0.dm8gvgf.mongodb.net/BOE";
 
-mongoose.connect(mongoURL, { useNewUrlParser: true, useUnifiedTopology: true });
+// mongoose.connect(mongoURL, { useNewUrlParser: true, useUnifiedTopology: true });
+
+// --------------------------------------------------------------------- //
+// Subscribe Page Schema
 
 const BOESchema = new mongoose.Schema({
   Organization: String,
@@ -42,8 +48,8 @@ const BOESchema = new mongoose.Schema({
   AppliedForTrade: String,
   Resume: String,
   SubscriberTradeOfInterest1: String,
-  subscriberTradeOfInterest2: String,
-  subscriberTradeOfInterest3: String,
+  SubscriberTradeOfInterest2: String,
+  SubscriberTradeOfInterest3: String,
   City: String,
   Zipcode: {
     type: Number,
@@ -52,6 +58,10 @@ const BOESchema = new mongoose.Schema({
   Additional_Comments: String,
   Date: String,
 });
+
+// --------------------------------------------------------------------- //
+
+// --------------------------------------------------------------------- //
 
 // Multer file storage
 const multerStorage = multer.diskStorage({
@@ -120,7 +130,9 @@ app.post("/index.html2", function (req, res) {
   res.redirect(req.body.orgApplicationURL);
 });
 
-// Subcriber Page
+// --------------------------------------------------------------------- //
+// Subcriber Page - Save to Database
+
 app.post("/usersignup", function (req, res) {
   const userFirstName = req.body.fname;
   const userLastName = req.body.lname;
@@ -196,5 +208,7 @@ app.post("/failure", function (req, res) {
 app.post("/success", function (req, res) {
   res.redirect("/");
 });
+
+// --------------------------------------------------------------------- //
 
 module.exports = app;

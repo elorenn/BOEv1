@@ -18,11 +18,15 @@
           </div>
         </section>
         <section class="lo-profile-card-text-side">
+          <% if (name) { %>
           <h5><%= name %></h5>
+          <% } %> <% if (email) { %>
           <p>
             <a href="mailto:<%=email%>"><%=email%></a>
           </p>
+          <% } %> <% if (date) { %>
           <p>Member since <%= date %></p>
+          <% } %>
         </section>
         <aside><i class="fa fa-ellipsis-h" aria-hidden="true"></i></aside>
       </div>

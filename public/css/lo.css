@@ -41,9 +41,9 @@ body.lo-body {
   list-style: none;
 }
 
- {
+/* {
   font-weight: 200;
-}
+} */
 
 .lo-body.lo-body-pop nav * {
   color: #ffffff;
@@ -300,13 +300,7 @@ button.nav-btn.fa-sign-in {
 
 .lo-body .lo-container.lo-container-small {
   width: 350px;
-  height: 420px;
-}
-
-.lo-body .lo-container.lo-container-big {
-  width: auto;
-  height: auto;
-  display: flex;
+  min-height: 420px;
 }
 
 .lo-body.lo-body-pop .lo-container,

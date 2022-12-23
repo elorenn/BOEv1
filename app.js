@@ -119,7 +119,7 @@ app.post("/index.html2", function (req, res) {
   const postedDate = new Date().toLocaleDateString("en-us", {
     year: "numeric",
     month: "numeric",
-    // day: "numeric",
+    day: "numeric",
   });
   const External_Applicant = mongoose.model("External_Applicant", BOESchema);
   const external_applicant = new External_Applicant({

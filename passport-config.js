@@ -45,12 +45,18 @@ passport.serializeUser((user, done) => {
   done(null, user);
 });
 
-passport.deserializeUser(async ({ _id }, done) => {
+passport.deserializeUser(async (req, { _id }, done) => {
   const User = mongoose.model("User", UserSchema);
   User.findById(_id).then((user) => {
     if (user) {
+      req.app.set('user', {
+        id: user.id,
+        name: user.name,
+        email: user.email
+      });
       return done(null, user);
     } else {
+      req.app.set('user', null);
       done(null, null);
     }
   });

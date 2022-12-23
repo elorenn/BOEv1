@@ -474,3 +474,9 @@ footer {
     margin-left: 30rem;
   }
 }
+
+.icon-button {
+  background: none;
+  padding: 0px;
+  border: none;
+}

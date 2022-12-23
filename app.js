@@ -6,7 +6,8 @@ const https = require("https");
 const File = require("./model/fileSchema");
 const multer = require("multer");
 const http = require("http");
-const session = require('express-session')
+const session = require('express-session');
+const { UserLike } = require("./model/userLIkeSchema");
 
 // const UserSchema = require("./model/userSchema");
 
@@ -207,6 +208,32 @@ app.post("/failure", function (req, res) {
 
 app.post("/success", function (req, res) {
   res.redirect("/");
+});
+
+app.post("/user-likes", async function (req, res) {
+  const user = req.app.get('user');
+  const schoolId = req.body.school_id;
+
+  if (!user || !user.id || !schoolId) {
+    return null;
+  }
+  const userLike = await UserLike.findOne({
+    school_id: schoolId,
+    user_id: user.id
+  });
+
+  if (!userLike) {
+    const newLike = new UserLike({
+      user_id: user.id,
+      school_id: schoolId,
+      is_liked: true,
+    })
+    const response = await newLike.save();
+    console.log(response);
+  } else {
+    userLike.is_liked = !userLike.is_liked;
+    await userLike.save();
+  }
 });
 
 // --------------------------------------------------------------------- //

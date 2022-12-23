@@ -10,6 +10,10 @@ const UserLikeSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  is_liked: {
+    type: Boolean,
+    required: true,
+  },
 });
 
 const UserLikeModel = mongoose.model("UserLike", UserLikeSchema);

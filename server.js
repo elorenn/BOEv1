@@ -139,7 +139,6 @@ app.post(
           name: user.name,
           email: user.email
         });
-        console.log("REQ>USER", req.user)
         res.render("pages/profile", {
           name: req.user.name,
           isAuthenticated: req.isAuthenticated(),

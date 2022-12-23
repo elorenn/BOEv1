@@ -28,11 +28,16 @@
           <p>Member since <%= date %></p>
           <% } %>
         </section>
-        <aside><i class="fa fa-ellipsis-h" aria-hidden="true"></i></aside>
+        <aside class="lo-dot-menu">
+          <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+        </aside>
       </div>
       <div class="lo-container">
         <!-- Favorites List -->
         <%- include('../partials/listings-favorites'); %>
+        <aside class="lo-dot-menu">
+          <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+        </aside>
       </div>
     </section>
     <%- include('../partials/footer'); %>

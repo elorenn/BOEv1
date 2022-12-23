@@ -238,12 +238,22 @@ button.nav-btn.fa-sign-in {
   font-weight: 200;
 }
 
-.lo-body nav .lo-nav-links-wrapper ul.navlist [aria-current] span {
+.lo-body
+  nav
+  .lo-nav-links-wrapper
+  ul.navlist
+  [aria-current]:not([aria-current="false"])
+  span {
   border-bottom: 2px solid;
   font-weight: unset;
 }
 
-.lo-body nav .lo-nav-links-wrapper ul.navlist [aria-current] *,
+.lo-body
+  nav
+  .lo-nav-links-wrapper
+  ul.navlist
+  [aria-current]:not([aria-current="false"])
+  *,
 .lo-body nav .lo-nav-links-wrapper ul.navlist li:hover i.fa-solid,
 .lo-body nav .lo-nav-links-wrapper ul.navlist li:hover button,
 .lo-body nav .lo-nav-links-wrapper ul.navlist li:hover .nav-link *,

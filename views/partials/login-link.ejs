@@ -1,4 +1,12 @@
-<a class="navitem nav-link" href="/login"
-  ><i class="navicon4 fa-solid fa-sign-out"></i> <br />
-  Log in</a
->
+<% let log = "false" %>
+<% if (typeof title != 'undefined') { %>
+
+<%  if ((title.toLowerCase().includes("log")) || (title.toLowerCase().includes("register"))) { %>
+<%    log = "page" %>
+<%  } %>
+<% } %>
+
+<a class="navitem nav-link" aria-current="<%=log%>" href="/login">
+  <i class="navicon4 fa-solid fa-sign-out"></i>
+  <span>Log in</span>
+</a>

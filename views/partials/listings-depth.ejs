@@ -3,7 +3,7 @@
     <% let toShow = "" %> <% let sortedSchools = [...schools] %> <%
     sortedSchools.sort((a, b) => { %> <% if (a.name < b.name) { %> <% return -1;
     %> <% } %> <% }); %> <% sortedSchools.forEach(function(school, i) { %> <% if
-    (i === 2) { %> <% toShow = "show" %> <% } else { %> <% toShow = "" %> <% }
+    (i === 0) { %> <% toShow = "show" %> <% } else { %> <% toShow = "" %> <% }
     %>
     <li
       id="item-<%=i%>"
@@ -12,9 +12,13 @@
     >
       <div class="indepthlistitemcontainer lo-in-depth-list-top-info">
         <section class="lo-list-img-side">
+          <% if (school.logoUrl) { %>
           <div class="lo-logo-wrapper">
             <img class="companylogo" src="<%= school.logoUrl %>" alt="Logo" />
           </div>
+          <% } else { %>
+          <div class="lo-logo-wrapper empty"></div>
+          <% } %>
         </section>
 
         <section class="indepthlistitemtextcontainer lo-list-text-side">

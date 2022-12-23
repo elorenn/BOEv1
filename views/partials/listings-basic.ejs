@@ -14,7 +14,12 @@
     <% if (a.name < b.name) { %> <% return -1; %> <% } %> <% }); %> <%
     sortedSchools.forEach(function(school, i) { %>
     <li class="listentry">
-      <a class="list-group-item list-group-item-action" href="#item-<%= i %>">
+      <a
+        class="list-group-item list-group-item-action"
+        id="id-<%= i %>"
+        href="#item-<%= i %>"
+        // onclick="showInDepthInfo()"
+      >
         <section class="lo-list-img-side">
           <div class="lo-logo-wrapper">
             <img class="companylogo" src="<%= school.logoUrl %>" alt="Logo" />

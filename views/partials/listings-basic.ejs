@@ -33,7 +33,7 @@
         <form action="/user-likes" method="POST">
           <input type="hidden" name="school_id" value= "<%= school._id %>" />
           <button class="icon-button" type="submit">
-            <i class="fa-solid fa-heart <%= school.is_liked ? 'school-liked' : '' %>"></i>          
+            <i class="fa-solid fa-heart <%= school.is_liked ? 'liked' : '' %>"></i>          
           </button>
         </form>
       </aside>

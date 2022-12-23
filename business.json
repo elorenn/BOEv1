@@ -67,7 +67,7 @@
     "logoUrl": "../images/company-logos/abc-institute.png",
     "siteUrl": "https://www.wetrain.org/",
     "applyUrl": "https://www.wetrain.org/construction-education/construction-training/",
-    "premiumMembership": true,
+    "premiumMembership": false,
     "_id": "",
     "type": "Technical School",
     "location": {

@@ -1,4 +1,35 @@
-<nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+<% let log = "false" %>
+<% let home = "false" %>
+<% let subscribe = "false" %>
+<% let resources = "false" %>
+<% let contact = "false" %>
+<% let profile = "false" %>
+<% if (typeof title != 'undefined') { %>
+
+<%  if (title.toLowerCase().includes("home")) { %>
+<%    home = "page" %>
+<%  } %>
+
+<%  if (title.toLowerCase().includes("subscribe")) { %>
+<%    subscribe = "page" %>
+<%  } %>
+
+<%  if (title.toLowerCase().includes("resources")) { %>
+<%    resources = "page" %>
+<%  } %>
+
+<%  if (title.toLowerCase().includes("contact")) { %>
+<%    contact = "page" %>
+<%  } %>
+
+<%  if (title.toLowerCase().includes("profile")) { %>
+<%    profile = "page" %>
+<%  } %>
+<% } %>
+
+
+
+<nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
     <a class="navitem navbar-brand" href="/">
       <div class="lo-logo-wrapper">
@@ -19,7 +50,9 @@
       aria-expanded="false"
       aria-label="Toggle navigation"
     >
-      <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+      </span>
     </button>
     <div
       class="collapse navbar-collapse lo-nav-links-wrapper"
@@ -27,33 +60,34 @@
     >
       <ul class="navlist navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="/"
-            ><i class="navicon1 fa-solid fa-house"></i> <br />Home</a
-          >
+          <a class="nav-link" aria-current="<%=home%>" href="/">
+            <i class="navicon1 fa-solid fa-house"></i>
+            <span>Home</span>
+          </a>
         </li>
         <li class="nav-item">
-          <a class="navitem nav-link" href="/subscribe"
-            ><i class="navicon2 fa-solid fa-bell"></i> <br />
-            Subscribe</a
-          >
+          <a class="navitem nav-link" aria-current="<%=subscribe%>" href="/subscribe">
+            <i class="navicon2 fa-solid fa-bell"></i>
+            <span>Subscribe</span>
+          </a>
         </li>
         <li class="nav-item">
-          <a class="navitem nav-link" href="/resources"
-            ><i class="navicon3 fa-sharp fa-solid fa-book"></i> <br />
-            Resources</a
-          >
+          <a class="navitem nav-link" aria-current="<%=resources%>" href="/resources">
+            <i class="navicon3 fa-sharp fa-solid fa-book"></i>
+            <span>Resources</span>
+          </a>
         </li>
         <li class="nav-item">
-          <a class="navitem nav-link" href="/contact"
-            ><i class="navicon4 fa-solid fa-handshake"></i> <br />
-            Contact Us</a
-          >
+          <a class="navitem nav-link" aria-current="<%=contact%>" href="/contact">
+            <i class="navicon4 fa-solid fa-handshake"></i>
+            <span>Contact Us</span>
+          </a>
         </li>
         <li>
-          <a class="navitem nav-link" href="/profile"
-            ><i class="navicon4 fa-solid fa-user"></i> <br />
-            Profile</a
-          >
+          <a class="navitem nav-link" aria-current="<%=profile%>" href="/profile">
+            <i class="navicon4 fa-solid fa-user"></i>
+            <span>Profile</span>
+          </a>
         </li>
         <li class="nav-item">
           <% if (isAuthenticated) { %> <%- include('./logout-link'); %> <% }

@@ -6,7 +6,7 @@ const https = require("https");
 const File = require("./model/fileSchema");
 const multer = require("multer");
 const http = require("http");
-const session = require('express-session')
+const session = require("express-session");
 
 // const UserSchema = require("./model/userSchema");
 
@@ -24,7 +24,7 @@ app.get("/applicationSubmitted.html", (req, res) => {
 
 // Connect to Mongo DB
 // const mongoURL =
-//   "mongodb+srv://boepartners:missyangus123@cluster0.dm8gvgf.mongodb.net/BOE";
+//   "mongodb+srv://boepartners:missyangus123@cluster0.dm8gvgf.mongodb.net/BOE";
 
 // mongoose.connect(mongoURL, { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -208,29 +208,6 @@ app.post("/failure", function (req, res) {
 app.post("/success", function (req, res) {
   res.redirect("/");
 });
-
-// --------------------------------------------------------------------- //
-// Register / Sign Up Page - Save to Database - LO
-// app.post("/loginuserlist", function (req, res) {
-//   const userName = req.body.name;
-//   const userEmail = req.body.email;
-//   const userPassword = req.body.password;
-//   const postedDate = new Date().toLocaleDateString("en-us", {
-//     year: "numeric",
-//     month: "numeric",
-//     day: "numeric",
-//   });
-
-//   // store in BOE database
-//   const User = mongoose.model("User", UserSchema);
-//   const user = new User({
-//     Name: userName,
-//     Email: userEmail,
-//     Password: userPassword,
-//     Date: postedDate,
-//   });
-//   user.save();
-// });
 
 // --------------------------------------------------------------------- //
 

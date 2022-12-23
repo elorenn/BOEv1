@@ -217,23 +217,23 @@ app.post("/user-likes", async function (req, res) {
   if (!user || !user.id || !schoolId) {
     return null;
   }
-  const userLike = await UserLike.findOne({
+
+  const query = {
     school_id: schoolId,
     user_id: user.id
-  });
+  };
 
-  if (!userLike) {
-    const newLike = new UserLike({
-      user_id: user.id,
-      school_id: schoolId,
-      is_liked: true,
-    })
-    const response = await newLike.save();
-    console.log(response);
-  } else {
-    userLike.is_liked = !userLike.is_liked;
-    await userLike.save();
-  }
+  const userLike = await UserLike.findOne(query);
+  const isLiked = userLike ? !userLike.is_liked : true;
+
+  const userLikeData = {
+    user_id: user.id,
+    school_id: schoolId,
+    is_liked: isLiked,
+  };
+
+  const options = { upsert: true };
+  await UserLike.findOneAndUpdate(query, userLikeData, options);
 });
 
 // --------------------------------------------------------------------- //

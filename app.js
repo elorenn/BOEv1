@@ -234,6 +234,7 @@ app.post("/user-likes", async function (req, res) {
 
   const options = { upsert: true };
   await UserLike.findOneAndUpdate(query, userLikeData, options);
+  res.redirect("/");
 });
 
 // --------------------------------------------------------------------- //

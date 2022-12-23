@@ -48,6 +48,7 @@ const session = require("express-session");
 const methodOverride = require("method-override");
 const MongoStore = require("connect-mongo");
 const { School } = require("./model/schoolSchema");
+const { UserLike } = require("./model/userLIkeSchema");
 
 app.set("view-engine", "ejs");
 app.use(express.urlencoded({ extended: false }));
@@ -79,6 +80,15 @@ app.use(methodOverride("_method"));
 
 app.get("/", async (req, res) => {
   const schools = await School.find();
+  const user = req.app.get("user");
+  if (user) {
+    const userLikes = await UserLike.find({ user_id: user.id });
+    schools.forEach(school => {
+      const userLike = userLikes.find(like => school._id.equals(like.school_id));
+      school.is_liked = userLike ? userLike.is_liked : false;
+    });
+  }
+
   res.render("pages/index", {
     schools: schools,
     isAuthenticated: req.isAuthenticated(),

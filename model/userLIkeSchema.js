@@ -3,11 +3,11 @@ const mongoose = require("mongoose");
 
 const UserLikeSchema = new mongoose.Schema({
   user_id: {
-    type: String,
+    type: mongoose.Schema.Types.ObjectId,
     required: true,
   },
   school_id: {
-    type: String,
+    type: mongoose.Schema.Types.ObjectId,
     required: true,
   },
   is_liked: {

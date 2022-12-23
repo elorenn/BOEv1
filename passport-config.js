@@ -9,7 +9,6 @@ let User = null;
 
 const isValidPassword = async (userInput, password) => {
   return await bcrypt.compare(userInput, password);
-
 };
 
 const LoginStrategy = new Strategy(
@@ -25,7 +24,8 @@ const LoginStrategy = new Strategy(
         });
       }
 
-      if (!isValidPassword(password, user.password)) {
+      const isValid = await isValidPassword(password, user.password);
+      if (!isValid) {
         return done(null, false, {
           message: "Incorrect password. Please try again."
         });
@@ -45,15 +45,13 @@ passport.serializeUser((user, done) => {
   done(null, user);
 });
 
-
-
 passport.deserializeUser(async ({ _id }, done) => {
   const User = mongoose.model("User", UserSchema);
   User.findById(_id).then((user) => {
     if (user) {
       return done(null, user);
     } else {
-      done(user.errors, null);
+      done(null, null);
     }
   });
 });

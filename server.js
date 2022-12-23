@@ -132,6 +132,7 @@ app.post(
       req.logIn(user, error => {
         if (error) {
           // @TODO: Handle errors
+          return;
         }
         req.app.set('user', {
           id: user.id,

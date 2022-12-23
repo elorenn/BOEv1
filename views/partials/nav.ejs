@@ -1,3 +1,36 @@
+<% let log = "false" %>
+<% let home = "false" %>
+<% let subscribe = "false" %>
+<% let resources = "false" %>
+<% let contact = "false" %>
+<% let profile = "false" %>
+<% if (typeof title != 'undefined') { %>
+
+<%  if ((title.toLowerCase().includes("log")) || (title.toLowerCase().includes("register"))) { %>
+<%    log = "page" %>
+<%  } %>
+
+<%  if (title.toLowerCase().includes("home")) { %>
+<%    home = "page" %>
+<%  } %>
+
+<%  if (title.toLowerCase().includes("subscribe")) { %>
+<%    subscribe = "page" %>
+<%  } %>
+
+<%  if (title.toLowerCase().includes("resources")) { %>
+<%    resources = "page" %>
+<%  } %>
+
+<%  if (title.toLowerCase().includes("contact")) { %>
+<%    contact = "page" %>
+<%  } %>
+
+<%  if (title.toLowerCase().includes("profile")) { %>
+<%    profile = "page" %>
+<%  } %>
+<% } %>
+
 <nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
     <a class="navitem navbar-brand" href="/">
@@ -29,31 +62,31 @@
     >
       <ul class="navlist navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="/">
+          <a class="nav-link" aria-current="<%=home%>" href="/">
             <i class="navicon1 fa-solid fa-house"></i>
             <span>Home</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="navitem nav-link" aria-current="false" href="/subscribe">
+          <a class="navitem nav-link" aria-current="<%=subscribe%>" href="/subscribe">
             <i class="navicon2 fa-solid fa-bell"></i>
             <span>Subscribe</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="navitem nav-link" aria-current="false" href="/resources">
+          <a class="navitem nav-link" aria-current="<%=resources%>" href="/resources">
             <i class="navicon3 fa-sharp fa-solid fa-book"></i>
             <span>Resources</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="navitem nav-link" aria-current="false" href="/contact">
+          <a class="navitem nav-link" aria-current="<%=contact%>" href="/contact">
             <i class="navicon4 fa-solid fa-handshake"></i>
             <span>Contact Us</span>
           </a>
         </li>
         <li>
-          <a class="navitem nav-link" aria-current="false" href="/profile">
+          <a class="navitem nav-link" aria-current="<%=profile%>" href="/profile">
             <i class="navicon4 fa-solid fa-user"></i>
             <span>Profile</span>
           </a>

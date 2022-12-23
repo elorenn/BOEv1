@@ -6,10 +6,6 @@
 <% let profile = "false" %>
 <% if (typeof title != 'undefined') { %>
 
-<%  if ((title.toLowerCase().includes("log")) || (title.toLowerCase().includes("register"))) { %>
-<%    log = "page" %>
-<%  } %>
-
 <%  if (title.toLowerCase().includes("home")) { %>
 <%    home = "page" %>
 <%  } %>
@@ -30,6 +26,8 @@
 <%    profile = "page" %>
 <%  } %>
 <% } %>
+
+
 
 <nav class="navbar navbar-expand-lg">
   <div class="container-fluid">

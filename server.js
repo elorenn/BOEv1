@@ -98,7 +98,10 @@ app.get("/contact", (req, res) => {
 });
 app.get("/profile", checkAuthenticated, (req, res) => {
   res.render("pages/profile", {
+    schools: schools,
     name: req.user.name,
+    email: req.user.email,
+    date: req.user.date,
     isAuthenticated: req.isAuthenticated(),
   });
 });

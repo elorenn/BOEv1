@@ -341,6 +341,9 @@ button.nav-btn.fa-sign-in {
   width: 100%;
   border-radius: 5px;
   height: 35px;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
 }
 
 .lo-body .lo-container button {
@@ -349,6 +352,7 @@ button.nav-btn.fa-sign-in {
   border: none;
   text-transform: uppercase;
   color: #fff;
+  cursor: pointer;
 }
 
 .lo-body .lo-container button:hover {
@@ -409,42 +413,46 @@ button.nav-btn.fa-sign-in {
   font-weight: normal;
   color: var(--text-color);
   font-size: 20px;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
 }
 
 /* ------------------------------ SUBSCRIBE GALLERY ------------------------------ */
 
-.lo-body .lo-image-gallery {
+.lo-body .lo-container.lo-image-gallery {
   display: flex;
   flex-wrap: wrap;
+  flex-direction: row;
   height: auto;
+  max-width: none;
   padding: 25px;
   margin: 25px;
   background-color: #ffffff;
   border-radius: 10px;
   box-sizing: border-box;
   border: 1px solid rgb(0 0 0 / 15%);
-  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+  box-shadow: rgb(0 0 0 / 18%) 0px 2px 4px;
   overflow: scroll;
 }
 
-.lo-body .lo-image-gallery > figure {
+.lo-body .lo-container.lo-image-gallery > figure {
   flex: 1;
   margin: 10px;
   height: fit-content;
   min-width: 250px;
 }
 
-.lo-body .lo-image-gallery h3 {
+.lo-body .lo-container.lo-image-gallery h3 {
   color: var(--text-color);
 }
 
-.lo-body .lo-image-gallery h3 {
+.lo-body .lo-container.lo-image-gallery h3 {
   width: 100%;
   font-weight: normal;
   text-align: center;
 }
 
-.lo-body .lo-image-gallery .img-thumbnail {
+.lo-body .lo-container.lo-image-gallery .img-thumbnail {
   padding: 0;
   background-color: #fff;
   border: none;
@@ -453,7 +461,7 @@ button.nav-btn.fa-sign-in {
   height: auto;
 }
 
-.lo-body .lo-image-gallery figcaption {
+.lo-body .lo-container.lo-image-gallery figcaption {
   color: var(--text-color-min);
 }
 

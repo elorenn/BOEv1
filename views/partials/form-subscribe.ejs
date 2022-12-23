@@ -4,21 +4,48 @@
     opportunities!
   </h3>
   <hr />
-  <label for="fname" class="form-label">First Name:</label>
-  <input type="text" class="fnameinput form-control" name="fname" required />
-  <label for="lname" class="form-label">Last Name:</label>
-  <input type="text" class="lnameinput form-control" name="name" required />
-  <label for="email" class="form-label">Email:</label>
-  <input type="text" class="emailinput form-control" name="email" required />
-  <label for="city" class="form-label">City:</label>
-  <input type="text" class="cityinput form-control" name="city" required />
-  <label for="zipcode" class="form-label">Zip Code:</label>
+  <label for="fname" class="form-label">First Name</label>
+  <input
+    type="text"
+    class="fnameinput form-control"
+    name="fname"
+    autocomplete="given-name"
+    required
+  />
+  <label for="lname" class="form-label">Last Name</label>
+  <input
+    type="text"
+    class="lnameinput form-control"
+    name="name"
+    autocomplete="family-name"
+    required
+  />
+  <label for="email" class="form-label">Email</label>
+  <input
+    type="text"
+    class="emailinput form-control"
+    name="email"
+    autocomplete="email"
+    required
+  />
+  <label for="city" class="form-label">City</label>
+  <input
+    type="text"
+    class="cityinput form-control"
+    name="city"
+    autocomplete="address-level2"
+    required
+  />
+  <label for="zipcode" class="form-label">Zip Code</label>
   <input
     type="text"
     class="zipcodeinput form-control"
     name="zipcode"
+    autocomplete="postal-code"
     required
   />
+  <br />
+  <hr />
   <section class="lo-trade-section">
     <label for="trade1" class="form-label"
       >List up to 3 trades that interest you:</label
@@ -28,18 +55,21 @@
       class="tradeinput form-control"
       placeholder="Enter Trade 1"
       name="trade1"
+      autocomplete="off"
       required
     />
     <input
       type="text"
       class="tradeinput form-control"
       placeholder="Enter Trade 2 (optional)"
+      autocomplete="off"
       name="trade2"
     />
     <input
       type="text"
       class="tradeinput form-control"
       placeholder="Enter Trade 3 (optional)"
+      autocomplete="off"
       name="trade3"
     />
   </section>

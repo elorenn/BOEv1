@@ -150,12 +150,58 @@ app.set("UserModel", UserModel);
 
 // -------------------------------- Register / Sign Up Page - Save to Database - LO ------------------------------------- //
 
+// --------------------------------------------------------------------- //
+
 app.get("/register", checkNotAuthenticated, (req, res) => {
   res.render("./pages/register", {
     isAuthenticated: req.isAuthenticated(),
   });
 });
 
+// app.post("/register", checkNotAuthenticated, async (req, res) => {
+//   try {
+//     const hashedPassword = await bcrypt.hash(req.body.password, 10);
+//     users.push({
+//       id: Date.now().toString(),
+//       name: req.body.name,
+//       email: req.body.email,
+//       password: hashedPassword,
+//     });
+//     res.redirect("/login");
+//   } catch {
+//     res.redirect("/register");
+//   }
+//   console.log(users);
+// });
+
+// --------------------------------------------------------------------- //
+// Register / Sign Up Page Schema - LO
+
+const UserSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+    minlength: 1,
+    maxlength: 30,
+  },
+  email: {
+    type: String,
+    required: true,
+    minlength: 2,
+    maxlength: 50,
+    unique: false,
+  },
+  password: {
+    type: String,
+    required: true,
+    minlength: 1,
+    // maxlength: 15,
+  },
+  date: String,
+  favorites: [],
+});
+
+// --------------------------------------------------------------------- //
 app.post("/register", checkNotAuthenticated, async (req, res) => {
   try {
     const postedDate = new Date().toLocaleDateString("en-us", {
@@ -183,6 +229,31 @@ app.post("/register", checkNotAuthenticated, async (req, res) => {
     res.redirect("/register");
   }
 });
+// --------------------------------------------------------------------- //
+// Register / Sign Up Page - Save to Database - LO
+
+// app.post("/register", function (req, res) {
+//   const userName = req.body.name;
+//   const userEmail = req.body.email;
+//   const userPassword = req.body.password;
+//   const postedDate = new Date().toLocaleDateString("en-us", {
+//     year: "numeric",
+//     month: "numeric",
+//     day: "numeric",
+//   });
+
+// // store in BOE database
+//   const User = mongoose.model("User", UserSchema);
+//   const user = new User({
+//     Name: userName,
+//     Email: userEmail,
+//     Password: userPassword,
+//     Date: postedDate,
+//   });
+//   user.save();
+// });
+
+// --------------------------------------------------------------------- //
 
 // -------------------------------- LOG OUT ------------------------------------- //
 

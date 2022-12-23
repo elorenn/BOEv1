@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const http = require("http");
 const https = require("https");
 const path = require("path");
-const schools = require("./business.json");
 const { UserModel, UserSchema } = require('./model/userSchema')
 const users = [];
 const DB =
@@ -48,6 +47,7 @@ const flash = require("express-flash");
 const session = require("express-session");
 const methodOverride = require("method-override");
 const MongoStore = require("connect-mongo");
+const { School } = require("./model/schoolSchema");
 
 app.set("view-engine", "ejs");
 app.use(express.urlencoded({ extended: false }));
@@ -77,7 +77,8 @@ app.use(methodOverride("_method"));
 
 // --------------------------------------------------------------------- //
 
-app.get("/", (req, res) => {
+app.get("/", async (req, res) => {
+  const schools = await School.find();
   res.render("pages/index", {
     schools: schools,
     isAuthenticated: req.isAuthenticated(),

@@ -482,6 +482,7 @@ button.nav-btn.fa-sign-in {
   width: 95vw;
   padding: 0;
   min-width: 80vw;
+  height: 700px;
 }
 
 .lo-list-text-side a {
@@ -497,6 +498,14 @@ button.nav-btn.fa-sign-in {
   border: 0;
 }
 
+.lo-in-depth-list li {
+  display: none;
+}
+
+.lo-in-depth-list li.show {
+  display: block;
+}
+
 .lo-basic-list ul,
 .lo-in-depth-list ul,
 .lo-favorites-list ul {
@@ -506,25 +515,29 @@ button.nav-btn.fa-sign-in {
 .lo-body section.lo-section-half .lo-basic-list {
   border-right: 1px solid rgb(0 0 0 / 15%);
   border-radius: 0;
+  overflow: scroll;
+  height: 100%;
 }
 
 .lo-body section.lo-section-half .lo-in-depth-list {
   flex: 2;
   border-radius: 0;
+  overflow: auto;
 }
 
-/* .lo-body .lo-section-half .lo-in-depth-list ul li:first-of-type {
-  display: block;
+.lo-body section.lo-section-half .lo-in-depth-list h2 {
+  font-size: 24px;
 }
-
-.lo-body .lo-section-half .lo-in-depth-list ul li {
-  border: 0;
-  display: none;
-} */
 
 section.lo-section-half .lo-basic-list .lo-logo-wrapper,
 section.lo-favorites-list .lo-logo-wrapper {
   width: 56px;
+  height: 56px;
+}
+
+section.lo-section-half .lo-basic-list .lo-logo-wrapper.empty,
+section.lo-favorites-list .lo-logo-wrapper.empty {
+  background-color: var(--bg-secondary-color);
 }
 
 section.lo-section-half .lo-in-depth-list .lo-logo-wrapper {
@@ -828,6 +841,10 @@ input#searchInput[type="text"] {
     height: 80px;
   }
 
+  .lo-body .lo-section-main {
+    margin: auto;
+  }
+
   .lo-body section.lo-section-half {
     flex-direction: column;
   }
@@ -841,5 +858,47 @@ input#searchInput[type="text"] {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+  }
+
+  .lo-body section.lo-section-half.lo-container {
+    height: 80vh;
+    position: unset;
+    justify-content: start;
+  }
+
+  .lo-body section.lo-section-half .lo-in-depth-list {
+    overflow: auto;
+    border-top: 5px solid var(--bg-secondary-color);
+    overflow: visible;
+  }
+
+  .lo-body section.lo-section-half .lo-in-depth-list ul {
+    margin: auto;
+  }
+
+  section.lo-search-wrapper {
+    /* position: absolute;
+    top: 50px;
+    width: 95vw;
+    border: 0; */
+    position: sticky;
+    top: 0;
+    background-color: #ffffff;
+    z-index: 9;
+    padding: 15px 15px 5px 15px;
+  }
+
+  .lo-basic-list ul#lo-basic-list {
+    width: 100%;
+    min-height: 300px;
+  }
+
+  .lo-body section.lo-section-half .lo-basic-list {
+    border-right: unset;
+    min-height: 400px;
+  }
+
+  .lo-body aside.lo-save-listing {
+    margin: 15px;
   }
 }

@@ -8,6 +8,7 @@ const { UserSchema } = require("./model/userSchema");
 let User = null;
 
 const isValidPassword = async (userInput, password) => {
+  console.log("invalid password: " + userInput + " does not equal " + password);
   return await bcrypt.compare(userInput, password);
 };
 
@@ -28,6 +29,7 @@ const LoginStrategy = new Strategy(
       }
 
       if (!isValidPassword(password, user.password)) {
+        console.log("password not valid!");
         return done(null, false, {
           message: "Incorrect password. Please try again.",
         });
@@ -44,15 +46,18 @@ const LoginStrategy = new Strategy(
 passport.serializeUser((user, done) => {
   // This saves the whole user obj into the session cookie,
   // but typically you will see just user.id passed in.
-  done(null, user);
+  done(null, user.id);
 });
 
 passport.deserializeUser(async ({ _id }, done) => {
   const User = mongoose.model("User", UserSchema);
   User.findById(_id).then((user) => {
+    console.log('FIND');
     if (user) {
+      console.log(user);
       return done(null, user);
     } else {
+      console.log("ELSE");
       done(null, null);
     }
   });

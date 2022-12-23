@@ -1,7 +1,5 @@
 const app = require("./app");
 const mongoose = require("mongoose");
-const http = require("http");
-const https = require("https");
 const path = require("path");
 const schools = require("./business.json");
 const { UserModel, UserSchema } = require("./model/userSchema");
@@ -134,9 +132,12 @@ app.post("/login", checkNotAuthenticated, (req, res, next) => {
         name: user.name,
         email: user.email,
       });
-      console.log("REQ>USER", req.user);
+      // console.log("REQ>USER", req.user);
       res.render("pages/profile", {
+        schools: schools,
         name: req.user.name,
+        email: req.user.email,
+        date: req.user.date,
         isAuthenticated: req.isAuthenticated(),
       });
     });

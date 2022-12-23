@@ -76,31 +76,26 @@ app.use(methodOverride("_method"));
 app.get("/", (req, res) => {
   res.render("pages/index", {
     schools: schools,
-    title: "Home Page",
     isAuthenticated: req.isAuthenticated(),
   });
 });
 app.get("/subscribe", (req, res) => {
   res.render("pages/subscribe", {
-    title: "Subscribe",
     isAuthenticated: req.isAuthenticated(),
   });
 });
 app.get("/resources", (req, res) => {
   res.render("pages/resources", {
-    title: "Resources",
     isAuthenticated: req.isAuthenticated(),
   });
 });
 app.get("/contact", (req, res) => {
   res.render("pages/contact", {
-    title: "Contact Us",
     isAuthenticated: req.isAuthenticated(),
   });
 });
 app.get("/profile", checkAuthenticated, (req, res) => {
   res.render("pages/profile", {
-    title: req.user.name + " Profile",
     schools: schools,
     name: req.user.name,
     email: req.user.email,
@@ -113,7 +108,6 @@ app.get("/profile", checkAuthenticated, (req, res) => {
 
 app.get("/login", checkNotAuthenticated, (req, res) => {
   res.render("pages/login", {
-    title: "Log In",
     isAuthenticated: req.isAuthenticated(),
   });
 });
@@ -132,7 +126,6 @@ app.post("/login", checkNotAuthenticated, (req, res, next) => {
     req.logIn(user, (error) => {
       if (error) {
         // @TODO: Handle errors
-        console.log("lo error: " + error);
       }
       req.app.set("user", {
         id: user.id,
@@ -141,7 +134,6 @@ app.post("/login", checkNotAuthenticated, (req, res, next) => {
       });
       // console.log("REQ>USER", req.user);
       res.render("pages/profile", {
-        title: req.user.name + " Profile",
         schools: schools,
         name: req.user.name,
         email: req.user.email,
@@ -161,7 +153,6 @@ app.set("UserModel", UserModel);
 
 app.get("/register", checkNotAuthenticated, (req, res) => {
   res.render("./pages/register", {
-    title: "Register",
     isAuthenticated: req.isAuthenticated(),
   });
 });

@@ -62,8 +62,6 @@ const BOESchema = new mongoose.Schema({
 
 // --------------------------------------------------------------------- //
 
-// --------------------------------------------------------------------- //
-
 // Multer file storage
 const multerStorage = multer.diskStorage({
   destination: (req, file, cb) => {

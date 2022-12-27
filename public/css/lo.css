@@ -505,6 +505,14 @@ button.nav-btn.fa-sign-in {
   color: var(--logo-color);
 }
 
+.lo-favorites-list {
+  /* overflow: auto; */
+  min-width: 480px;
+  width: auto;
+  min-height: 200px;
+  height: auto;
+}
+
 .lo-basic-list li,
 .lo-in-depth-list li,
 .lo-favorites-list li {
@@ -826,6 +834,19 @@ input#searchInput[type="text"] {
 .lo-favorites-list h5 {
   color: var(--text-color-min);
   font-weight: unset;
+}
+
+section.lo-favorites-list-empty {
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+section.lo-favorites-list-empty p {
+  width: 60%;
 }
 
 /* ------------------------------ FOOTER ------------------------------ */

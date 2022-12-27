@@ -677,9 +677,6 @@ section.lo-favorites-list .lo-list-text-side p:nth-of-type(3) {
 }
 
 .lo-body .lo-save-listing i:hover,
-.lo-body .lo-save-listing i:focus,
-.lo-body .lo-save-listing i:active,
-.lo-body .lo-save-listing i.active,
 .lo-body .lo-save-listing i.liked {
   color: var(--color-a);
 }

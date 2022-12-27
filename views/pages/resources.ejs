@@ -3,18 +3,17 @@
   <head>
     <%- include('../partials/head'); %>
     <link rel="stylesheet" href="/css/resources.css" />
-    <link rel="stylesheet" href="/css/lo.css" />
   </head>
   <body class="lo-body">
     <!-- Navigation Bar -->
     <%- include('../partials/nav'); %>
+    <section class="lo-section-main">
+      <!-- Carousel -->
+      <%- include('../partials/carousel'); %>
 
-    <!-- Carousel -->
-    <%- include('../partials/carousel'); %>
-
-    <!-- Footer Section -->
-    <%- include('../partials/footer'); %>
-
+      <!-- Footer Section -->
+      <%- include('../partials/footer'); %>
+    </section>
     <!-- External JavaScript and jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="../js/carousel.js" charset="utf-8"></script>

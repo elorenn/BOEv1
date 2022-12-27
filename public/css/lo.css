@@ -282,7 +282,7 @@ button.nav-btn.fa-sign-in {
 
 .lo-body .lo-section-main {
   position: relative;
-  min-height: 100vh;
+  height: auto;
   width: 100vw;
   display: flex;
   flex-direction: column;

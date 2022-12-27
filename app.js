@@ -75,7 +75,7 @@ const multerStorage = multer.diskStorage({
 });
 
 const multerFilter = (req, file, cb) => {
-  if (file.mimetype.split("/")[1] === "jpeg") {
+  if (file.mimetype.split("/")[1] === "pdf") {
     cb(null, true);
   } else if (file.mimetype.split("/")[1] === "jpg") {
     cb(null, true);

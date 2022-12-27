@@ -1,7 +1,7 @@
 const app = require("./app");
 const mongoose = require("mongoose");
 const path = require("path");
-const schools = require("./business.json");
+// const schools = require("./business.json");
 const { UserModel, UserSchema } = require("./model/userSchema");
 const users = [];
 const DB =
@@ -47,7 +47,7 @@ const session = require("express-session");
 const methodOverride = require("method-override");
 const MongoStore = require("connect-mongo");
 const { School } = require("./model/schoolSchema");
-const { UserLike } = require("./model/userLIkeSchema");
+const { UserLike } = require("./model/userLikeSchema");
 
 app.set("view-engine", "ejs");
 app.use(express.urlencoded({ extended: false }));
@@ -80,12 +80,14 @@ app.get("/", async (req, res) => {
   const user = req.app.get("user");
   if (user) {
     const userLikes = await UserLike.find({ user_id: user.id });
-    schools.forEach(school => {
-      const userLike = userLikes.find(like => school._id.equals(like.school_id));
+    schools.forEach((school) => {
+      const userLike = userLikes.find((like) =>
+        school._id.equals(like.school_id)
+      );
       school.is_liked = userLike ? userLike.is_liked : false;
     });
   }
-  
+
   res.render("pages/index", {
     schools: schools,
     title: "Home Page",
@@ -110,7 +112,18 @@ app.get("/contact", (req, res) => {
     isAuthenticated: req.isAuthenticated(),
   });
 });
-app.get("/profile", checkAuthenticated, (req, res) => {
+app.get("/profile", checkAuthenticated, async (req, res) => {
+  const schools = await School.find();
+  const user = req.app.get("user");
+  if (user) {
+    const userLikes = await UserLike.find({ user_id: user.id });
+    schools.forEach((school) => {
+      const userLike = userLikes.find((like) =>
+        school._id.equals(like.school_id)
+      );
+      school.is_liked = userLike ? userLike.is_liked : false;
+    });
+  }
   res.render("pages/profile", {
     title: req.user.name + " Profile",
     schools: schools,
@@ -164,8 +177,6 @@ app.post("/login", checkNotAuthenticated, (req, res, next) => {
   })(req, res, next);
 });
 
-// -------------------------------- Register / Sign Up Page USER SCHEMA - LO (in model folder) ----------------------------------- //
-
 // -------------------------------- Set User Modal for easy fetch in request like: req.app.get("UserModel") ---------------------- //
 
 // -------------------------------- Register / Sign Up Page - Save to Database - LO ------------------------------------- //
@@ -211,7 +222,7 @@ app.post("/register", checkNotAuthenticated, async (req, res) => {
 
 app.delete("/logout", (req, res, next) => {
   req.logOut((err) => {
-    req.app.set('user', null);
+    req.app.set("user", null);
     if (err) {
       return next(err);
     }

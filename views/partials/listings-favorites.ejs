@@ -22,7 +22,14 @@
         </section>
       </a>
       <aside class="lo-save-listing">
-        <i class="fa-solid fa-heart liked"></i>
+        <form action="/user-likes" method="POST">
+          <input type="hidden" name="school_id" value="<%= school._id %>" />
+          <button class="icon-button" type="submit">
+            <i
+              class="fa-solid fa-heart <%= school.is_liked ? 'liked' : '' %>"
+            ></i>
+          </button>
+        </form>
       </aside>
     </li>
     <% }); %>

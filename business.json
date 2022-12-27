@@ -5,7 +5,6 @@
     "siteUrl": "https://www.ironhack.com/en/miami",
     "applyUrl": "https://www.ironhack.com/en/courses/apply",
     "premiumMembership": false,
-    "_id": "",
     "type": "Technical School",
     "location": {
       "state": "Florida",
@@ -26,7 +25,6 @@
     "siteUrl": "https://www.cambridgehealth.edu/",
     "applyUrl": "https://www.cambridgehealth.edu/apply/",
     "premiumMembership": true,
-    "_id": "",
     "type": "Vocational School",
     "location": {
       "state": "Florida",
@@ -47,7 +45,6 @@
     "siteUrl": "https://paulmitchell.edu/miami",
     "applyUrl": "https://paulmitchell.edu/miami/get-started",
     "premiumMembership": true,
-    "_id": "",
     "type": "Vocational School",
     "location": {
       "state": "Florida",
@@ -68,7 +65,6 @@
     "siteUrl": "https://www.wetrain.org/",
     "applyUrl": "https://www.wetrain.org/construction-education/construction-training/",
     "premiumMembership": false,
-    "_id": "",
     "type": "Technical School",
     "location": {
       "state": "Florida",
@@ -89,7 +85,6 @@
     "siteUrl": "http://plumbers519.com/",
     "applyUrl": "https://plumbers519apprenticeship.com/apprentice-applicants",
     "premiumMembership": false,
-    "_id": "",
     "type": "Vocational School",
     "location": {
       "state": "Florida",
@@ -114,7 +109,6 @@
     "siteUrl": "https://globalatlantis.com/",
     "applyUrl": "https://globalatlantis.com/contact-us/",
     "premiumMembership": false,
-    "_id": "",
     "type": "Vocational School",
     "location": {
       "state": "Florida",
@@ -124,7 +118,7 @@
     "programs": [
       "Airline Career Program",
       "Flight Instructor Program",
-      "Conversion & Airline Career Program"
+      "Conversion & Airline Careergit  Program"
     ],
     "pointOfContact": {
       "name": "Paul Madera",
@@ -139,7 +133,6 @@
     "siteUrl": "https://paulmitchell.edu/fortlauderdale",
     "applyUrl": "https://paulmitchell.edu/fortlauderdale/get-started",
     "premiumMembership": false,
-    "_id": "",
     "type": "Technical School",
     "location": {
       "state": "Florida",
@@ -160,7 +153,6 @@
     "siteUrl": "https://yatc.org/",
     "applyUrl": "https://yatc.org/apply/",
     "premiumMembership": false,
-    "_id": "",
     "type": "Vocational School",
     "location": {
       "state": "Florida",

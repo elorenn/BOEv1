@@ -46,6 +46,8 @@ const flash = require("express-flash");
 const session = require("express-session");
 const methodOverride = require("method-override");
 const MongoStore = require("connect-mongo");
+const { School } = require("./model/schoolSchema");
+const { UserLike } = require("./model/userLIkeSchema");
 
 app.set("view-engine", "ejs");
 app.use(express.urlencoded({ extended: false }));
@@ -71,9 +73,19 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(methodOverride("_method"));
 
-// --------------------------------- ROUTES ------------------------------------ //
+// --------------------------------------------------------------------- //
 
-app.get("/", (req, res) => {
+app.get("/", async (req, res) => {
+  const schools = await School.find();
+  const user = req.app.get("user");
+  if (user) {
+    const userLikes = await UserLike.find({ user_id: user.id });
+    schools.forEach(school => {
+      const userLike = userLikes.find(like => school._id.equals(like.school_id));
+      school.is_liked = userLike ? userLike.is_liked : false;
+    });
+  }
+  
   res.render("pages/index", {
     schools: schools,
     title: "Home Page",
@@ -155,7 +167,6 @@ app.post("/login", checkNotAuthenticated, (req, res, next) => {
 // -------------------------------- Register / Sign Up Page USER SCHEMA - LO (in model folder) ----------------------------------- //
 
 // -------------------------------- Set User Modal for easy fetch in request like: req.app.get("UserModel") ---------------------- //
-app.set("UserModel", UserModel);
 
 // -------------------------------- Register / Sign Up Page - Save to Database - LO ------------------------------------- //
 
@@ -165,6 +176,8 @@ app.get("/register", checkNotAuthenticated, (req, res) => {
     isAuthenticated: req.isAuthenticated(),
   });
 });
+
+app.set("UserModel", UserModel);
 
 app.post("/register", checkNotAuthenticated, async (req, res) => {
   try {
@@ -198,7 +211,7 @@ app.post("/register", checkNotAuthenticated, async (req, res) => {
 
 app.delete("/logout", (req, res, next) => {
   req.logOut((err) => {
-    req.app.set("user", null);
+    req.app.set('user', null);
     if (err) {
       return next(err);
     }

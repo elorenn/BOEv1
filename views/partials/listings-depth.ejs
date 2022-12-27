@@ -29,17 +29,23 @@
           >
             <h2><%= school.name %></h2></a
           >
-          <p class="indepthlistitemCategory"><%= school.type %></p>
-          <p class="indepthlistitemCity">
-            <%= school.location.city %>, <%= school.location.state %>
-          </p>
-        </section>
+          <br />
+          <em class="indepthlistitemCategory"><%= school.type %></em>
+          <br />
+          <em class="indepthlistitemTrade"><%= school.programs %></em>
+          <br />
+          <em class="indepthlistitemCity"
+            ><%= school.location.city %>, <%= school.location.state %></em
+          >
+        </div>
       </div>
+      <br />
+      <br />
       <hr />
-      <h6 class="descriptionlabel">Description</h6>
+      <strong class="descriptionlabel"> Description</strong>
       <p class="description"><%= school.description %></p>
       <hr />
-      <h6 class="tradesofferedlabel">Programs</h6>
+      <strong class="tradesofferedlabel">Programs</strong>
       <p class="tradesoffered"><%= school.programs %></p>
       <hr />
       <%- include('./point-of-contact', {school: school}); %>

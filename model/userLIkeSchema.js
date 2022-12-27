@@ -1,4 +1,4 @@
-const Joi = require("joi");
+// const Joi = require("joi");
 const mongoose = require("mongoose");
 
 const UserLikeSchema = new mongoose.Schema({
@@ -17,6 +17,9 @@ const UserLikeSchema = new mongoose.Schema({
 });
 
 const UserLikeModel = mongoose.model("UserLike", UserLikeSchema);
+
+exports.UserLike = UserLikeModel;
+exports.UserLikeSchema = UserLikeSchema;
 
 exports.UserLike = UserLikeModel;
 exports.UserLikeSchema = UserLikeSchema;

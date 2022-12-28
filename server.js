@@ -1,7 +1,7 @@
 const app = require("./app");
 const mongoose = require("mongoose");
 const path = require("path");
-// const schools = require("./business.json");
+const schools = require("./business.json");
 const { UserModel, UserSchema } = require("./model/userSchema");
 const users = [];
 const DB =
@@ -165,14 +165,15 @@ app.post("/login", checkNotAuthenticated, (req, res, next) => {
         email: user.email,
       });
       // console.log("REQ>USER", req.user);
-      res.render("pages/profile", {
-        title: req.user.name + " Profile",
-        schools: schools,
-        name: req.user.name,
-        email: req.user.email,
-        date: req.user.date,
-        isAuthenticated: req.isAuthenticated(),
-      });
+      // res.render("pages/profile", {
+      //   title: req.user.name + " Profile",
+      //   schools: schools,
+      //   name: req.user.name,
+      //   email: req.user.email,
+      //   date: req.user.date,
+      //   isAuthenticated: req.isAuthenticated(),
+      // });
+      res.redirect("/profile");
     });
   })(req, res, next);
 });

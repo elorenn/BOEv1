@@ -13,11 +13,22 @@
   --color-b: #134074;
   --color-c: #a05482;
 
-  font-family: Arial, Helvetica, sans-serif;
+  --lo-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 * {
   box-sizing: border-box;
+}
+
+body {
+  font-family: var(--lo-font-sans-serif);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  -webkit-text-size-adjust: 100%;
 }
 
 body.lo-body {
@@ -26,7 +37,6 @@ body.lo-body {
   justify-content: center;
   align-items: center;
   width: 100vw;
-  /* min-height: 100vh; */
   min-height: auto;
   background-color: var(--bg-secondary-color);
   padding: 0;
@@ -272,7 +282,7 @@ button.nav-btn.fa-sign-in {
 
 .lo-body .lo-section-main {
   position: relative;
-  min-height: 100vh;
+  height: auto;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -467,13 +477,18 @@ button.nav-btn.fa-sign-in {
 
 /* ------------------------------ RESOURCES CAROUSEL ------------------------------ */
 
-.lo-body .lo-container.lo-carousel-wrapper {
+.lo-body .lo-container.lo-container-carousel {
   max-width: fit-content;
   max-width: 900px;
+  width: 900px;
 }
 
-.carousel_image {
-  max-width: 100px;
+.carousel__image {
+  max-width: 300px;
+}
+
+.lo-container-carousel .carouselheader {
+  margin: auto;
 }
 
 /* ------------------------------ INDEX & FAVORITE LIST ------------------------------ */
@@ -488,6 +503,14 @@ button.nav-btn.fa-sign-in {
 .lo-list-text-side a {
   text-decoration: none;
   color: var(--logo-color);
+}
+
+.lo-favorites-list {
+  /* overflow: auto; */
+  min-width: 480px;
+  width: auto;
+  min-height: 200px;
+  height: auto;
 }
 
 .lo-basic-list li,
@@ -662,13 +685,9 @@ section.lo-favorites-list .lo-list-text-side p:nth-of-type(3) {
 }
 
 .lo-body .lo-save-listing i:hover,
-.lo-body .lo-save-listing i:focus,
-.lo-body .lo-save-listing i:active,
-.lo-body .lo-save-listing i.active,
 .lo-body .lo-save-listing i.liked {
   color: var(--color-a);
 }
-
 
 /* ------------------------------ INDEX SEARCHBAR ------------------------------ */
 
@@ -815,6 +834,19 @@ input#searchInput[type="text"] {
 .lo-favorites-list h5 {
   color: var(--text-color-min);
   font-weight: unset;
+}
+
+section.lo-favorites-list-empty {
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+section.lo-favorites-list-empty p {
+  width: 60%;
 }
 
 /* ------------------------------ FOOTER ------------------------------ */

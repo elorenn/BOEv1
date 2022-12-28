@@ -1,12 +1,25 @@
 <section class="lo-favorites-list">
   <h5>Favorites</h5>
+    <% let toShow = "" %> 
+    <% let sortedSchools = [...schools] %> 
+    <% sortedSchools.sort((a, b) => { %> 
+    <%  if (a.name < b.name) { %> 
+    <%    return -1;%> 
+    <%  } %> 
+    <% }); %> 
+    <% let likedSchools = sortedSchools.filter(school => { %>
+    <% console.log(school.is_liked) %>
+    <% return school.is_liked; %>
+    <% }); %>
+    <% console.log(likedSchools) %>
+    <% if (likedSchools.length === 0) { %>
+      <section class="lo-favorites-list-empty">
+        <h3>No favorites yet</h3>
+        <p>Keep track of the programs you're interested in by clicking the <span> <i class="fa-solid fa-heart"></i> </span> icon. </p>
+      </section>
+    <% } %>
   <ul>
-    <% let favoriteSchools = []; %> <% for (i = 0; i <= 3; i++) { %> <% let
-    randomSchool = schools[Math.floor(Math.random() * schools.length)]; %> <% if
-    (!(favoriteSchools.includes(randomSchool))) { %> <%
-    favoriteSchools.push(randomSchool); %> <% } %> <% } %> <%
-    favoriteSchools.sort((a,b) => { %> <% if (a.name < b.name) { %> <% return
-    -1; %> <% } %> <% }); %> <% favoriteSchools.forEach(school => { %>
+    <% likedSchools.forEach(school => { %>
     <li>
       <a class="list-group-item">
         <section class="lo-list-img-side">
@@ -22,7 +35,14 @@
         </section>
       </a>
       <aside class="lo-save-listing">
-        <i class="fa-solid fa-heart active"></i>
+        <form action="/user-likes" method="POST">
+          <input type="hidden" name="school_id" value="<%= school._id %>" />
+          <button class="icon-button" type="submit">
+            <i
+              class="fa-solid fa-heart <%= school.is_liked ? 'liked' : '' %>"
+            ></i>
+          </button>
+        </form>
       </aside>
     </li>
     <% }); %>

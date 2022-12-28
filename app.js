@@ -6,8 +6,8 @@ const https = require("https");
 const File = require("./model/fileSchema");
 const multer = require("multer");
 const http = require("http");
-const session = require('express-session');
-const { UserLike } = require("./model/userLIkeSchema");
+const session = require("express-session");
+const { UserLike } = require("./model/userLikeSchema");
 
 // const UserSchema = require("./model/userSchema");
 
@@ -59,8 +59,6 @@ const BOESchema = new mongoose.Schema({
   Additional_Comments: String,
   Date: String,
 });
-
-// --------------------------------------------------------------------- //
 
 // --------------------------------------------------------------------- //
 
@@ -211,7 +209,7 @@ app.post("/success", function (req, res) {
 });
 
 app.post("/user-likes", async function (req, res) {
-  const user = req.app.get('user');
+  const user = req.app.get("user");
   const schoolId = req.body.school_id;
 
   if (!user || !user.id || !schoolId) {
@@ -220,7 +218,7 @@ app.post("/user-likes", async function (req, res) {
 
   const query = {
     school_id: schoolId,
-    user_id: user.id
+    user_id: user.id,
   };
 
   const userLike = await UserLike.findOne(query);
@@ -234,32 +232,7 @@ app.post("/user-likes", async function (req, res) {
 
   const options = { upsert: true };
   await UserLike.findOneAndUpdate(query, userLikeData, options);
-  res.redirect("/");
+  res.redirect("back");
 });
-
-// --------------------------------------------------------------------- //
-// Register / Sign Up Page - Save to Database - LO
-// app.post("/loginuserlist", function (req, res) {
-//   const userName = req.body.name;
-//   const userEmail = req.body.email;
-//   const userPassword = req.body.password;
-//   const postedDate = new Date().toLocaleDateString("en-us", {
-//     year: "numeric",
-//     month: "numeric",
-//     day: "numeric",
-//   });
-
-//   // store in BOE database
-//   const User = mongoose.model("User", UserSchema);
-//   const user = new User({
-//     Name: userName,
-//     Email: userEmail,
-//     Password: userPassword,
-//     Date: postedDate,
-//   });
-//   user.save();
-// });
-
-// --------------------------------------------------------------------- //
 
 module.exports = app;

@@ -1,33 +1,12 @@
-<% let log = "false" %>
-<% let home = "false" %>
-<% let subscribe = "false" %>
-<% let resources = "false" %>
-<% let contact = "false" %>
-<% let profile = "false" %>
-<% if (typeof title != 'undefined') { %>
-
-<%  if (title.toLowerCase().includes("home")) { %>
-<%    home = "page" %>
-<%  } %>
-
-<%  if (title.toLowerCase().includes("subscribe")) { %>
-<%    subscribe = "page" %>
-<%  } %>
-
-<%  if (title.toLowerCase().includes("resources")) { %>
-<%    resources = "page" %>
-<%  } %>
-
-<%  if (title.toLowerCase().includes("contact")) { %>
-<%    contact = "page" %>
-<%  } %>
-
-<%  if (title.toLowerCase().includes("profile")) { %>
-<%    profile = "page" %>
-<%  } %>
-<% } %>
-
-
+<% let log = "false" %> <% let home = "false" %> <% let subscribe = "false" %>
+<% let resources = "false" %> <% let contact = "false" %> <% let profile =
+"false" %> <% if (typeof title != 'undefined') { %> <% if
+(title.toLowerCase().includes("home")) { %> <% home = "page" %> <% } %> <% if
+(title.toLowerCase().includes("subscribe")) { %> <% subscribe = "page" %> <% }
+%> <% if (title.toLowerCase().includes("resources")) { %> <% resources = "page"
+%> <% } %> <% if (title.toLowerCase().includes("contact")) { %> <% contact =
+"page" %> <% } %> <% if (title.toLowerCase().includes("profile")) { %> <%
+profile = "page" %> <% } %> <% } %>
 
 <nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
@@ -66,25 +45,41 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="navitem nav-link" aria-current="<%=subscribe%>" href="/subscribe">
+          <a
+            class="navitem nav-link"
+            aria-current="<%=subscribe%>"
+            href="/subscribe"
+          >
             <i class="navicon2 fa-solid fa-bell"></i>
             <span>Subscribe</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="navitem nav-link" aria-current="<%=resources%>" href="/resources">
+          <a
+            class="navitem nav-link"
+            aria-current="<%=resources%>"
+            href="/resources"
+          >
             <i class="navicon3 fa-sharp fa-solid fa-book"></i>
             <span>Resources</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="navitem nav-link" aria-current="<%=contact%>" href="/contact">
+          <a
+            class="navitem nav-link"
+            aria-current="<%=contact%>"
+            href="/contact"
+          >
             <i class="navicon4 fa-solid fa-handshake"></i>
             <span>Contact Us</span>
           </a>
         </li>
         <li>
-          <a class="navitem nav-link" aria-current="<%=profile%>" href="/profile">
+          <a
+            class="navitem nav-link"
+            aria-current="<%=profile%>"
+            href="/profile"
+          >
             <i class="navicon4 fa-solid fa-user"></i>
             <span>Profile</span>
           </a>

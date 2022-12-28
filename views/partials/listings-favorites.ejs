@@ -8,10 +8,8 @@
     <%  } %> 
     <% }); %> 
     <% let likedSchools = sortedSchools.filter(school => { %>
-    <% console.log(school.is_liked) %>
     <% return school.is_liked; %>
     <% }); %>
-    <% console.log(likedSchools) %>
     <% if (likedSchools.length === 0) { %>
       <section class="lo-favorites-list-empty">
         <h3>No favorites yet</h3>

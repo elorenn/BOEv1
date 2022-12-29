@@ -225,6 +225,7 @@ button.nav-btn.fa-sign-in {
   margin: 0 !important;
   flex-direction: column;
   height: auto;
+  padding: 0;
 }
 
 .lo-body nav .lo-nav-links-wrapper.show ul.navlist li,

@@ -1,7 +1,7 @@
 const app = require("./app");
 const mongoose = require("mongoose");
 const path = require("path");
-const schools = require("./business.json");
+// const schools = require("./business.json");
 const { UserModel, UserSchema } = require("./model/userSchema");
 const users = [];
 const DB =
@@ -163,6 +163,7 @@ app.get("/login", checkNotAuthenticated, (req, res) => {
   res.render("pages/login", {
     title: "Log In",
     path: "/login",
+    info: req.flash("info"),
     isAuthenticated: req.isAuthenticated(),
   });
 });
@@ -236,6 +237,40 @@ app.post("/register", checkNotAuthenticated, async (req, res) => {
   } catch {
     res.redirect("/register");
   }
+});
+
+// -------------------------------- USER LIKES FAVORITES ------------------------------------- //
+
+app.post("/user-likes", async function (req, res) {
+  const user = req.app.get("user");
+  const schoolId = req.body.school_id;
+
+  if (!user || !user.id || !schoolId) {
+    if (!user) {
+      // user not logged in
+      req.flash("info", "Please log in to like listings.");
+      res.redirect("/login");
+    }
+    return null; // @TO-DO: handle errors
+  }
+
+  const query = {
+    school_id: schoolId,
+    user_id: user.id,
+  };
+
+  const userLike = await UserLike.findOne(query);
+  const isLiked = userLike ? !userLike.is_liked : true;
+
+  const userLikeData = {
+    user_id: user.id,
+    school_id: schoolId,
+    is_liked: isLiked,
+  };
+
+  const options = { upsert: true };
+  await UserLike.findOneAndUpdate(query, userLikeData, options);
+  res.redirect("back");
 });
 
 // -------------------------------- LOG OUT ------------------------------------- //

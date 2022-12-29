@@ -74,14 +74,10 @@
             <span>Profile</span>
           </a>
         </li>
-        <% try { %>
-          <li class="nav-item">
-            <% if (isAuthenticated) { %> <%- include('./logout-link'); %> <% }
-            else { %> <%- include('./login-link'); %> <% } %>
-          </li>
-        <% } catch { %>
-            // do something here?
-        <% } %>
+        <li class="nav-item">
+          <% if (isAuthenticated) { %> <%- include('./logout-link'); %> <% }
+          else { %> <%- include('./login-link'); %> <% } %>
+        </li>
       </ul>
     </div>
   </div>

@@ -91,24 +91,28 @@ app.get("/", async (req, res) => {
   res.render("pages/index", {
     schools: schools,
     title: "Home Page",
+    path: "/",
     isAuthenticated: req.isAuthenticated(),
   });
 });
 app.get("/subscribe", (req, res) => {
   res.render("pages/subscribe", {
     title: "Subscribe",
+    path: "/subscribe",
     isAuthenticated: req.isAuthenticated(),
   });
 });
 app.get("/resources", (req, res) => {
   res.render("pages/resources", {
     title: "Resources",
+    path: "/resources",
     isAuthenticated: req.isAuthenticated(),
   });
 });
 app.get("/contact", (req, res) => {
   res.render("pages/contact", {
     title: "Contact Us",
+    path: "/contact",
     isAuthenticated: req.isAuthenticated(),
   });
 });
@@ -127,6 +131,7 @@ app.get("/profile", checkAuthenticated, async (req, res) => {
   }
   res.render("pages/profile", {
     title: req.user.name + " Profile",
+    path: "/profile",
     schools: schools,
     name: req.user.name,
     email: req.user.email,
@@ -140,6 +145,7 @@ app.get("/profile", checkAuthenticated, async (req, res) => {
 app.get("/login", checkNotAuthenticated, (req, res) => {
   res.render("pages/login", {
     title: "Log In",
+    path: "/login",
     isAuthenticated: req.isAuthenticated(),
   });
 });
@@ -154,11 +160,11 @@ app.post("/login", checkNotAuthenticated, (req, res, next) => {
       console.log("ERROR logging in: ", msg.message);
       req.flash("error", msg.message); // shows message from passport-config
       return res.redirect("back");
-    } // Call passport logIn method
+    }
 
+    // Call passport logIn method
     req.logIn(user, (error) => {
       if (error) {
-        // @TODO: Handle errors
         console.log("ERROR reaching profile: " + error); // Failed to serialize user into session.
         req.flash("error", "Something went wrong. Please try again.");
         return res.redirect("back");
@@ -180,6 +186,7 @@ app.post("/login", checkNotAuthenticated, (req, res, next) => {
 app.get("/register", checkNotAuthenticated, (req, res) => {
   res.render("./pages/register", {
     title: "Register",
+    path: "/register",
     isAuthenticated: req.isAuthenticated(),
   });
 });

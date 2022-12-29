@@ -38,7 +38,7 @@ body.lo-body {
   align-items: center;
   width: 100vw;
   height: auto;
-  min-height: 100vh;
+  min-height: fit-content;
   background-color: var(--bg-secondary-color);
   padding: 0;
   margin: 0;
@@ -285,13 +285,17 @@ button.nav-btn.fa-sign-in {
 .lo-body .lo-section-main {
   position: relative;
   height: auto;
-  min-height: 100vh;
+  min-height: fit-content;
   width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 5% auto 5%;
+  margin: 5% auto;
+}
+
+.lo-body .lo-section-main.lo-section-main-tall {
+  min-height: 100vh;
 }
 
 .lo-body .lo-container {
@@ -731,6 +735,7 @@ input#searchInput[type="text"] {
   flex-direction: row-reverse;
   justify-content: space-evenly;
   align-items: flex-start;
+  min-height: auto;
 }
 
 .lo-container.lo-profile-card {
@@ -867,13 +872,19 @@ section.lo-favorites-list-empty p {
 }
 
 .lo-container-alert .lo-container-text-side {
-  font-size: 14px;
-  color: #00000099;
   margin: auto;
+}
+
+.lo-container-alert .lo-container-text-side h3 {
+  font-size: 20px;
+  color: #212529;
+  font-weight: normal;
 }
 
 .lo-container-alert .lo-container-text-side p {
   margin: 0;
+  color: #00000099;
+  font-size: 14px;
 }
 
 .lo-container .lo-container-img-side {

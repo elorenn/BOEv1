@@ -164,15 +164,6 @@ app.post("/login", checkNotAuthenticated, (req, res, next) => {
         name: user.name,
         email: user.email,
       });
-      // console.log("REQ>USER", req.user);
-      // res.render("pages/profile", {
-      //   title: req.user.name + " Profile",
-      //   schools: schools,
-      //   name: req.user.name,
-      //   email: req.user.email,
-      //   date: req.user.date,
-      //   isAuthenticated: req.isAuthenticated(),
-      // });
       res.redirect("/profile");
     });
   })(req, res, next);
@@ -198,7 +189,6 @@ app.post("/register", checkNotAuthenticated, async (req, res) => {
       month: "numeric",
       day: "numeric",
     });
-    const favSchools = [];
     const hashedPassword = await bcrypt.hash(
       req.body.password,
       bcrypt.genSaltSync(8)
@@ -209,7 +199,6 @@ app.post("/register", checkNotAuthenticated, async (req, res) => {
       email: req.body.email,
       password: hashedPassword,
       date: postedDate,
-      favorites: favSchools,
     });
     user.save();
     users.push(user);

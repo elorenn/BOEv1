@@ -133,26 +133,35 @@ app.post("/index.html2", function (req, res) {
 // Subcriber Page - Save to Database
 
 app.post("/usersignup", function (req, res) {
-  const postedDate = new Date().toLocaleDateString("en-us", {
-    year: "numeric",
-    month: "numeric",
-    day: "numeric",
-  });
+  try {
+    const postedDate = new Date().toLocaleDateString("en-us", {
+      year: "numeric",
+      month: "numeric",
+      day: "numeric",
+    });
 
-  // store in BOE database
-  const Subscriber = mongoose.model("Subscriber", BOESchema);
-  const subscriber = new Subscriber({
-    First_Name: req.body.fname,
-    Last_Name: req.body.lname,
-    Email: req.body.email,
-    City: req.body.city,
-    Zipcode: req.body.zipcode,
-    SubscriberTradeOfInterest1: req.body.trade1,
-    SubscriberTradeOfInterest2: req.body.trade2,
-    SubscriberTradeOfInterest3: req.body.trade3,
-    Date: postedDate,
-  });
-  subscriber.save();
+    // store in BOE database
+    const Subscriber = mongoose.model("Subscriber", BOESchema);
+    const subscriber = new Subscriber({
+      First_Name: req.body.fname,
+      Last_Name: req.body.lname,
+      Email: req.body.email,
+      City: req.body.city,
+      Zipcode: req.body.zipcode,
+      SubscriberTradeOfInterest1: req.body.trade1,
+      SubscriberTradeOfInterest2: req.body.trade2,
+      SubscriberTradeOfInterest3: req.body.trade3,
+      Date: postedDate,
+    });
+    subscriber.save();
+    res.render("pages/success", {
+      title: "Success",
+    });
+  } catch {
+    res.render("pages/failure", {
+      title: "Failure",
+    });
+  }
 
   // // send to Mailchimp
   // const data = {

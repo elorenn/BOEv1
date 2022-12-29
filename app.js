@@ -7,7 +7,7 @@ const File = require("./model/fileSchema");
 const multer = require("multer");
 const http = require("http");
 const session = require("express-session");
-const { UserLike } = require("./model/userLikeSchema");
+// const { UserLike } = require("./model/userLikeSchema");
 
 // const UserSchema = require("./model/userSchema");
 
@@ -198,38 +198,44 @@ app.post("/usersignup", function (req, res) {
 });
 
 app.post("/failure", function (req, res) {
-  res.redirect("/subscribe.ejs");
+  res.redirect("/subscribe.ejs"); // is this doing anything?
 });
 
 app.post("/success", function (req, res) {
-  res.redirect("/");
+  res.redirect("/"); // is this doing anything?
 });
 
-app.post("/user-likes", async function (req, res) {
-  const user = req.app.get("user");
-  const schoolId = req.body.school_id;
+// -------------------------------- USER LIKES FAVORITES ------------------------------------- //
 
-  if (!user || !user.id || !schoolId) {
-    return null;
-  }
+// app.post("/user-likes", async function (req, res) {
+//   const user = req.app.get("user");
+//   const schoolId = req.body.school_id;
 
-  const query = {
-    school_id: schoolId,
-    user_id: user.id,
-  };
+//   if (!user || !user.id || !schoolId) {
+//     if (!user) {
+//       // user not logged in
+//       res.redirect("/login");
+//     }
+//     return null; // @TO-DO: handle errors
+//   }
 
-  const userLike = await UserLike.findOne(query);
-  const isLiked = userLike ? !userLike.is_liked : true;
+//   const query = {
+//     school_id: schoolId,
+//     user_id: user.id,
+//   };
 
-  const userLikeData = {
-    user_id: user.id,
-    school_id: schoolId,
-    is_liked: isLiked,
-  };
+//   const userLike = await UserLike.findOne(query);
+//   const isLiked = userLike ? !userLike.is_liked : true;
 
-  const options = { upsert: true };
-  await UserLike.findOneAndUpdate(query, userLikeData, options);
-  res.redirect("back");
-});
+//   const userLikeData = {
+//     user_id: user.id,
+//     school_id: schoolId,
+//     is_liked: isLiked,
+//   };
+
+//   const options = { upsert: true };
+//   await UserLike.findOneAndUpdate(query, userLikeData, options);
+//   res.redirect("back");
+// });
 
 module.exports = app;

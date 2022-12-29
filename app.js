@@ -154,13 +154,9 @@ app.post("/usersignup", function (req, res) {
       Date: postedDate,
     });
     subscriber.save();
-    res.render("pages/success", {
-      title: "Success",
-    });
+    res.redirect("/success");
   } catch {
-    res.render("pages/failure", {
-      title: "Failure",
-    });
+    res.redirect("/failure");
   }
 
   // // send to Mailchimp

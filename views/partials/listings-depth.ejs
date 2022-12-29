@@ -47,7 +47,8 @@
 
       <% if (school.premiumMembership) { %> <%- include('./application-premium',
       {school: school}); %> <% } else { %> <%- include('./application', {school:
-      school}); %> <% } %> <% if (isAuthenticated) { %>
+      school}); %> <% } %>
+
       <aside class="lo-save-listing">
         <form action="/user-likes" method="POST">
           <input type="hidden" name="school_id" value="<%= school._id %>" />
@@ -58,7 +59,6 @@
           </button>
         </form>
       </aside>
-      <% } %>
     </li>
     <% }); %>
   </ul>

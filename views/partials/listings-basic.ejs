@@ -34,7 +34,6 @@
           </p>
         </section>
       </a>
-      <% if (isAuthenticated) { %>
       <aside class="lo-save-listing">
         <form action="/user-likes" method="POST">
           <input type="hidden" name="school_id" value= "<%= school._id %>" />
@@ -43,7 +42,6 @@
           </button>
         </form>
       </aside>
-      <% } %>
     </li>
     <% }); %>
   </ul>

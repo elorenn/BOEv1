@@ -284,7 +284,8 @@ button.nav-btn.fa-sign-in {
 
 .lo-body .lo-section-main {
   position: relative;
-  height: 100vh;
+  height: auto;
+  min-height: 100vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -374,14 +375,6 @@ button.nav-btn.fa-sign-in {
 .lo-body .lo-container aside {
   margin: 25px;
   color: var(--text-color-min);
-}
-
-/* ------------------------------ PROFILE ------------------------------ */
-
-.lo-profile-card {
-  border: 1px solid rgb(0 0 0 / 15%);
-  border-radius: 5px;
-  padding: 15px;
 }
 
 /* ------------------------------ CONTACT US CALENDLY ------------------------------ */
@@ -508,11 +501,13 @@ button.nav-btn.fa-sign-in {
 }
 
 .lo-favorites-list {
-  /* overflow: auto; */
   min-width: 480px;
   width: auto;
   min-height: 200px;
   height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .lo-basic-list li,
@@ -722,6 +717,16 @@ input#searchInput[type="text"] {
 
 /* ------------------------------ PROFILE ------------------------------ */
 
+.lo-profile-card {
+  border: 1px solid rgb(0 0 0 / 15%);
+  border-radius: 5px;
+  padding: 15px;
+}
+
+.lo-container.lo-container-profile-favorites {
+  max-height: 600px;
+}
+
 .lo-body .lo-section-main.lo-section-widgets {
   flex-direction: row-reverse;
   justify-content: space-evenly;
@@ -823,10 +828,11 @@ input#searchInput[type="text"] {
   text-transform: capitalize;
   margin: 0;
   font-size: 16px;
-  color: #437e58;
+  color: var(--logo-color);
 }
 
-.lo-profile-card-sm-h .lo-profile-card-img-side {
+.lo-profile-card-sm-h .lo-profile-card-img-side,
+.lo-container-alert .lo-container-img-side {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -836,6 +842,7 @@ input#searchInput[type="text"] {
 .lo-favorites-list h5 {
   color: var(--text-color-min);
   font-weight: unset;
+  cursor: text;
 }
 
 section.lo-favorites-list-empty {
@@ -849,6 +856,40 @@ section.lo-favorites-list-empty {
 
 section.lo-favorites-list-empty p {
   width: 60%;
+  color: #00000099;
+  font-size: 14px;
+}
+
+/* ------------------------------ SUCCESS / FAILURE ------------------------------ */
+
+.lo-container.lo-container-alert {
+  flex-direction: row;
+}
+
+.lo-container-alert .lo-container-text-side {
+  font-size: 14px;
+  color: #00000099;
+  margin: auto;
+}
+
+.lo-container-alert .lo-container-text-side p {
+  margin: 0;
+}
+
+.lo-container .lo-container-img-side {
+  margin-right: 25px;
+}
+
+.lo-container-img-side .lo-img-wrapper {
+  font-size: 2em;
+}
+
+.lo-container-img-side .lo-img-wrapper.lo-success {
+  color: var(--logo-color);
+}
+
+.lo-container-img-side .lo-img-wrapper.lo-failure {
+  color: var(--color-a);
 }
 
 /* ------------------------------ FOOTER ------------------------------ */

@@ -112,6 +112,7 @@ app.get("/contact", (req, res) => {
     isAuthenticated: req.isAuthenticated(),
   });
 });
+
 app.get("/profile", checkAuthenticated, async (req, res) => {
   const schools = await School.find();
   const user = req.app.get("user");
@@ -150,14 +151,17 @@ app.post("/login", checkNotAuthenticated, (req, res, next) => {
     }
 
     if (!user) {
-      // @TODO: Display login feedback to user on login screen
-      console.log("Error logging in: ", msg.message);
+      console.log("ERROR logging in: ", msg.message);
+      req.flash("error", msg.message); // shows message from passport-config
+      return res.redirect("back");
     } // Call passport logIn method
 
     req.logIn(user, (error) => {
       if (error) {
         // @TODO: Handle errors
-        console.log("lo error: " + error);
+        console.log("ERROR reaching profile: " + error); // Failed to serialize user into session.
+        req.flash("error", "Something went wrong. Please try again.");
+        return res.redirect("back");
       }
       req.app.set("user", {
         id: user.id,
@@ -189,6 +193,7 @@ app.post("/register", checkNotAuthenticated, async (req, res) => {
       month: "numeric",
       day: "numeric",
     });
+    const favSchools = [];
     const hashedPassword = await bcrypt.hash(
       req.body.password,
       bcrypt.genSaltSync(8)
@@ -199,6 +204,7 @@ app.post("/register", checkNotAuthenticated, async (req, res) => {
       email: req.body.email,
       password: hashedPassword,
       date: postedDate,
+      favorites: favSchools,
     });
     user.save();
     users.push(user);

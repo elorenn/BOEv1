@@ -102,6 +102,22 @@ app.get("/subscribe", (req, res) => {
     isAuthenticated: req.isAuthenticated(),
   });
 });
+app.get("/success", (req, res) => {
+  res.render("pages/success", {
+    path: "/success",
+    title: "Success",
+    isAuthenticated: req.isAuthenticated(),
+  });
+});
+
+app.get("/failure", (req, res) => {
+  res.render("pages/failure", {
+    path: "/failure",
+    title: "Failure",
+    isAuthenticated: req.isAuthenticated(),
+  });
+});
+
 app.get("/resources", (req, res) => {
   res.render("pages/resources", {
     title: "Resources",
@@ -109,6 +125,7 @@ app.get("/resources", (req, res) => {
     isAuthenticated: req.isAuthenticated(),
   });
 });
+
 app.get("/contact", (req, res) => {
   res.render("pages/contact", {
     title: "Contact Us",
@@ -246,5 +263,14 @@ function checkNotAuthenticated(req, res, next) {
   }
   next();
 }
+
+// must be at the end
+app.use((req, res, next) => {
+  res.render("pages/404", {
+    title: "Page Not Found",
+    path: "",
+    isAuthenticated: req.isAuthenticated(),
+  });
+});
 
 app.listen(4000);

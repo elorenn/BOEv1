@@ -8,6 +8,7 @@
       placeholder="Search by trade, city, or business..."
     />
     <i class="fa-solid fa-magnifying-glass"></i>
+    <p><span id="">2 </span>results</p>
   </section>
   <ul class="galleryUL" id="lo-basic-list">
     <% let sortedSchools = [...schools] %> <% sortedSchools.sort((a, b) => { %>
@@ -45,4 +46,8 @@
     </li>
     <% }); %>
   </ul>
+  <section id="lo-search-empty">
+    <h5>Sorry - no programs found</h5>
+    <p>Please try a different search term</p>
+  </section>
 </section>

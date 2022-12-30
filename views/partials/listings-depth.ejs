@@ -6,7 +6,7 @@
     (i === 0) { %> <% toShow = "show" %> <% } else { %> <% toShow = "" %> <% }
     %>
     <li
-      id="item-<%=i%>"
+      data-id=<%= school._id %>
       class="indepthlistitema list-group-item list-group-item-action <%=toShow%>"
       href="#list-item-<%=i%>"
     >

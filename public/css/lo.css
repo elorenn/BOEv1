@@ -318,8 +318,7 @@ button.nav-btn.fa-sign-in {
 }
 
 .lo-container .lo-error-message {
-  color: #ffffff;
-  background-color: var(--color-a);
+  color: var(--color-a);
 }
 
 .lo-body .lo-container.lo-container-small {

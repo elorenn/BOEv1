@@ -9,8 +9,9 @@
     </span>
     <span>&#183;</span>
     Favorites
-    <span>&#183;</span>
-    <span><%= howMany %></span>
+    <% if (likedSchools.length !== 0) { %>
+      <span><span>&#183; </span><%= howMany %></span>
+    <% } %>
   </h5>
   <% if (likedSchools.length === 0) { %>
   <section class="lo-favorites-list-empty">

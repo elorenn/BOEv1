@@ -10,14 +10,18 @@
     <i class="fa-solid fa-magnifying-glass"></i>
     <p><span id="">2 </span>results</p>
   </section>
+  <section id="lo-search-empty">
+    <h5>Sorry - no programs found</h5>
+    <p>Please try a different search term</p>
+  </section>
   <ul class="galleryUL" id="lo-basic-list">
     <% let sortedSchools = [...schools] %> <% sortedSchools.sort((a, b) => { %>
     <% if (a.name < b.name) { %> <% return -1; %> <% } %> <% }); %> <%
     sortedSchools.forEach(function(school, i) { %>
     <li 
-      class="listentry" 
+      class="lo-basic-list-item"
       data-id=<%= school._id %> 
-    >
+      >
       <a class="list-group-item list-group-item-action">
         <section class="lo-list-img-side">
           <div class="lo-logo-wrapper">
@@ -44,8 +48,4 @@
     </li>
     <% }); %>
   </ul>
-  <section id="lo-search-empty">
-    <h5>Sorry - no programs found</h5>
-    <p>Please try a different search term</p>
-  </section>
 </section>

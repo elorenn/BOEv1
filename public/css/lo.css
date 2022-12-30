@@ -482,12 +482,26 @@ button.nav-btn.fa-sign-in {
   width: 900px;
 }
 
-.carousel__image {
-  max-width: 300px;
-}
-
 .lo-container-carousel .carouselheader {
   margin: auto;
+}
+
+/* ------------------------------ RESOURCES CAROUSEL TWO ------------------------------ */
+
+section.lo-section-main .carouselheader {
+  margin: 0;
+}
+
+section.lo-section-main .carousel {
+  margin: 0;
+}
+
+section.lo-section-main .carousel__nav {
+  margin: 0;
+}
+
+section.lo-section-main .carousel__image {
+  max-width: 300px;
 }
 
 /* ------------------------------ INDEX & FAVORITE LIST ------------------------------ */

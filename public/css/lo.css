@@ -903,6 +903,41 @@ section.lo-favorites-list-empty p {
   color: var(--color-a);
 }
 
+/* ------------------------------ 404 ------------------------------ */
+
+.lo-section-404 {
+  color: #00000099;
+  cursor: default;
+}
+
+.lo-section-404 h1 {
+  font-size: 5em;
+  font-weight: unset;
+  margin: 50px;
+}
+
+.lo-text-gradient {
+  font-weight: 900;
+  color: var(--logo-color);
+  background: linear-gradient(
+    139deg,
+    var(--logo-color) 35%,
+    rgba(144, 222, 171, 1) 100%
+  );
+  background: linear-gradient(
+    150deg,
+    hsla(141, 31%, 38%, 1) 24%,
+    hsla(141, 54%, 72%, 1) 42%,
+    hsla(141, 31%, 38%, 1) 75%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.lo-text-uppercase {
+  text-transform: uppercase;
+}
+
 /* ------------------------------ FOOTER ------------------------------ */
 
 .lo-body footer {

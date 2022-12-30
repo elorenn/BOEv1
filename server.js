@@ -1,7 +1,7 @@
 const app = require("./app");
 const mongoose = require("mongoose");
 const path = require("path");
-const schools = require("./business.json");
+// const schools = require("./business.json");
 const { UserModel, UserSchema } = require("./model/userSchema");
 const users = [];
 const DB =
@@ -73,7 +73,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(methodOverride("_method"));
 
-// --------------------------------------------------------------------- //
+// -------------------------------- ROUTES ------------------------------------- //
 
 app.get("/", async (req, res) => {
   const schools = await School.find();
@@ -91,27 +91,49 @@ app.get("/", async (req, res) => {
   res.render("pages/index", {
     schools: schools,
     title: "Home Page",
+    path: "/",
     isAuthenticated: req.isAuthenticated(),
   });
 });
 app.get("/subscribe", (req, res) => {
   res.render("pages/subscribe", {
     title: "Subscribe",
+    path: "/subscribe",
     isAuthenticated: req.isAuthenticated(),
   });
 });
+app.get("/success", (req, res) => {
+  res.render("pages/success", {
+    path: "/success",
+    title: "Success",
+    isAuthenticated: req.isAuthenticated(),
+  });
+});
+
+app.get("/failure", (req, res) => {
+  res.render("pages/failure", {
+    path: "/failure",
+    title: "Failure",
+    isAuthenticated: req.isAuthenticated(),
+  });
+});
+
 app.get("/resources", (req, res) => {
   res.render("pages/resources", {
     title: "Resources",
+    path: "/resources",
     isAuthenticated: req.isAuthenticated(),
   });
 });
+
 app.get("/contact", (req, res) => {
   res.render("pages/contact", {
     title: "Contact Us",
+    path: "/contact",
     isAuthenticated: req.isAuthenticated(),
   });
 });
+
 app.get("/profile", checkAuthenticated, async (req, res) => {
   const schools = await School.find();
   const user = req.app.get("user");
@@ -126,6 +148,7 @@ app.get("/profile", checkAuthenticated, async (req, res) => {
   }
   res.render("pages/profile", {
     title: req.user.name + " Profile",
+    path: "/profile",
     schools: schools,
     name: req.user.name,
     email: req.user.email,
@@ -139,6 +162,8 @@ app.get("/profile", checkAuthenticated, async (req, res) => {
 app.get("/login", checkNotAuthenticated, (req, res) => {
   res.render("pages/login", {
     title: "Log In",
+    path: "/login",
+    info: req.flash("info"),
     isAuthenticated: req.isAuthenticated(),
   });
 });
@@ -150,29 +175,23 @@ app.post("/login", checkNotAuthenticated, (req, res, next) => {
     }
 
     if (!user) {
-      // @TODO: Display login feedback to user on login screen
-      console.log("Error logging in: ", msg.message);
-    } // Call passport logIn method
+      console.log("ERROR logging in: ", msg.message);
+      req.flash("error", msg.message); // shows message from passport-config
+      return res.redirect("back");
+    }
 
+    // Call passport logIn method
     req.logIn(user, (error) => {
       if (error) {
-        // @TODO: Handle errors
-        console.log("lo error: " + error);
+        console.log("ERROR reaching profile: " + error); // Failed to serialize user into session.
+        req.flash("error", "Something went wrong. Please try again.");
+        return res.redirect("back");
       }
       req.app.set("user", {
         id: user.id,
         name: user.name,
         email: user.email,
       });
-      // console.log("REQ>USER", req.user);
-      // res.render("pages/profile", {
-      //   title: req.user.name + " Profile",
-      //   schools: schools,
-      //   name: req.user.name,
-      //   email: req.user.email,
-      //   date: req.user.date,
-      //   isAuthenticated: req.isAuthenticated(),
-      // });
       res.redirect("/profile");
     });
   })(req, res, next);
@@ -185,6 +204,8 @@ app.post("/login", checkNotAuthenticated, (req, res, next) => {
 app.get("/register", checkNotAuthenticated, (req, res) => {
   res.render("./pages/register", {
     title: "Register",
+    path: "/register",
+    regError: req.flash("regError"),
     isAuthenticated: req.isAuthenticated(),
   });
 });
@@ -211,12 +232,54 @@ app.post("/register", checkNotAuthenticated, async (req, res) => {
       date: postedDate,
       favorites: favSchools,
     });
-    user.save();
-    users.push(user);
-    res.redirect("/login");
+
+    const err = user.validateSync();
+    if (err) {
+      req.flash("regError", err.message);
+      return res.redirect("back");
+    } else {
+      // validation passed
+      user.save();
+      users.push(user);
+      res.redirect("/login");
+    }
   } catch {
     res.redirect("/register");
   }
+});
+
+// -------------------------------- USER LIKES FAVORITES ------------------------------------- //
+
+app.post("/user-likes", async function (req, res) {
+  const user = req.app.get("user");
+  const schoolId = req.body.school_id;
+
+  if (!user || !user.id || !schoolId) {
+    if (!user) {
+      // user not logged in
+      req.flash("info", "Please log in to like listings.");
+      res.redirect("/login");
+    }
+    return null; // @TO-DO: handle errors
+  }
+
+  const query = {
+    school_id: schoolId,
+    user_id: user.id,
+  };
+
+  const userLike = await UserLike.findOne(query);
+  const isLiked = userLike ? !userLike.is_liked : true;
+
+  const userLikeData = {
+    user_id: user.id,
+    school_id: schoolId,
+    is_liked: isLiked,
+  };
+
+  const options = { upsert: true };
+  await UserLike.findOneAndUpdate(query, userLikeData, options);
+  res.redirect("back");
 });
 
 // -------------------------------- LOG OUT ------------------------------------- //
@@ -244,5 +307,18 @@ function checkNotAuthenticated(req, res, next) {
   }
   next();
 }
+
+// -------------------------------- 404 Error ------------------------------------- //
+
+// must be at the end
+app.use((req, res, next) => {
+  res.render("pages/404", {
+    title: "Page Not Found",
+    path: "",
+    isAuthenticated: req.isAuthenticated(),
+  });
+});
+
+// ------------------------------------------------------------------------------- //
 
 app.listen(4000);

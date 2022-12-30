@@ -12,6 +12,7 @@
   --color-a: #a5243d;
   --color-b: #134074;
   --color-c: #a05482;
+  --logo-color-disabled: rgba(67, 126, 88, 0.1);
 
   --lo-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
@@ -37,7 +38,8 @@ body.lo-body {
   justify-content: center;
   align-items: center;
   width: 100vw;
-  min-height: auto;
+  height: auto;
+  min-height: fit-content;
   background-color: var(--bg-secondary-color);
   padding: 0;
   margin: 0;
@@ -284,12 +286,17 @@ button.nav-btn.fa-sign-in {
 .lo-body .lo-section-main {
   position: relative;
   height: auto;
+  min-height: fit-content;
   width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 5% auto 5%;
+  margin: 5% auto;
+}
+
+.lo-body .lo-section-main.lo-section-main-tall {
+  min-height: 100vh;
 }
 
 .lo-body .lo-container {
@@ -311,8 +318,7 @@ button.nav-btn.fa-sign-in {
 }
 
 .lo-container .lo-error-message {
-  color: #ffffff;
-  background-color: var(--color-a);
+  color: var(--color-a);
 }
 
 .lo-body .lo-container.lo-container-small {
@@ -373,14 +379,6 @@ button.nav-btn.fa-sign-in {
 .lo-body .lo-container aside {
   margin: 25px;
   color: var(--text-color-min);
-}
-
-/* ------------------------------ PROFILE ------------------------------ */
-
-.lo-profile-card {
-  border: 1px solid rgb(0 0 0 / 15%);
-  border-radius: 5px;
-  padding: 15px;
 }
 
 /* ------------------------------ CONTACT US CALENDLY ------------------------------ */
@@ -484,12 +482,26 @@ button.nav-btn.fa-sign-in {
   width: 900px;
 }
 
-.carousel__image {
-  max-width: 300px;
-}
-
 .lo-container-carousel .carouselheader {
   margin: auto;
+}
+
+/* ------------------------------ RESOURCES CAROUSEL TWO ------------------------------ */
+
+section.lo-section-main .carouselheader {
+  margin: 0;
+}
+
+section.lo-section-main .carousel {
+  margin: 0;
+}
+
+section.lo-section-main .carousel__nav {
+  margin: 0;
+}
+
+section.lo-section-main .carousel__image {
+  max-width: 300px;
 }
 
 /* ------------------------------ INDEX & FAVORITE LIST ------------------------------ */
@@ -507,11 +519,18 @@ button.nav-btn.fa-sign-in {
 }
 
 .lo-favorites-list {
-  /* overflow: auto; */
   min-width: 480px;
   width: auto;
   min-height: 200px;
   height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.lo-basic-list li,
+.lo-favorites-list li {
+  cursor: pointer;
 }
 
 .lo-basic-list li,
@@ -611,7 +630,7 @@ section.lo-section-half .lo-in-depth-list li a:hover,
 .list-group-item-action:focus,
 .list-group-item-action:hover,
 section.lo-favorites-list li a:hover {
-  background-color: rgba(67, 126, 88, 0.1);
+  background-color: var(--logo-color-disabled);
 }
 
 section.lo-section-half .lo-basic-list li .lo-list-text-side,
@@ -632,6 +651,7 @@ section.lo-favorites-list .lo-list-text-side p {
   color: #000000e6;
 }
 
+#lo-search-empty h5,
 .lo-basic-list .lo-list-text-side p:first-of-type,
 section.lo-favorites-list .lo-list-text-side p:first-of-type {
   font-size: 14px;
@@ -644,6 +664,7 @@ section.lo-favorites-list .lo-list-text-side p:nth-of-type(2) {
   color: #00000099;
 }
 
+#lo-search-empty p,
 .lo-basic-list .lo-list-text-side p:nth-of-type(3),
 section.lo-favorites-list .lo-list-text-side p:nth-of-type(3) {
   font-size: 12px;
@@ -696,9 +717,8 @@ section.lo-search-wrapper {
   position: relative;
   z-index: 2;
   width: 100%;
-  padding: 25px 10px;
+  padding: 25px 10px 10px;
   border-bottom: 1px solid rgb(0 0 0 / 15%);
-  /* box-shadow: rgb(0 0 0 / 18%) 0px 2px 4px; */
 }
 
 .lo-search-wrapper i.fa-solid.fa-magnifying-glass {
@@ -719,12 +739,40 @@ input#searchInput[type="text"] {
   border-color: rgb(0 0 0 / 5%);
 }
 
+#lo-search-empty {
+  display: none;
+  position: relative;
+  width: 95%;
+  text-align: center;
+  padding: 25px 16px 0;
+  /* background-color: var(--bg-secondary-color);
+  background-color: rgba(67, 126, 88, 0.1); */
+}
+
+section.lo-search-wrapper p {
+  margin: 0;
+  font-size: 12px;
+  color: #00000099;
+  visibility: hidden;
+}
+
 /* ------------------------------ PROFILE ------------------------------ */
+
+.lo-profile-card {
+  border: 1px solid rgb(0 0 0 / 15%);
+  border-radius: 5px;
+  padding: 15px;
+}
+
+.lo-container.lo-container-profile-favorites {
+  max-height: 600px;
+}
 
 .lo-body .lo-section-main.lo-section-widgets {
   flex-direction: row-reverse;
   justify-content: space-evenly;
   align-items: flex-start;
+  min-height: auto;
 }
 
 .lo-container.lo-profile-card {
@@ -822,10 +870,11 @@ input#searchInput[type="text"] {
   text-transform: capitalize;
   margin: 0;
   font-size: 16px;
-  color: #437e58;
+  color: var(--logo-color);
 }
 
-.lo-profile-card-sm-h .lo-profile-card-img-side {
+.lo-profile-card-sm-h .lo-profile-card-img-side,
+.lo-container-alert .lo-container-img-side {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -835,6 +884,7 @@ input#searchInput[type="text"] {
 .lo-favorites-list h5 {
   color: var(--text-color-min);
   font-weight: unset;
+  cursor: text;
 }
 
 section.lo-favorites-list-empty {
@@ -844,10 +894,83 @@ section.lo-favorites-list-empty {
   justify-content: center;
   align-items: center;
   text-align: center;
+  padding: 25px 0;
+  /* background-color: var(--bg-secondary-color);
+  background-color: rgba(67, 126, 88, 0.1); */
 }
 
 section.lo-favorites-list-empty p {
   width: 60%;
+  color: #00000099;
+  font-size: 14px;
+}
+
+/* ------------------------------ SUCCESS / FAILURE ------------------------------ */
+
+.lo-container.lo-container-alert {
+  flex-direction: row;
+}
+
+.lo-container-alert .lo-container-text-side {
+  margin: auto;
+}
+
+.lo-container-alert .lo-container-text-side h3 {
+  font-size: 20px;
+  color: #212529;
+  font-weight: normal;
+}
+
+.lo-container-alert .lo-container-text-side p {
+  margin: 0;
+  color: #00000099;
+  font-size: 14px;
+}
+
+.lo-container .lo-container-img-side {
+  margin-right: 25px;
+}
+
+.lo-container-img-side .lo-img-wrapper {
+  font-size: 2em;
+}
+
+.lo-container-img-side .lo-img-wrapper.lo-success {
+  color: var(--logo-color);
+}
+
+.lo-container-img-side .lo-img-wrapper.lo-failure {
+  color: var(--color-a);
+}
+
+/* ------------------------------ 404 ------------------------------ */
+
+.lo-section-404 {
+  color: #00000099;
+  cursor: default;
+}
+
+.lo-section-404 h1 {
+  font-size: 5em;
+  font-weight: unset;
+  margin: 50px;
+}
+
+.lo-text-gradient {
+  font-weight: 900;
+  color: var(--logo-color);
+  background: linear-gradient(
+    150deg,
+    hsla(141, 31%, 38%, 1) 24%,
+    hsla(141, 54%, 72%, 1) 42%,
+    hsla(141, 31%, 38%, 1) 75%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.lo-text-uppercase {
+  text-transform: uppercase;
 }
 
 /* ------------------------------ FOOTER ------------------------------ */
@@ -929,6 +1052,10 @@ section.lo-favorites-list-empty p {
     background-color: #ffffff;
     z-index: 9;
     padding: 15px 15px 5px 15px;
+  }
+
+  #lo-search-empty {
+    top: 25%;
   }
 
   .lo-basic-list ul#lo-basic-list {

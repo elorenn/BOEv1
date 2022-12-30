@@ -1,25 +1,30 @@
 <section class="lo-favorites-list">
-  <h5>Favorites</h5>
-    <% let toShow = "" %> 
-    <% let sortedSchools = [...schools] %> 
-    <% sortedSchools.sort((a, b) => { %> 
-    <%  if (a.name < b.name) { %> 
-    <%    return -1;%> 
-    <%  } %> 
-    <% }); %> 
-    <% let likedSchools = sortedSchools.filter(school => { %>
-    <% return school.is_liked; %>
-    <% }); %>
-    <% if (likedSchools.length === 0) { %>
-      <section class="lo-favorites-list-empty">
-        <h3>No favorites yet</h3>
-        <p>Keep track of the programs you're interested in by clicking the <span> <i class="fa-solid fa-heart"></i> </span> icon. </p>
-      </section>
+  <% let toShow = "" %> <% let sortedSchools = [...schools] %> <%
+  sortedSchools.sort((a, b) => { %> <% if (a.name < b.name) { %> <% return -1;%>
+  <% } %> <% }); %> <% let likedSchools = sortedSchools.filter(school => { %> <%
+  return school.is_liked; %> <% }); %> <% let howMany = likedSchools.length; %>
+  <h5>
+    <span>
+      <i class="fa fa-heart-o" aria-hidden="true"></i>
+    </span>
+    <span>&#183;</span>
+    Favorites <% if (likedSchools.length !== 0) { %>
+    <span><span>&#183; </span><%= howMany %></span>
     <% } %>
+  </h5>
+  <% if (likedSchools.length === 0) { %>
+  <section class="lo-favorites-list-empty">
+    <h3>No favorites yet</h3>
+    <p>
+      Keep track of the programs you're interested in by clicking the
+      <span> <i class="fa-solid fa-heart"></i> </span> icon.
+    </p>
+  </section>
+  <% } %>
   <ul>
     <% likedSchools.forEach(school => { %>
     <li>
-      <a class="list-group-item">
+      <a class="list-group-item" href="<%=school.siteUrl%>">
         <section class="lo-list-img-side">
           <div class="lo-logo-wrapper">
             <img class="companylogo" src="<%= school.logoUrl %>" alt="Logo" />

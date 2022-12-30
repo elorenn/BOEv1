@@ -2,15 +2,25 @@
 <html lang="en" dir="ltr">
   <head>
     <%- include('../partials/head'); %>
-    <link rel="stylesheet" href="../css/lo.css" />
   </head>
   <body class="lo-body lo-body-pop">
     <%- include('../partials/nav'); %>
-    <section class="lo-section-main">
-      <h3>Kickstart a career in a skilled trade.</h3>
+    <section class="lo-section-main lo-section-main-tall">
+      <h3>
+        <% if (info && info.length !== 0){ %> <%=info%> <% } else { %> Kickstart
+        a career in a skilled trade. <% } %>
+      </h3>
       <div class="lo-container lo-container-small">
         <span class="lo-error-message">
-          <% if (messages.error) { %> <%=messages.error %> <% } %>
+          <% if (messages.error && messages.error.length !== 0) { %>
+          <span
+            ><i class="fa fa-exclamation-triangle" aria-hidden="true"> </i>
+          </span>
+          <%=messages.error %> <% } %> <% if (info && info.length !== 0) { %>
+          <span
+            ><i class="fa fa-exclamation-triangle" aria-hidden="true"> </i>
+          </span>
+          <%=info%> <% } %>
         </span>
         <form action="/login" method="POST">
           <label for="email">Email</label>
@@ -44,8 +54,6 @@
 
     <!-- External JavaScript and jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <!-- <script src="server.js"></script> -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <!-- <script src="/js/search.js"></script> -->
   </body>
 </html>

@@ -3,10 +3,10 @@
     <% let toShow = "" %> <% let sortedSchools = [...schools] %> <%
     sortedSchools.sort((a, b) => { %> <% if (a.name < b.name) { %> <% return -1;
     %> <% } %> <% }); %> <% sortedSchools.forEach(function(school, i) { %> <% if
-    (i === 1) { %> <% toShow = "show" %> <% } else { %> <% toShow = "" %> <% }
+    (i === 0) { %> <% toShow = "show" %> <% } else { %> <% toShow = "" %> <% }
     %>
     <li
-      id="item-<%=i%>"
+      data-id=<%= school._id %>
       class="indepthlistitema list-group-item list-group-item-action <%=toShow%>"
       href="#list-item-<%=i%>"
     >
@@ -48,6 +48,7 @@
       <% if (school.premiumMembership) { %> <%- include('./application-premium',
       {school: school}); %> <% } else { %> <%- include('./application', {school:
       school}); %> <% } %>
+
       <aside class="lo-save-listing">
         <form action="/user-likes" method="POST">
           <input type="hidden" name="school_id" value="<%= school._id %>" />

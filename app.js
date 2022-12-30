@@ -7,7 +7,7 @@ const File = require("./model/fileSchema");
 const multer = require("multer");
 const http = require("http");
 const session = require("express-session");
-const { UserLike } = require("./model/userLikeSchema");
+// const { UserLike } = require("./model/userLikeSchema");
 
 // const UserSchema = require("./model/userSchema");
 
@@ -133,106 +133,109 @@ app.post("/index.html2", function (req, res) {
 // Subcriber Page - Save to Database
 
 app.post("/usersignup", function (req, res) {
-  const userFirstName = req.body.fname;
-  const userLastName = req.body.lname;
-  const userEmail = req.body.email;
-  const userCity = req.body.city;
-  const zipCode = req.body.zipcode;
-  const trade1 = req.body.trade1;
-  const trade2 = req.body.trade2;
-  const trade3 = req.body.trade3;
-  const postedDate = new Date().toLocaleDateString("en-us", {
-    year: "numeric",
-    month: "numeric",
-    day: "numeric",
-  });
-
-  // store in BOE database
-  const Subscriber = mongoose.model("Subscriber", BOESchema);
-  const subscriber = new Subscriber({
-    First_Name: userFirstName,
-    Last_Name: userLastName,
-    Email: userEmail,
-    City: userCity,
-    Zipcode: zipCode,
-    SubscriberTradeOfInterest1: trade1,
-    SubscriberTradeOfInterest2: trade2,
-    SubscriberTradeOfInterest3: trade3,
-    Date: postedDate,
-  });
-  subscriber.save();
-
-  // send to Mailchimp
-  const data = {
-    members: [
-      {
-        email_address: userEmail,
-        status: "subscribed",
-        merge_fields: {
-          FNAME: userFirstName,
-          LNAME: userLastName,
-          CITY: userCity,
-          ZIPCODE: zipCode,
-          TRADE1: trade1,
-          TRADE2: trade2,
-          TRADE3: trade3,
-        },
-      },
-    ],
-  };
-  const jsonData = JSON.stringify(data);
-  const url = "https://us17.api.mailchimp.com/3.0/lists/a61fc42e0a";
-  const options = {
-    method: "POST",
-    auth: "HenryC:a1c299a97ae75e0e005592e3fa618060-us17",
-  };
-  const request = https.request(url, options, function (response) {
-    if (response.statusCode === 200) {
-      res.sendFile(__dirname + "/success.ejs");
-    } else {
-      res.sendFile(__dirname + "/failure.ejs");
-    }
-    response.on("data", function (data) {
-      console.log(JSON.parse(data));
+  try {
+    const postedDate = new Date().toLocaleDateString("en-us", {
+      year: "numeric",
+      month: "numeric",
+      day: "numeric",
     });
-  });
-  request.write(jsonData);
-  request.end();
+
+    // store in BOE database
+    const Subscriber = mongoose.model("Subscriber", BOESchema);
+    const subscriber = new Subscriber({
+      First_Name: req.body.fname,
+      Last_Name: req.body.lname,
+      Email: req.body.email,
+      City: req.body.city,
+      Zipcode: req.body.zipcode,
+      SubscriberTradeOfInterest1: req.body.trade1,
+      SubscriberTradeOfInterest2: req.body.trade2,
+      SubscriberTradeOfInterest3: req.body.trade3,
+      Date: postedDate,
+    });
+    subscriber.save();
+    res.redirect("/success");
+  } catch {
+    res.redirect("/failure");
+  }
+
+  // // send to Mailchimp
+  // const data = {
+  //   members: [
+  //     {
+  //       email_address: userEmail,
+  //       status: "subscribed",
+  //       merge_fields: {
+  //         FNAME: userFirstName,
+  //         LNAME: userLastName,
+  //         CITY: userCity,
+  //         ZIPCODE: zipCode,
+  //         TRADE1: trade1,
+  //         TRADE2: trade2,
+  //         TRADE3: trade3,
+  //       },
+  //     },
+  //   ],
+  // };
+  // const jsonData = JSON.stringify(data);
+  // const url = "https://us17.api.mailchimp.com/3.0/lists/a61fc42e0a";
+  // const options = {
+  //   method: "POST",
+  //   auth: "HenryC:a1c299a97ae75e0e005592e3fa618060-us17", // this key should not be public or in GitHub
+  // };
+  // const request = https.request(url, options, function (response) {
+  //   if (response.statusCode === 200) {
+  //     res.sendFile(__dirname + "/success.ejs");
+  //   } else {
+  //     res.sendFile(__dirname + "/failure.ejs");
+  //   }
+  //   response.on("data", function (data) {
+  //     console.log(JSON.parse(data));
+  //   });
+  // });
+  // request.write(jsonData);
+  // request.end();
 });
 
 app.post("/failure", function (req, res) {
-  res.redirect("/subscribe.ejs");
+  res.redirect("/subscribe.ejs"); // is this doing anything?
 });
 
 app.post("/success", function (req, res) {
-  res.redirect("/");
+  res.redirect("/"); // is this doing anything?
 });
 
-app.post("/user-likes", async function (req, res) {
-  const user = req.app.get("user");
-  const schoolId = req.body.school_id;
+// -------------------------------- USER LIKES FAVORITES ------------------------------------- //
 
-  if (!user || !user.id || !schoolId) {
-    return null;
-  }
+// app.post("/user-likes", async function (req, res) {
+//   const user = req.app.get("user");
+//   const schoolId = req.body.school_id;
 
-  const query = {
-    school_id: schoolId,
-    user_id: user.id,
-  };
+//   if (!user || !user.id || !schoolId) {
+//     if (!user) {
+//       // user not logged in
+//       res.redirect("/login");
+//     }
+//     return null; // @TO-DO: handle errors
+//   }
 
-  const userLike = await UserLike.findOne(query);
-  const isLiked = userLike ? !userLike.is_liked : true;
+//   const query = {
+//     school_id: schoolId,
+//     user_id: user.id,
+//   };
 
-  const userLikeData = {
-    user_id: user.id,
-    school_id: schoolId,
-    is_liked: isLiked,
-  };
+//   const userLike = await UserLike.findOne(query);
+//   const isLiked = userLike ? !userLike.is_liked : true;
 
-  const options = { upsert: true };
-  await UserLike.findOneAndUpdate(query, userLikeData, options);
-  res.redirect("back");
-});
+//   const userLikeData = {
+//     user_id: user.id,
+//     school_id: schoolId,
+//     is_liked: isLiked,
+//   };
+
+//   const options = { upsert: true };
+//   await UserLike.findOneAndUpdate(query, userLikeData, options);
+//   res.redirect("back");
+// });
 
 module.exports = app;

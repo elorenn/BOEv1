@@ -73,7 +73,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(methodOverride("_method"));
 
-// --------------------------------------------------------------------- //
+// -------------------------------- ROUTES ------------------------------------- //
 
 app.get("/", async (req, res) => {
   const schools = await School.find();
@@ -299,6 +299,8 @@ function checkNotAuthenticated(req, res, next) {
   next();
 }
 
+// -------------------------------- 404 Error ------------------------------------- //
+
 // must be at the end
 app.use((req, res, next) => {
   res.render("pages/404", {
@@ -307,5 +309,7 @@ app.use((req, res, next) => {
     isAuthenticated: req.isAuthenticated(),
   });
 });
+
+// ------------------------------------------------------------------------------- //
 
 app.listen(4000);

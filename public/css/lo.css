@@ -920,11 +920,6 @@ section.lo-favorites-list-empty p {
   font-weight: 900;
   color: var(--logo-color);
   background: linear-gradient(
-    139deg,
-    var(--logo-color) 35%,
-    rgba(144, 222, 171, 1) 100%
-  );
-  background: linear-gradient(
     150deg,
     hsla(141, 31%, 38%, 1) 24%,
     hsla(141, 54%, 72%, 1) 42%,

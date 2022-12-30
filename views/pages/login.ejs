@@ -7,19 +7,20 @@
     <%- include('../partials/nav'); %>
     <section class="lo-section-main lo-section-main-tall">
       <h3>
-        <% if (info.length !== 0){ %> 
-          <%=info%> 
-        <% } else { %>
-          Kickstart a career in a skilled trade.
-        <% } %> 
+        <% if (info && info.length !== 0){ %> <%=info%> <% } else { %> Kickstart
+        a career in a skilled trade. <% } %>
       </h3>
       <div class="lo-container lo-container-small">
         <span class="lo-error-message">
-          <% if (messages.error) { %> <%=messages.error %> <% } %> 
-          <% if (info){ %> 
-            <%=info%> 
-          <% } %>
-         <% console.log(info.length); %>
+          <% if (messages.error && messages.error.length !== 0) { %>
+          <span
+            ><i class="fa fa-exclamation-triangle" aria-hidden="true"> </i>
+          </span>
+          <%=messages.error %> <% } %> <% if (info && info.length !== 0) { %>
+          <span
+            ><i class="fa fa-exclamation-triangle" aria-hidden="true"> </i>
+          </span>
+          <%=info%> <% } %>
         </span>
         <form action="/login" method="POST">
           <label for="email">Email</label>

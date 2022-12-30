@@ -632,6 +632,7 @@ section.lo-favorites-list .lo-list-text-side p {
   color: #000000e6;
 }
 
+#lo-search-empty h5,
 .lo-basic-list .lo-list-text-side p:first-of-type,
 section.lo-favorites-list .lo-list-text-side p:first-of-type {
   font-size: 14px;
@@ -644,6 +645,7 @@ section.lo-favorites-list .lo-list-text-side p:nth-of-type(2) {
   color: #00000099;
 }
 
+#lo-search-empty p,
 .lo-basic-list .lo-list-text-side p:nth-of-type(3),
 section.lo-favorites-list .lo-list-text-side p:nth-of-type(3) {
   font-size: 12px;
@@ -696,9 +698,8 @@ section.lo-search-wrapper {
   position: relative;
   z-index: 2;
   width: 100%;
-  padding: 25px 10px;
+  padding: 25px 10px 10px;
   border-bottom: 1px solid rgb(0 0 0 / 15%);
-  /* box-shadow: rgb(0 0 0 / 18%) 0px 2px 4px; */
 }
 
 .lo-search-wrapper i.fa-solid.fa-magnifying-glass {
@@ -717,6 +718,21 @@ input#searchInput[type="text"] {
   color: var(--text-color-min);
   background-color: #f8f9fa;
   border-color: rgb(0 0 0 / 5%);
+}
+
+#lo-search-empty {
+  display: none;
+  background-color: var(--bg-secondary-color);
+  width: 95%;
+  text-align: center;
+  padding: 16px 16px 0;
+}
+
+section.lo-search-wrapper p {
+  margin: 0;
+  font-size: 12px;
+  color: #00000099;
+  visibility: hidden;
 }
 
 /* ------------------------------ PROFILE ------------------------------ */

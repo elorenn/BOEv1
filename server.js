@@ -248,6 +248,7 @@ app.post("/user-likes", async function (req, res) {
   if (!user || !user.id || !schoolId) {
     if (!user) {
       // user not logged in
+      req.flash("info", "");
       req.flash("info", "Please log in to like listings.");
       res.redirect("/login");
     }

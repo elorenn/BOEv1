@@ -868,6 +868,10 @@ section.lo-search-wrapper p {
   cursor: text;
 }
 
+.lo-favorites-list a {
+  cursor: pointer;
+}
+
 section.lo-favorites-list-empty {
   height: 90%;
   display: flex;

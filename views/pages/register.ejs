@@ -8,6 +8,9 @@
     <section class="lo-section-main lo-section-main-tall">
       <h3>Looking to kickstart a career in a skilled trade? Join BOE.</h3>
       <div class="lo-container lo-container-small">
+        <span class="lo-error-message">
+          <% if (regError) { %> <%=regError %> <% } %>
+        </span>
         <form class="form" action="/register" method="POST">
           <div>
             <label for="name">Name</label>

@@ -205,6 +205,7 @@ app.get("/register", checkNotAuthenticated, (req, res) => {
   res.render("./pages/register", {
     title: "Register",
     path: "/register",
+    regError: req.flash("regError"),
     isAuthenticated: req.isAuthenticated(),
   });
 });
@@ -231,9 +232,18 @@ app.post("/register", checkNotAuthenticated, async (req, res) => {
       date: postedDate,
       favorites: favSchools,
     });
-    user.save();
-    users.push(user);
-    res.redirect("/login");
+
+    const err = user.validateSync();
+    if (err) {
+      console.log(err.message);
+      req.flash("regError", err.message);
+      return res.redirect("back");
+    } else {
+      // validation passed
+      user.save();
+      users.push(user);
+      res.redirect("/login");
+    }
   } catch {
     res.redirect("/register");
   }

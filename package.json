@@ -10,7 +10,7 @@
     "test": "node app.js",
     "start": "nodemon server.js"
   },
-  "author": "Henry Colwell",
+  "author": "Lorena Sarasua-Fernandez",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.0",

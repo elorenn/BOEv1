@@ -1,22 +1,17 @@
 :root {
   --logo-color: #437e58;
-  --bg-main-color: #f4f4f6;
-  --bg-secondary-color: #e6e6e9;
-  --bg-color-a: #f3f2ef;
-  --bg-color-b: #f9fafb;
-  --bg-color-c: #fafaf9;
-  --bg-color-d: #fdfaf5;
+  --bg-color: #e6e6e9;
   --text-color: #212529;
   --text-color-min: rgba(0, 0, 0, 60%);
   --icon-inactive-color: #2d2e2e;
   --color-a: #a5243d;
-  --color-b: #134074;
-  --color-c: #a05482;
   --logo-color-disabled: rgba(67, 126, 88, 0.1);
 
   --lo-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  --lo-font-serif-logo: Times, serif;
 }
 
 * {
@@ -40,7 +35,7 @@ body.lo-body {
   width: 100vw;
   height: auto;
   min-height: fit-content;
-  background-color: var(--bg-secondary-color);
+  background-color: var(--bg-color);
   padding: 0;
   margin: 0;
 }
@@ -59,6 +54,7 @@ body.lo-body {
 
 .lo-body nav .navbar-brand .slogan {
   padding: 0 15px;
+  font-family: var(--lo-font-serif-logo);
 }
 
 .lo-body.lo-body-pop nav .slogan {
@@ -580,7 +576,7 @@ section.lo-favorites-list .lo-logo-wrapper {
 
 section.lo-section-half .lo-basic-list .lo-logo-wrapper.empty,
 section.lo-favorites-list .lo-logo-wrapper.empty {
-  background-color: var(--bg-secondary-color);
+  background-color: var(--bg-color);
 }
 
 section.lo-section-half .lo-in-depth-list .lo-logo-wrapper {
@@ -745,8 +741,6 @@ input#searchInput[type="text"] {
   width: 95%;
   text-align: center;
   padding: 25px 16px 0;
-  /* background-color: var(--bg-secondary-color);
-  background-color: rgba(67, 126, 88, 0.1); */
 }
 
 section.lo-search-wrapper p {
@@ -783,14 +777,12 @@ section.lo-search-wrapper p {
   display: flex;
   flex-direction: column;
   cursor: default;
-  /* position: absolute; */
   top: 0;
   right: 0;
-  /* background: linear-gradient(#437e58 40%, #ffffff 40%); */
 }
 
 .lo-profile-card .lo-avatar-wrapper {
-  background-color: var(--bg-secondary-color);
+  background-color: var(--bg-color);
   width: 150px;
   height: 150px;
   border-radius: 100px;
@@ -895,8 +887,6 @@ section.lo-favorites-list-empty {
   align-items: center;
   text-align: center;
   padding: 25px 0;
-  /* background-color: var(--bg-secondary-color);
-  background-color: rgba(67, 126, 88, 0.1); */
 }
 
 section.lo-favorites-list-empty p {
@@ -1034,7 +1024,7 @@ section.lo-favorites-list-empty p {
 
   .lo-body section.lo-section-half .lo-in-depth-list {
     overflow: auto;
-    border-top: 5px solid var(--bg-secondary-color);
+    border-top: 5px solid var(--bg-color);
     overflow: visible;
   }
 
@@ -1043,10 +1033,6 @@ section.lo-favorites-list-empty p {
   }
 
   section.lo-search-wrapper {
-    /* position: absolute;
-    top: 50px;
-    width: 95vw;
-    border: 0; */
     position: sticky;
     top: 0;
     background-color: #ffffff;

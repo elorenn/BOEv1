@@ -777,7 +777,7 @@ section.lo-search-wrapper p {
 
 .lo-container.lo-profile-card {
   position: relative;
-  width: 350px;
+  min-width: 350px;
   height: auto;
   text-align: center;
   display: flex;

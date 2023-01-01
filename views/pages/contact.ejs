@@ -6,23 +6,12 @@
   <body class="lo-body lo-body-pop">
     <!-- Navigation Bar -->
     <%- include('../partials/nav'); %>
-    <!-- Calendly inline widget begin -->
-    <div
-      class="calendly-inline-widget"
-      data-url="https://calendly.com/boepartners/discovery?hide_gdpr_banner=1&primary_color=437e58"
-      style="border-radius: 25px"
-    ></div>
-    <script
-      type="text/javascript"
-      src="https://assets.calendly.com/assets/external/widget.js"
-      async
-    ></script>
-    <!-- Calendly inline widget end -->
+    <!-- Calendly widget -->
+    <%- include('../partials/calendly'); %>
     <!-- Footer Section -->
     <%- include('../partials/footer'); %>
 
     <!-- External JavaScript and jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <!-- <script src="index.js" charset="utf-8"></script> -->
   </body>
 </html>

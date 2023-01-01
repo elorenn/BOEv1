@@ -912,9 +912,20 @@ section.lo-favorites-list-empty p {
 }
 
 .lo-container-alert .lo-container-text-side p {
-  margin: 0;
   color: #00000099;
+  margin-bottom: 8px;
+}
+
+.lo-container-alert .lo-container-text-side a,
+.lo-container-alert .lo-container-text-side p {
   font-size: 14px;
+}
+
+.lo-container-alert .lo-container-text-side a {
+  color: var(--logo-color);
+  text-decoration: underline;
+  padding: 0;
+  cursor: pointer;
 }
 
 .lo-container .lo-container-img-side {

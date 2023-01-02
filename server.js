@@ -1,7 +1,7 @@
 const app = require("./app");
 const mongoose = require("mongoose");
 const path = require("path");
-const { UserModel, UserSchema } = require("./model/userLikeSchema");
+const { UserModel, UserSchema } = require("./model/userSchema");
 const users = [];
 const DB =
   "mongodb+srv://boepartners:missyangus123@cluster0.dm8gvgf.mongodb.net/BOE";

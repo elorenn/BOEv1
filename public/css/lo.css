@@ -338,7 +338,7 @@ button.nav-btn.fa-sign-in {
 
 .lo-body .lo-container.lo-container-small {
   width: 350px;
-  height: 420px;
+  min-height: 420px;
 }
 
 .lo-body .lo-container.lo-container-big {
@@ -645,7 +645,10 @@ section.lo-favorites-list li a {
   border: 0;
 }
 
-section.lo-section-half .lo-basic-list li a[aria-current]:not([aria-current="false"]),
+section.lo-section-half
+  .lo-basic-list
+  li
+  a[aria-current]:not([aria-current="false"]),
 section.lo-section-half .lo-basic-list li a:focus,
 section.lo-section-half .lo-basic-list li a:hover,
 section.lo-favorites-list li a:focus,

@@ -68,7 +68,7 @@
           <a
             class="navitem nav-link"
             aria-current="<%= path==="/profile" ? "page" : "false" %>"
-            href="/profile"
+            href="/profile/<%= isAuthenticated ? name.toLowerCase() : ":name" %>"
           >
             <i class="navicon4 fa-solid fa-user"></i>
             <span>Profile</span>
@@ -83,3 +83,4 @@
   </div>
 </nav>
 <div class="lo-nav-extension"></div>
+

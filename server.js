@@ -1,7 +1,6 @@
 const app = require("./app");
 const mongoose = require("mongoose");
 const path = require("path");
-// const schools = require("./business.json");
 const { UserModel, UserSchema } = require("./model/userSchema");
 const users = [];
 const DB =
@@ -118,6 +117,14 @@ app.get("/failure", (req, res) => {
   });
 });
 
+app.get("/applicationSubmitted", (req, res) => {
+  res.render("pages/applicationSubmitted", {
+    path: "/application-submitted",
+    title: "Application Submitted",
+    isAuthenticated: req.isAuthenticated(),
+  });
+});
+
 app.get("/resources", (req, res) => {
   res.render("pages/resources", {
     title: "Resources",
@@ -196,8 +203,6 @@ app.post("/login", checkNotAuthenticated, (req, res, next) => {
     });
   })(req, res, next);
 });
-
-// -------------------------------- Set User Modal for easy fetch in request like: req.app.get("UserModel") ---------------------- //
 
 // -------------------------------- Register / Sign Up Page - Save to Database - LO ------------------------------------- //
 

@@ -11,10 +11,7 @@
     "start": "nodemon server.js"
   },
   "author": "Henry Colwell",
-  "contributors": [
-    "Alejandro Fernandez-Sarasua", 
-    "Lorena Sarasua-Fernandez"
-  ],
+  "collaborators": ["Alejandro Fernandez-Sarasua", "Lorena Sarasua-Fernandez","Eduardo DuQuesne"],
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.0",

@@ -20,8 +20,6 @@ function toggleAria(basicSchool) {
 }
 
 const basicSchools = document.getElementById("lo-basic-list");
-const basicSchools2 = document.querySelectorAll("#lo-basic-list");
-
 const depthSchoolsPage = document.getElementById("lo-in-depth-list");
 const depthSchools = depthSchoolsPage.querySelectorAll("li");
 

@@ -11,7 +11,11 @@
     "start": "nodemon server.js"
   },
   "author": "Henry Colwell",
-  "collaborators": ["Alejandro Fernandez-Sarasua", "Lorena Sarasua-Fernandez","Eduardo DuQuesne"],
+  "collaborators": [
+    "Alejandro Fernandez-Sarasua",
+    "Lorena Sarasua-Fernandez",
+    "Eduardo DuQuesne"
+  ],
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.0",
@@ -37,7 +41,7 @@
     "passport-local": "^1.0.0"
   },
   "engines": {
-    "node": "v16.15.1"
+    "node": ">=16.15.1"
   },
   "devDependencies": {
     "dotenv": "^16.0.3",

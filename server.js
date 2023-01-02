@@ -46,7 +46,7 @@ const session = require("express-session");
 const methodOverride = require("method-override");
 const MongoStore = require("connect-mongo");
 const { School } = require("./model/schoolSchema");
-const { UserLike } = require("/model/userLikeSchema");
+const { UserLike } = require("./model/userLikeSchema");
 
 app.set("view-engine", "ejs");
 app.use(express.urlencoded({ extended: false }));

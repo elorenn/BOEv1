@@ -74,11 +74,17 @@ app.use(methodOverride("_method"));
 
 // -------------------------------- ROUTES ------------------------------------- //
 
+// app.param("name", (req, res, next, name) => {
+//   params: req.params["name"],
+// });
+
 app.get("/", async (req, res) => {
   const schools = await School.find();
   const user = req.app.get("user");
+  let name = ":name";
   if (user) {
     const userLikes = await UserLike.find({ user_id: user.id });
+    name = req.user.name;
     schools.forEach((school) => {
       const userLike = userLikes.find((like) =>
         school._id.equals(like.school_id)
@@ -88,21 +94,36 @@ app.get("/", async (req, res) => {
   }
 
   res.render("pages/index", {
+    name: name,
     schools: schools,
     title: "Home Page",
     path: "/",
     isAuthenticated: req.isAuthenticated(),
   });
 });
+
 app.get("/subscribe", (req, res) => {
+  const user = req.app.get("user");
+  let name = ":name";
+  if (user) {
+    name = req.user.name;
+  }
   res.render("pages/subscribe", {
+    name: name,
     title: "Subscribe",
     path: "/subscribe",
     isAuthenticated: req.isAuthenticated(),
   });
 });
+
 app.get("/success", (req, res) => {
+  const user = req.app.get("user");
+  let name = ":name";
+  if (user) {
+    name = req.user.name;
+  }
   res.render("pages/success", {
+    name: name,
     path: "/success",
     title: "Success",
     isAuthenticated: req.isAuthenticated(),
@@ -110,7 +131,13 @@ app.get("/success", (req, res) => {
 });
 
 app.get("/failure", (req, res) => {
+  const user = req.app.get("user");
+  let name = ":name";
+  if (user) {
+    name = req.user.name;
+  }
   res.render("pages/failure", {
+    name: name,
     path: "/failure",
     title: "Failure",
     isAuthenticated: req.isAuthenticated(),
@@ -118,7 +145,13 @@ app.get("/failure", (req, res) => {
 });
 
 app.get("/applicationSubmitted", (req, res) => {
+  const user = req.app.get("user");
+  let name = ":name";
+  if (user) {
+    name = req.user.name;
+  }
   res.render("pages/applicationSubmitted", {
+    name: name,
     path: "/application-submitted",
     title: "Application Submitted",
     isAuthenticated: req.isAuthenticated(),
@@ -126,7 +159,13 @@ app.get("/applicationSubmitted", (req, res) => {
 });
 
 app.get("/resources", (req, res) => {
+  const user = req.app.get("user");
+  let name = ":name";
+  if (user) {
+    name = req.user.name;
+  }
   res.render("pages/resources", {
+    name: name,
     title: "Resources",
     path: "/resources",
     isAuthenticated: req.isAuthenticated(),
@@ -134,14 +173,20 @@ app.get("/resources", (req, res) => {
 });
 
 app.get("/contact", (req, res) => {
+  const user = req.app.get("user");
+  let name = ":name";
+  if (user) {
+    name = req.user.name;
+  }
   res.render("pages/contact", {
+    name: name,
     title: "Contact Us",
     path: "/contact",
     isAuthenticated: req.isAuthenticated(),
   });
 });
 
-app.get("/profile", checkAuthenticated, async (req, res) => {
+app.get(`/profile/:name`, checkAuthenticated, async (req, res) => {
   const schools = await School.find();
   const user = req.app.get("user");
   if (user) {
@@ -178,6 +223,7 @@ app.get("/login", checkNotAuthenticated, (req, res) => {
 app.post("/login", checkNotAuthenticated, (req, res, next) => {
   passport.authenticate("local-signin", (error, user, msg) => {
     if (error) {
+      console.log(error);
       next(error);
     }
 
@@ -199,7 +245,8 @@ app.post("/login", checkNotAuthenticated, (req, res, next) => {
         name: user.name,
         email: user.email,
       });
-      res.redirect("/profile");
+
+      res.redirect("/profile/" + user.name.toLowerCase());
     });
   })(req, res, next);
 });

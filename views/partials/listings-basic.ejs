@@ -20,9 +20,9 @@
     sortedSchools.forEach(function(school, i) { %>
     <li 
       class="lo-basic-list-item"
-      data-id=<%= school._id %> 
+      data-id=<%= school._id %>  
       >
-      <a class="list-group-item list-group-item-action">
+      <a class="list-group-item list-group-item-action" aria-current="false">
         <section class="lo-list-img-side">
           <div class="lo-logo-wrapper">
             <img class="companylogo" src="<%= school.logoUrl %>" alt="Logo" />

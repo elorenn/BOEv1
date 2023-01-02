@@ -22,7 +22,7 @@
       class="lo-basic-list-item"
       data-id=<%= school._id %>  
       >
-      <a class="list-group-item list-group-item-action" aria-current="false">
+      <a class="list-group-item list-group-item-action" aria-current="<%= i === 0 ? "location" : "false" %>">
         <section class="lo-list-img-side">
           <div class="lo-logo-wrapper">
             <img class="companylogo" src="<%= school.logoUrl %>" alt="Logo" />

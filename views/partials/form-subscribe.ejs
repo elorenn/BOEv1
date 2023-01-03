@@ -10,15 +10,32 @@
     <%=subError %> <% } %>
   </p>
   <label for="fname" class="form-label">First Name</label>
-  <input type="text" class="fnameinput" name="fname" autocomplete="given-name"
-  value="<%= isAuthenticated ? name : "" %>" required />
+  <input
+    type="text"
+    class="fnameinput"
+    name="fname"
+    autocomplete="given-name"
+    value="<%= isAuthenticated ? name : "" %>"
+    required
+  />
   <label for="lname" class="form-label">Last Name</label>
-  <input type="text" class="lnameinput" name="name" autocomplete="family-name"
-  value="<%= isAuthenticated ? name : "" %>" required />
+  <input
+    type="text"
+    class="lnameinput"
+    name="name"
+    autocomplete="family-name"
+    value="<%= isAuthenticated ? name : "" %>"
+    required
+  />
   <label for="email" class="form-label">Email</label>
-
-  <input type="text" class="emailinput" name="email" autocomplete="email"
-  value="<%= isAuthenticated ? email : "" %>" required />
+  <input
+    type="text"
+    class="emailinput"
+    name="email"
+    autocomplete="email"
+    value="<%= isAuthenticated ? email : "" %>"
+    required
+  />
   <label for="city" class="form-label">City</label>
   <input
     type="text"

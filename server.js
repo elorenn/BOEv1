@@ -174,10 +174,22 @@ app.post("/index.html2", function (req, res) {
     month: "numeric",
     day: "numeric",
   });
+  const user = req.app.get("user");
+  let firstName = "";
+  let lastName = "";
+  let email = "";
+  if (user) {
+    firstName = req.user.name;
+    lastName = req.user.name;
+    email = req.user.email;
+  }
   const External_Applicant = mongoose.model("External_Applicant", BOESchema);
   const external_applicant = new External_Applicant({
     Organization: req.body.organization,
     Date: postedDate,
+    First_Name: firstName,
+    Last_Name: lastName,
+    Email: email,
   });
   external_applicant.save();
   res.redirect(req.body.orgApplicationURL);

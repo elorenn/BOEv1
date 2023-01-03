@@ -161,6 +161,11 @@ app.post("/", upload.single("resume"), async (req, res) => {
     month: "numeric",
     day: "numeric",
   });
+  const user = req.app.get("user");
+  let userId = "";
+  if (user) {
+    userId = user.id;
+  }
   const Application = mongoose.model("Application", BOESchema);
   const application = new Application({
     Organization: req.body.organization,
@@ -169,8 +174,11 @@ app.post("/", upload.single("resume"), async (req, res) => {
     Email: req.body.email,
     AppliedForTrade: req.body.appliedForTrade,
     Additional_Comments: req.body.additionalcomments,
+    User_Id: userId,
+    School_Id: req.body.org_id,
     Date: postedDate,
   });
+  console.log(application);
   application.save();
   res.redirect("/applicationSubmitted");
 });
@@ -200,7 +208,6 @@ app.post("/externalApp", async (req, res) => {
     User_Id: userId,
     School_Id: req.body.org_id,
   });
-  console.log(external_applicant);
   external_applicant.save();
   res.redirect(req.body.orgApplicationURL);
 });

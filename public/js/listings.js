@@ -1,3 +1,9 @@
+const basicSchools = document.getElementById("lo-basic-list");
+const depthSchoolsPage = document.getElementById("lo-in-depth-list");
+const depthSchools = depthSchoolsPage.querySelectorAll("li");
+
+let basicId, depthListItem;
+
 function toggleClass(depthSchool) {
   if (depthSchool.classList.contains("show")) {
     depthSchool.classList.remove("show");
@@ -18,12 +24,6 @@ function toggleAria(basicSchool) {
     }
   }
 }
-
-const basicSchools = document.getElementById("lo-basic-list");
-const depthSchoolsPage = document.getElementById("lo-in-depth-list");
-const depthSchools = depthSchoolsPage.querySelectorAll("li");
-
-let basicId, depthListItem;
 
 basicSchools.addEventListener("click", function (event) {
   if (event.target.closest(".lo-basic-list-item")) {

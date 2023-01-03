@@ -398,7 +398,7 @@ button.nav-btn.fa-sign-in {
 
 /* ------------------------------ CONTACT US CALENDLY ------------------------------ */
 
-.lo-body .calendly-inline-widget {
+.lo-body .lo-calendly-inline-widget {
   position: relative;
   min-width: 100vw;
   height: 100vh;

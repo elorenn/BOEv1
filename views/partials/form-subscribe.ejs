@@ -1,5 +1,5 @@
 <form action="/usersignup" method="post">
-  <h3 class="createaccountheader">
+  <h3>
     Subscribe to our BOE newsletter for weekly updates and skilled trade
     opportunities!
   </h3>
@@ -12,7 +12,6 @@
   <label for="fname" class="form-label">First Name</label>
   <input
     type="text"
-    class="fnameinput"
     name="fname"
     autocomplete="given-name"
     value="<%= isAuthenticated ? name : "" %>"
@@ -21,7 +20,6 @@
   <label for="lname" class="form-label">Last Name</label>
   <input
     type="text"
-    class="lnameinput"
     name="name"
     autocomplete="family-name"
     value="<%= isAuthenticated ? name : "" %>"
@@ -30,7 +28,6 @@
   <label for="email" class="form-label">Email</label>
   <input
     type="text"
-    class="emailinput"
     name="email"
     autocomplete="email"
     value="<%= isAuthenticated ? email : "" %>"
@@ -39,7 +36,6 @@
   <label for="city" class="form-label">City</label>
   <input
     type="text"
-    class="cityinput"
     name="city"
     autocomplete="address-level2"
     required
@@ -47,7 +43,6 @@
   <label for="zipcode" class="form-label">Zip Code</label>
   <input
     type="number"
-    class="zipcodeinput"
     name="zipcode"
     autocomplete="postal-code"
     required
@@ -58,7 +53,6 @@
     <label for="trade1">List up to 3 trades that interest you:</label>
     <input
       type="text"
-      class="tradeinput"
       placeholder="Enter Trade 1"
       name="trade1"
       autocomplete="off"
@@ -66,14 +60,12 @@
     />
     <input
       type="text"
-      class="tradeinput"
       placeholder="Enter Trade 2 (optional)"
       autocomplete="off"
       name="trade2"
     />
     <input
       type="text"
-      class="tradeinput"
       placeholder="Enter Trade 3 (optional)"
       autocomplete="off"
       name="trade3"

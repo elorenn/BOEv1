@@ -1023,6 +1023,11 @@ section.lo-favorites-list-empty p {
   text-align: center;
 }
 
+.lo-body footer .footercontainer a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .lo-body footer .footercontainer i {
   color: var(--text-color-dark);
   margin: 0 15px;

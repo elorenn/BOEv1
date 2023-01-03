@@ -72,11 +72,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(methodOverride("_method"));
 
-// --------------------------- TEST
+// --------------------------------------  -------------------------------------- //
 
 const multer = require("multer");
 
-// -------------------------------  Subscribe Page Schema -------------------------------------- //
+// --------------------------------------  Subscribe Page Schema -------------------------------------- //
 
 const BOESchema = new mongoose.Schema({
   Organization: String,
@@ -85,7 +85,7 @@ const BOESchema = new mongoose.Schema({
     required: [true, "Please enter first name"],
     validate: {
       validator: function (v) {
-        return /^[a-zA-Z]+$/.test(v);
+        return /^[a-zA-Z- ]+$/.test(v);
       },
       message: (props) =>
         `should only contain letters. No special characters or numbers.`,
@@ -99,7 +99,7 @@ const BOESchema = new mongoose.Schema({
     ],
     validate: {
       validator: function (v) {
-        return /^[a-zA-Z]+$/.test(v);
+        return /^[a-zA-Z- ]+$/.test(v);
       },
       message: (props) =>
         `should only contain letters. No special characters or numbers.`,
@@ -117,7 +117,7 @@ const BOESchema = new mongoose.Schema({
   City: String,
   Zipcode: {
     type: Number,
-    required: [true, "Please enter numeric value"],
+    required: [false, "Please enter numeric value"],
     validate: {
       validator: function (v) {
         return /^[1-9]+$/.test(v);
@@ -229,9 +229,11 @@ app.get("/", async (req, res) => {
   const schools = await School.find();
   const user = req.app.get("user");
   let name = ":name";
+  let email = "";
   if (user) {
     const userLikes = await UserLike.find({ user_id: user.id });
     name = req.user.name;
+    email = req.user.email;
     schools.forEach((school) => {
       const userLike = userLikes.find((like) =>
         school._id.equals(like.school_id)
@@ -242,6 +244,7 @@ app.get("/", async (req, res) => {
 
   res.render("pages/index", {
     name: name,
+    email: email,
     schools: schools,
     title: "Home Page",
     path: "/",

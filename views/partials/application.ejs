@@ -1,18 +1,12 @@
-<form action="/index.html2" class="applicationbutton" method="post">
+<form action="/externalApp" method="post">
+  <input type="hidden" name="organization" value="<%= school.name %>" />
   <input
-    class="organizationtextbox"
-    type="hidden"
-    name="organization"
-    value="<%= school.name %>"
-  />
-  <input
-    class="orgApplicationURL"
     type="hidden"
     name="orgApplicationURL"
     value="<%= school.applyUrl %>"
   />
   <br />
-  <button name="apply" type="submit" class="applybtn btn btn-primary">
+  <button name="apply" type="submit">
     Apply Now <i class="fa-solid fa-square-arrow-up-right"></i>
   </button>
   <br />

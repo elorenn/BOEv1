@@ -168,7 +168,7 @@ app.post("/", upload.single("resume"), async (req, res) => {
 });
 
 // Redirect to external application page, store user data
-app.post("/index.html2", function (req, res) {
+app.post("/externalApp", function (req, res) {
   const postedDate = new Date().toLocaleDateString("en-us", {
     year: "numeric",
     month: "numeric",

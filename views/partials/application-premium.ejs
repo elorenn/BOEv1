@@ -1,21 +1,18 @@
 <div class="lo-container-ap-premium">
-  <h6 class="applicationheader">Apply Now</h6>
+  <h6>Apply Now</h6>
   <form
     action="/"
-    class="applicationform"
     method="post"
     enctype="multipart/form-data"
   >
     <input
-      class="organizationtextbox"
       type="hidden"
       name="organization"
       value="<%= school.name %>"
     />
 
-    <label class="applicationlabel" for="firstname">First Name</label>
+    <label for="firstname">First Name</label>
     <input
-      class="nameinput"
       type="text"
       name="firstname"
       value="<%= isAuthenticated ? name : "" %>"
@@ -23,9 +20,8 @@
       required
     />
 
-    <label class="applicationlabel" for="lastname">Last Name</label>
+    <label for="lastname">Last Name</label>
     <input
-      class="nameinput"
       type="text"
       name="lastname"
       value="<%= isAuthenticated ? name : "" %>"
@@ -33,9 +29,8 @@
       required
     />
 
-    <label class="applicationlabel" for="email">Email</label>
+    <label for="email">Email</label>
     <input
-      class="emailinput"
       type="text"
       name="email"
       value="<%= isAuthenticated ? email : "" %>"
@@ -43,9 +38,7 @@
       required
     />
 
-    <label class="applicationlabel" for="appliedForTrade"
-      >Trade of Interest
-    </label>
+    <label for="appliedForTrade">Trade of Interest</label>
     <input
       type="text"
       name="appliedForTrade"
@@ -54,14 +47,13 @@
       required
     />
 
-    <div class="custom-file mb-3">
+    <div>
       <label for="resume" class="applicationlabel custom-file-label"
         ><em>Resume *pdf</em></label
       >
       <input
         type="file"
         name="resume"
-        class="custom-file-input"
         id="myFile"
         accept=".pdf"
         required
@@ -69,7 +61,6 @@
     </div>
 
     <textarea
-      class="additionalcomments"
       placeholder="Additional Comments/Messages"
       name="additionalcomments"
       rows="6"
@@ -77,7 +68,7 @@
       autocomplete="on"
     ></textarea>
 
-    <button name="apply" type="submit" class="applybtn btn btn-primary">
+    <button name="apply" type="submit">
       Submit Application
     </button>
   </form>

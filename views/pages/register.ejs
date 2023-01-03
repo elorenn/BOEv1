@@ -9,7 +9,11 @@
       <h3>Looking to kickstart a career in a skilled trade? Join BOE.</h3>
       <div class="lo-container lo-container-small">
         <span class="lo-error-message">
-          <% if (regError) { %> <%=regError %> <% } %>
+          <% if (regError && regError.length !== 0) { %>
+          <span
+            ><i class="fa fa-exclamation-triangle" aria-hidden="true"> </i>
+          </span>
+          <%=regError %> <% } %>
         </span>
         <form class="form" action="/register" method="POST">
           <div>

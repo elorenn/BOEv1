@@ -18,7 +18,7 @@
       class="nameinput"
       type="text"
       name="firstname"
-      value=""
+      value="<%= isAuthenticated ? name : "" %>"
       autocomplete="given-name"
       required
     />
@@ -28,7 +28,7 @@
       class="nameinput"
       type="text"
       name="lastname"
-      value=""
+      value="<%= isAuthenticated ? name : "" %>"
       autocomplete="family-name"
       required
     />
@@ -38,7 +38,7 @@
       class="emailinput"
       type="text"
       name="email"
-      value=""
+      value="<%= isAuthenticated ? email : "" %>"
       autocomplete="email"
       required
     />

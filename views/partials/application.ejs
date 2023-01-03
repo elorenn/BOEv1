@@ -1,5 +1,6 @@
 <form action="/externalApp" method="post">
   <input type="hidden" name="organization" value="<%= school.name %>" />
+  <input type="hidden" name="org_id" value="<%= school._id %>" />
   <input
     type="hidden"
     name="orgApplicationURL"
@@ -7,7 +8,8 @@
   />
   <br />
   <button name="apply" type="submit">
-    Apply Now <i class="fa-solid fa-square-arrow-up-right"></i>
+    Apply Now
+    <i class="fa-solid fa-square-arrow-up-right"></i>
   </button>
   <br />
   <br />

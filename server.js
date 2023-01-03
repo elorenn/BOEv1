@@ -107,7 +107,7 @@ const BOESchema = new mongoose.Schema({
   },
   Email: {
     type: String,
-    required: [true, "Please enter email"],
+    required: [false, "Please enter email"],
   },
   AppliedForTrade: String,
   Resume: String,
@@ -126,6 +126,14 @@ const BOESchema = new mongoose.Schema({
     },
   },
   Additional_Comments: String,
+  User_Id: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: false,
+  },
+  School_Id: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: false,
+  },
   Date: String,
 });
 
@@ -168,7 +176,7 @@ app.post("/", upload.single("resume"), async (req, res) => {
 });
 
 // Redirect to external application page, store user data
-app.post("/externalApp", function (req, res) {
+app.post("/externalApp", async (req, res) => {
   const postedDate = new Date().toLocaleDateString("en-us", {
     year: "numeric",
     month: "numeric",
@@ -177,11 +185,11 @@ app.post("/externalApp", function (req, res) {
   const user = req.app.get("user");
   let firstName = "";
   let lastName = "";
-  let email = "";
+  let userId = "";
   if (user) {
-    firstName = req.user.name;
-    lastName = req.user.name;
-    email = req.user.email;
+    firstName = user.name;
+    lastName = user.name;
+    userId = user.id;
   }
   const External_Applicant = mongoose.model("External_Applicant", BOESchema);
   const external_applicant = new External_Applicant({
@@ -189,8 +197,10 @@ app.post("/externalApp", function (req, res) {
     Date: postedDate,
     First_Name: firstName,
     Last_Name: lastName,
-    Email: email,
+    User_Id: userId,
+    School_Id: req.body.org_id,
   });
+  console.log(external_applicant);
   external_applicant.save();
   res.redirect(req.body.orgApplicationURL);
 });

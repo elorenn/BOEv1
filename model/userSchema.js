@@ -5,12 +5,11 @@ const UserSchema = new mongoose.Schema({
     type: String,
     validate: {
       validator: function (v) {
-        return /^[a-zA-Z]+$/.test(v);
+        return /^[a-zA-Z- ]+$/.test(v);
       },
       message: (props) =>
         `should only contain letters. No special characters or numbers.`,
     },
-    lowercase: true,
     required: true,
     minlength: 1,
     maxlength: [20, "Cannot be longer than 20 characters."],

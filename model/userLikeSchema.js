@@ -20,6 +20,3 @@ const UserLikeModel = mongoose.model("UserLike", UserLikeSchema);
 
 exports.UserLike = UserLikeModel;
 exports.UserLikeSchema = UserLikeSchema;
-
-exports.UserLike = UserLikeModel;
-exports.UserLikeSchema = UserLikeSchema;

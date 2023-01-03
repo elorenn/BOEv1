@@ -15,33 +15,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // -------------------------------  Subscribe Page Schema -------------------------------------- //
 
-const BOESchema = new mongoose.Schema({
-  Organization: String,
-  First_Name: {
-    type: String,
-    required: [false, "Please enter first name"],
-  },
-  Last_Name: {
-    type: String,
-    required: [false, "Please enter last name"],
-  },
-  Email: {
-    type: String,
-    required: [false, "Please enter email"],
-  },
-  AppliedForTrade: String,
-  Resume: String,
-  SubscriberTradeOfInterest1: String,
-  SubscriberTradeOfInterest2: String,
-  SubscriberTradeOfInterest3: String,
-  City: String,
-  Zipcode: {
-    type: Number,
-    required: [false, "Please enter numeric value"],
-  },
-  Additional_Comments: String,
-  Date: String,
-});
+const { BoeModel, BoeSchema } = require("./model/BoeSchema");
+app.set("BoeModel", BoeModel);
 
 // --------------------------------------------------------------------- //
 
@@ -67,7 +42,7 @@ app.post("/", upload.single("resume"), async (req, res) => {
     month: "numeric",
     day: "numeric",
   });
-  const Application = mongoose.model("Application", BOESchema);
+  const Application = mongoose.model("Application", BoeSchema);
   const application = new Application({
     Organization: req.body.organization,
     First_Name: req.body.firstname,
@@ -88,7 +63,7 @@ app.post("/index.html2", function (req, res) {
     month: "numeric",
     // day: "numeric",
   });
-  const External_Applicant = mongoose.model("External_Applicant", BOESchema);
+  const External_Applicant = mongoose.model("External_Applicant", BoeSchema);
   const external_applicant = new External_Applicant({
     Organization: req.body.organization,
     Date: postedDate,
@@ -109,7 +84,7 @@ app.post("/usersignup", function (req, res) {
     });
 
     // store in BOE database
-    const Subscriber = mongoose.model("Subscriber", BOESchema);
+    const Subscriber = mongoose.model("Subscriber", BoeSchema);
     const subscriber = new Subscriber({
       First_Name: req.body.fname,
       Last_Name: req.body.lname,

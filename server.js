@@ -211,6 +211,7 @@ app.get(`/profile/:name`, checkAuthenticated, async (req, res) => {
     name: req.user.name,
     email: req.user.email,
     date: req.user.date,
+    createdAt: req.user.CreatedAt,
     isAuthenticated: req.isAuthenticated(),
   });
 });
@@ -297,6 +298,7 @@ app.post("/register", checkNotAuthenticated, async (req, res) => {
       return res.redirect("back");
     } else {
       // validation passed
+      console.log(user);
       user.save();
       users.push(user);
       res.redirect("/login");

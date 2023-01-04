@@ -34,8 +34,8 @@ const premiumApplicationSchema = new mongoose.Schema({
     required: true,
   },
   Date: {
-    type: String,
-    required: true,
+    type: Date,
+    default: Date.now,
   },
 });
 

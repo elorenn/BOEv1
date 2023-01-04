@@ -42,7 +42,10 @@ const subscribeSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     required: false,
   },
-  Date: String,
+  Date: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 const Subscriber = mongoose.model("Subscriber", subscribeSchema);

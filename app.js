@@ -30,9 +30,8 @@ const {
 } = require("./model/premiumApplicationSchema");
 app.set("premiumApplicationModel", premiumApplicationModel);
 
-// --------------------------------------------------------------------- //
+// ------------------------------------- Multer file storage ------------------------------------- //
 
-// Multer file storage
 const multerStorage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "public");
@@ -47,13 +46,9 @@ const upload = multer({
   storage: multerStorage,
 });
 
-// Get application data
+// ------------------------------------- PREMIUM APPLY - Save to Database ------------------------------------- //
+
 app.post("/", upload.single("resume"), async (req, res) => {
-  const postedDate = new Date().toLocaleDateString("en-us", {
-    year: "numeric",
-    month: "numeric",
-    day: "numeric",
-  });
   const user = await req.app.get("user");
   let userId;
   if (user) {
@@ -72,20 +67,15 @@ app.post("/", upload.single("resume"), async (req, res) => {
     Additional_Comments: req.body.additionalcomments,
     User_Id: userId,
     School_Id: req.body.org_id,
-    Date: postedDate,
   });
   console.log(premiumApplication);
   premiumApplication.save();
   res.redirect("/applicationSubmitted");
 });
 
-// Redirect to external application page, store user data
+// ------------------------------------- EXTERNAL APPLY - Save to Database ------------------------------------- //
+
 app.post("/externalApp", async (req, res) => {
-  const postedDate = new Date().toLocaleDateString("en-us", {
-    year: "numeric",
-    month: "numeric",
-    day: "numeric",
-  });
   const user = await req.app.get("user");
   let userId;
   if (user) {
@@ -100,23 +90,17 @@ app.post("/externalApp", async (req, res) => {
     Organization: req.body.organization,
     User_Id: userId,
     School_Id: req.body.org_id,
-    Date: postedDate,
   });
   console.log(externalApplication);
   externalApplication.save();
+  // Redirect to external application page
   res.redirect(req.body.orgApplicationURL);
 });
 
-// --------------------------------------------------------------------- //
-// Subcriber Page - Save to Database
+// ------------------------------------- SUBSCRIBE - Save to Database ------------------------------------- //
 
 app.post("/usersignup", async (req, res) => {
   try {
-    const postedDate = new Date().toLocaleDateString("en-us", {
-      year: "numeric",
-      month: "numeric",
-      day: "numeric",
-    });
     const user = await req.app.get("user");
     let userId;
     if (user) {
@@ -134,7 +118,6 @@ app.post("/usersignup", async (req, res) => {
       SubscriberTradeOfInterest2: req.body.trade2,
       SubscriberTradeOfInterest3: req.body.trade3,
       User_Id: userId,
-      Date: postedDate,
     });
     console.log(subscriber);
     subscriber.save();

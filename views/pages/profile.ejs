@@ -12,7 +12,7 @@
             <!-- insert user profile photo here: -->
             <!-- <img
               class="lo-avatar"
-              src="/images/carousel/healthcareworker.jpeg"
+              src="user.image" // this image variable is an example - not yet coded. must be added to userSchema
               alt="user avatar or profile photo"
             /> -->
           </div>
@@ -24,7 +24,12 @@
           <p>
             <a href="mailto:<%=email%>"><%=email%></a>
           </p>
-          <% } %> <% if (date) { %>
+          <% } %> <% if (createdAt) { %>
+          <p>
+            Member since <%= createdAt.toLocaleDateString("en-us", {
+            year:'numeric', month: 'long', day: 'numeric' }) %>
+          </p>
+          <% } else if (date) { %>
           <p>Member since <%= date %></p>
           <% } %>
         </section>

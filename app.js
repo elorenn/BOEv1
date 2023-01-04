@@ -110,7 +110,7 @@ app.post("/usersignup", function (req, res) {
       day: "numeric",
     });
     const user = req.app.get("user");
-    let userId = "";
+    let userId;
     if (user) {
       userId = user.id;
     }

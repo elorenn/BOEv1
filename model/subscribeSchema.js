@@ -3,35 +3,42 @@
 const mongoose = require("mongoose");
 
 const subscribeSchema = new mongoose.Schema({
-  Organization: String,
   First_Name: {
     type: String,
-    required: [false, "Please enter first name"],
+    required: [true, "Please enter given name or first name"],
   },
   Last_Name: {
     type: String,
-    required: [false, "Please enter last name"],
+    required: [true, "Please enter surname or last name"],
   },
   Email: {
     type: String,
-    required: [false, "Please enter email"],
+    required: [true, "Please enter your email"],
   },
-  AppliedForTrade: String,
-  Resume: String,
-  SubscriberTradeOfInterest1: String,
-  SubscriberTradeOfInterest2: String,
-  SubscriberTradeOfInterest3: String,
-  City: String,
-  Zipcode: {
-    type: Number,
-    required: [false, "Please enter numeric value"],
+  SubscriberTradeOfInterest1: {
+    type: String,
+    required: [
+      true,
+      "Please enter at least one program topic or trade that interests you in order to receive appropriate emails.",
+    ],
   },
-  Additional_Comments: String,
-  User_Id: {
-    type: mongoose.Schema.Types.ObjectId,
+  SubscriberTradeOfInterest2: {
+    type: String,
     required: false,
   },
-  School_Id: {
+  SubscriberTradeOfInterest3: {
+    type: String,
+    required: false,
+  },
+  City: {
+    type: String,
+    required: true,
+  },
+  Zipcode: {
+    type: Number,
+    required: [true, "Please enter valid zipcode"],
+  },
+  User_Id: {
     type: mongoose.Schema.Types.ObjectId,
     required: false,
   },

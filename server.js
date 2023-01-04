@@ -101,7 +101,6 @@ app.get("/", async (req, res) => {
     path: "/",
     appError: req.flash("appError"),
     isAuthenticated: req.isAuthenticated(),
-    lo,
   });
 });
 

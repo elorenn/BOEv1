@@ -143,19 +143,19 @@ app.get("/applicationSubmitted", (req, res) => {
   });
 });
 
-app.get("/resources", (req, res) => {
-  const user = req.app.get("user");
-  let name = ":name";
-  if (user) {
-    name = req.user.name;
-  }
-  res.render("pages/resources", {
-    name: name,
-    title: "Resources",
-    path: "/resources",
-    isAuthenticated: req.isAuthenticated(),
-  });
-});
+// app.get("/resources", (req, res) => {
+//   const user = req.app.get("user");
+//   let name = ":name";
+//   if (user) {
+//     name = req.user.name;
+//   }
+//   res.render("pages/resources", {
+//     name: name,
+//     title: "Resources",
+//     path: "/resources",
+//     isAuthenticated: req.isAuthenticated(),
+//   });
+// });
 
 app.get("/contact", (req, res) => {
   const user = req.app.get("user");
@@ -505,10 +505,16 @@ function checkNotAuthenticated(req, res, next) {
 // -------------------------------- 404 Error ------------------------------------- //
 
 // must be at the end
-app.use((req, res, next) => {
+app.use(async (req, res, next) => {
+  const user = await req.app.get("user");
+  let name;
+  if (user) {
+    name = user.name;
+  }
   res.render("pages/404", {
     title: "Page Not Found",
     path: "",
+    name: name,
     isAuthenticated: req.isAuthenticated(),
   });
 });

@@ -27,6 +27,14 @@ const BoeSchema = new mongoose.Schema({
     required: [false, "Please enter numeric value"],
   },
   Additional_Comments: String,
+  User_Id: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: false,
+  },
+  School_Id: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: false,
+  },
   Date: String,
 });
 

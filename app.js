@@ -42,6 +42,11 @@ app.post("/", upload.single("resume"), async (req, res) => {
     month: "numeric",
     day: "numeric",
   });
+  const user = req.app.get("user");
+  let userId = "";
+  if (user) {
+    userId = user.id;
+  }
   const Application = mongoose.model("Application", BoeSchema);
   const application = new Application({
     Organization: req.body.organization,
@@ -50,6 +55,8 @@ app.post("/", upload.single("resume"), async (req, res) => {
     Email: req.body.email,
     AppliedForTrade: req.body.appliedForTrade,
     Additional_Comments: req.body.additionalcomments,
+    User_Id: userId,
+    School_Id: req.body.org_id,
     Date: postedDate,
   });
   application.save();
@@ -57,15 +64,28 @@ app.post("/", upload.single("resume"), async (req, res) => {
 });
 
 // Redirect to external application page, store user data
-app.post("/index.html2", function (req, res) {
+app.post("/externalApp", function (req, res) {
   const postedDate = new Date().toLocaleDateString("en-us", {
     year: "numeric",
     month: "numeric",
-    // day: "numeric",
+    day: "numeric",
   });
+  const user = req.app.get("user");
+  let firstName = "";
+  let lastName = "";
+  let userId = "";
+  if (user) {
+    firstName = user.name;
+    lastName = user.name;
+    userId = user.id;
+  }
   const External_Applicant = mongoose.model("External_Applicant", BoeSchema);
   const external_applicant = new External_Applicant({
     Organization: req.body.organization,
+    First_Name: firstName,
+    Last_Name: lastName,
+    User_Id: userId,
+    School_Id: req.body.org_id,
     Date: postedDate,
   });
   external_applicant.save();

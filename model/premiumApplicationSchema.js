@@ -2,7 +2,7 @@
 
 const mongoose = require("mongoose");
 
-const BoeSchema = new mongoose.Schema({
+const premiumApplicationSchema = new mongoose.Schema({
   Organization: String,
   First_Name: {
     type: String,
@@ -38,12 +38,8 @@ const BoeSchema = new mongoose.Schema({
   Date: String,
 });
 
-const Application = mongoose.model("Application", BoeSchema);
-const External_Applicant = mongoose.model("External_Applicant", BoeSchema);
-const Subscriber = mongoose.model("Subscriber", BoeSchema);
+const PremiumApplication = mongoose.model("PremiumApplication", premiumApplicationSchema);
 
-exports.Application = Application;
-exports.External_Applicant = External_Applicant;
-exports.Subscriber = Subscriber;
+exports.PremiumApplication = PremiumApplication;
 
-exports.BOESchema = BoeSchema;
+exports.premiumApplicationSchema = premiumApplicationSchema;

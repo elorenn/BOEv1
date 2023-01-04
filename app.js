@@ -13,10 +13,16 @@ app.set("views", "views");
 app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// -------------------------------  Subscribe Page Schema -------------------------------------- //
+// -------------------------------  Schemas -------------------------------------- //
 
-const { BoeModel, BoeSchema } = require("./model/BoeSchema");
-app.set("BoeModel", BoeModel);
+const { subscribeModel, subscribeSchema } = require("./model/subscribeSchema");
+app.set("subscribeModel", subscribeModel);
+
+const { externalApplicationModel, externalApplicationSchema } = require("./model/externalApplicationSchema");
+app.set("externalApplicationModel", externalApplicationModel);
+
+const { premiumApplicationModel, premiumApplicationSchema } = require("./model/premiumApplicationSchema");
+app.set("premiumApplicationModel", premiumApplicationModel);
 
 // --------------------------------------------------------------------- //
 
@@ -47,8 +53,8 @@ app.post("/", upload.single("resume"), async (req, res) => {
   if (user) {
     userId = user.id;
   }
-  const Application = mongoose.model("Application", BoeSchema);
-  const application = new Application({
+  const PremiumApplication = mongoose.model("PremiumApplication", premiumApplicationSchema);
+  const premiumApplication = new PremiumApplication({
     Organization: req.body.organization,
     First_Name: req.body.firstname,
     Last_Name: req.body.lastname,
@@ -59,7 +65,8 @@ app.post("/", upload.single("resume"), async (req, res) => {
     School_Id: req.body.org_id,
     Date: postedDate,
   });
-  application.save();
+  console.log(premiumApplication);
+  premiumApplication.save();
   res.redirect("/applicationSubmitted");
 });
 
@@ -79,8 +86,8 @@ app.post("/externalApp", function (req, res) {
     lastName = user.name;
     userId = user.id;
   }
-  const External_Applicant = mongoose.model("External_Applicant", BoeSchema);
-  const external_applicant = new External_Applicant({
+  const ExternalApplication = mongoose.model("ExternalApplication", externalApplicationSchema);
+  const externalApplication = new ExternalApplication({
     Organization: req.body.organization,
     First_Name: firstName,
     Last_Name: lastName,
@@ -88,7 +95,7 @@ app.post("/externalApp", function (req, res) {
     School_Id: req.body.org_id,
     Date: postedDate,
   });
-  external_applicant.save();
+  externalApplication.save();
   res.redirect(req.body.orgApplicationURL);
 });
 
@@ -102,9 +109,13 @@ app.post("/usersignup", function (req, res) {
       month: "numeric",
       day: "numeric",
     });
-
-    // store in BOE database
-    const Subscriber = mongoose.model("Subscriber", BoeSchema);
+    const user = req.app.get("user");
+    let userId = "";
+    if (user) {
+      userId = user.id;
+    }
+    // store in BOE database for email newsletter
+    const Subscriber = mongoose.model("Subscriber", subscribeSchema);
     const subscriber = new Subscriber({
       First_Name: req.body.fname,
       Last_Name: req.body.lname,
@@ -114,8 +125,10 @@ app.post("/usersignup", function (req, res) {
       SubscriberTradeOfInterest1: req.body.trade1,
       SubscriberTradeOfInterest2: req.body.trade2,
       SubscriberTradeOfInterest3: req.body.trade3,
+      User_Id: userId,
       Date: postedDate,
     });
+    console.log(subscriber);
     subscriber.save();
     res.redirect("/success");
   } catch {

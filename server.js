@@ -74,7 +74,7 @@ app.use(methodOverride("_method"));
 // -------------------------------- ROUTES ------------------------------------- //
 
 app.get("/", async (req, res) => {
-  const schools = await School.find();
+  const schools = await School.find().sort({ "name": 1, "_id": 1 });
   const user = req.app.get("user");
   let name = ":name";
   let email = "";

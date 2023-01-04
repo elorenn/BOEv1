@@ -5,32 +5,16 @@
   </h3>
   <hr />
   <label for="fname" class="form-label">First Name</label>
-  <input
-    type="text"
-    class="fnameinput form-control"
-    name="fname"
-    autocomplete="given-name"
-    value="<%= isAuthenticated ? name : "" %>"
-    required
+  <input type="text" class="fnameinput form-control" name="fname"
+  autocomplete="given-name" value="<%= isAuthenticated ? name : "" %>" required
   />
   <label for="lname" class="form-label">Last Name</label>
-  <input
-    type="text"
-    class="lnameinput form-control"
-    name="lname"
-    autocomplete="family-name"
-    value="<%= isAuthenticated ? name : "" %>"
-    required
+  <input type="text" class="lnameinput form-control" name="lname"
+  autocomplete="family-name" value="<%= isAuthenticated ? name : "" %>" required
   />
   <label for="email" class="form-label">Email</label>
-  <input
-    type="text"
-    class="emailinput form-control"
-    name="email"
-    autocomplete="email"
-    value="<%= isAuthenticated ? email : "" %>"
-    required
-  />
+  <input type="text" class="emailinput form-control" name="email"
+  autocomplete="email" value="<%= isAuthenticated ? email : "" %>" required />
   <label for="city" class="form-label">City</label>
   <input
     type="text"
@@ -41,7 +25,7 @@
   />
   <label for="zipcode" class="form-label">Zip Code</label>
   <input
-    type="text"
+    type="number"
     class="zipcodeinput form-control"
     name="zipcode"
     autocomplete="postal-code"

@@ -54,8 +54,8 @@ app.post("/", upload.single("resume"), async (req, res) => {
     month: "numeric",
     day: "numeric",
   });
-  const user = req.app.get("user");
-  let userId = "";
+  const user = await req.app.get("user");
+  let userId;
   if (user) {
     userId = user.id;
   }
@@ -63,7 +63,7 @@ app.post("/", upload.single("resume"), async (req, res) => {
     "PremiumApplication",
     premiumApplicationSchema
   );
-  const premiumApplication = new PremiumApplication({
+  const premiumApplication = await new PremiumApplication({
     Organization: req.body.organization,
     First_Name: req.body.firstname,
     Last_Name: req.body.lastname,
@@ -96,7 +96,7 @@ app.post("/externalApp", async (req, res) => {
     "ExternalApplication",
     externalApplicationSchema
   );
-  const externalApplication = new ExternalApplication({
+  const externalApplication = await new ExternalApplication({
     Organization: req.body.organization,
     User_Id: userId,
     School_Id: req.body.org_id,
@@ -110,21 +110,21 @@ app.post("/externalApp", async (req, res) => {
 // --------------------------------------------------------------------- //
 // Subcriber Page - Save to Database
 
-app.post("/usersignup", function (req, res) {
+app.post("/usersignup", async (req, res) => {
   try {
     const postedDate = new Date().toLocaleDateString("en-us", {
       year: "numeric",
       month: "numeric",
       day: "numeric",
     });
-    const user = req.app.get("user");
+    const user = await req.app.get("user");
     let userId;
     if (user) {
       userId = user.id;
     }
     // store in BOE database for email newsletter
     const Subscriber = mongoose.model("Subscriber", subscribeSchema);
-    const subscriber = new Subscriber({
+    const subscriber = await new Subscriber({
       First_Name: req.body.fname,
       Last_Name: req.body.lname,
       Email: req.body.email,
@@ -136,19 +136,12 @@ app.post("/usersignup", function (req, res) {
       User_Id: userId,
       Date: postedDate,
     });
+    console.log(subscriber);
     subscriber.save();
     res.redirect("/success");
   } catch {
     res.redirect("/failure");
   }
-});
-
-app.post("/failure", function (req, res) {
-  res.redirect("/subscribe.ejs"); // is this doing anything?
-});
-
-app.post("/success", function (req, res) {
-  res.redirect("/"); // is this doing anything?
 });
 
 module.exports = app;

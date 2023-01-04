@@ -3,7 +3,10 @@
 const mongoose = require("mongoose");
 
 const externalApplicationSchema = new mongoose.Schema({
-  Organization: String,
+  Organization: {
+    type: String,
+    required: true,
+  },
   User_Id: {
     type: mongoose.Schema.Types.ObjectId,
     required: false,
@@ -12,7 +15,10 @@ const externalApplicationSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     required: true,
   },
-  Date: String,
+  Date: {
+    type: String,
+    required: true,
+  },
 });
 
 const ExternalApplication = mongoose.model(

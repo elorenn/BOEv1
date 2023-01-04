@@ -3,29 +3,27 @@
 const mongoose = require("mongoose");
 
 const premiumApplicationSchema = new mongoose.Schema({
-  Organization: String,
+  Organization: {
+    type: String,
+    required: true,
+  },
   First_Name: {
     type: String,
-    required: [false, "Please enter first name"],
+    required: [true, "Please enter first name"],
   },
   Last_Name: {
     type: String,
-    required: [false, "Please enter last name"],
+    required: [true, "Please enter last name"],
   },
   Email: {
     type: String,
-    required: [false, "Please enter email"],
+    required: [true, "Please enter email"],
   },
-  AppliedForTrade: String,
+  AppliedForTrade: {
+    type: String,
+    required: [true, "Please enter your trade of interest"],
+  },
   Resume: String,
-  SubscriberTradeOfInterest1: String,
-  SubscriberTradeOfInterest2: String,
-  SubscriberTradeOfInterest3: String,
-  City: String,
-  Zipcode: {
-    type: Number,
-    required: [false, "Please enter numeric value"],
-  },
   Additional_Comments: String,
   User_Id: {
     type: mongoose.Schema.Types.ObjectId,
@@ -33,12 +31,18 @@ const premiumApplicationSchema = new mongoose.Schema({
   },
   School_Id: {
     type: mongoose.Schema.Types.ObjectId,
-    required: false,
+    required: true,
   },
-  Date: String,
+  Date: {
+    type: String,
+    required: true,
+  },
 });
 
-const PremiumApplication = mongoose.model("PremiumApplication", premiumApplicationSchema);
+const PremiumApplication = mongoose.model(
+  "PremiumApplication",
+  premiumApplicationSchema
+);
 
 exports.PremiumApplication = PremiumApplication;
 

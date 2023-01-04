@@ -74,7 +74,7 @@ app.use(methodOverride("_method"));
 // -------------------------------- ROUTES ------------------------------------- //
 
 app.get("/", async (req, res) => {
-  const schools = await School.find().sort({ "name": 1, "_id": 1 });
+  const schools = await School.find().sort({ name: 1, _id: 1 });
   const user = req.app.get("user");
   let name = ":name";
   let email = "";
@@ -171,7 +171,7 @@ app.get("/contact", (req, res) => {
 });
 
 app.get(`/profile/:name`, checkAuthenticated, async (req, res) => {
-  const schools = await School.find();
+  const schools = await School.find().sort({ name: 1, _id: 1 });
   const user = req.app.get("user");
   if (user) {
     const userLikes = await UserLike.find({ user_id: user.id });

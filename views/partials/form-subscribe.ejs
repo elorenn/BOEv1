@@ -4,6 +4,11 @@
     opportunities!
   </h3>
   <hr />
+  <p class="lo-error-message">
+    <% if (subError && subError.length !== 0) { %>
+    <span><i class="fa fa-exclamation-triangle" aria-hidden="true"> </i> </span>
+    <%=subError %> <% } %>
+  </p>
   <label for="fname" class="form-label">First Name</label>
   <input type="text" class="fnameinput form-control" name="fname"
   autocomplete="given-name" value="<%= isAuthenticated ? name : "" %>" required
@@ -13,8 +18,13 @@
   autocomplete="family-name" value="<%= isAuthenticated ? name : "" %>" required
   />
   <label for="email" class="form-label">Email</label>
-  <input type="text" class="emailinput form-control" name="email"
-  autocomplete="email" value="<%= isAuthenticated ? email : "" %>" required />
+  <input 
+    type="email" 
+    class="emailinput form-control" 
+    name="email"
+    autocomplete="email" 
+    value="<%= isAuthenticated ? email : "" %>" required 
+  />
   <label for="city" class="form-label">City</label>
   <input
     type="text"
@@ -25,7 +35,7 @@
   />
   <label for="zipcode" class="form-label">Zip Code</label>
   <input
-    type="number"
+    type="text"
     class="zipcodeinput form-control"
     name="zipcode"
     autocomplete="postal-code"

@@ -212,6 +212,7 @@ app.get("/subscribe", (req, res) => {
     email: email,
     title: "Subscribe",
     path: "/subscribe",
+    subError: req.flash("subError"),
     isAuthenticated: req.isAuthenticated(),
   });
 });
@@ -236,10 +237,20 @@ app.post("/usersignup", async (req, res) => {
       SubscriberTradeOfInterest3: req.body.trade3,
       User_Id: userId,
     });
-    console.log(subscriber);
-    subscriber.save();
-    res.redirect("/success");
-  } catch {
+
+    const err = subscriber.validateSync();
+    if (err) {
+      console.log(err.message);
+      req.flash("subError", err.message);
+      return res.redirect("/subscribe");
+    } else {
+      // validation passed
+      console.log(subscriber);
+      subscriber.save();
+      res.redirect("/success");
+    }
+  } catch (e) {
+    console.log(e);
     res.redirect("/failure");
   }
 });

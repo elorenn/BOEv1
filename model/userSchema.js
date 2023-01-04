@@ -10,7 +10,6 @@ const UserSchema = new mongoose.Schema({
       message: (props) =>
         `should only contain letters. No special characters or numbers.`,
     },
-    lowercase: true,
     required: true,
     minlength: 1,
     maxlength: [20, "Cannot be longer than 20 characters."],

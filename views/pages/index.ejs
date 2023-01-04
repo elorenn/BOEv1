@@ -10,7 +10,13 @@
       <h3>
         Looking to kickstart a career in a skilled trade? Let BOE help you.
       </h3>
-
+      <p class="lo-error-message">
+        <% if (appError && appError.length !== 0) { %>
+        <span
+          ><i class="fa fa-exclamation-triangle" aria-hidden="true"> </i>
+        </span>
+        <%=appError %> <% } %>
+      </p>
       <section class="lo-section-half lo-container">
         <!-- Basic Gallery -->
         <%- include('../partials/listings-basic'); %>

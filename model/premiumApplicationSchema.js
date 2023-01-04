@@ -10,10 +10,24 @@ const premiumApplicationSchema = new mongoose.Schema({
   First_Name: {
     type: String,
     required: [true, "Please enter first name"],
+    validate: {
+      validator: function (v) {
+        return /^[a-zA-Z-. ]+$/.test(v);
+      },
+      message: (props) =>
+        `should only contain letters, spaces, or dashes (-). No special characters or numbers.`,
+    },
   },
   Last_Name: {
     type: String,
     required: [true, "Please enter last name"],
+    validate: {
+      validator: function (v) {
+        return /^[a-zA-Z-. ]+$/.test(v);
+      },
+      message: (props) =>
+        `should only contain letters, spaces, or dashes (-). No special characters or numbers.`,
+    },
   },
   Email: {
     type: String,
@@ -24,7 +38,11 @@ const premiumApplicationSchema = new mongoose.Schema({
     required: [true, "Please enter your trade of interest"],
   },
   Resume: String,
-  Additional_Comments: String,
+  Additional_Comments: {
+    type: String,
+    required: false,
+    maxlength: [1000, "Cannot be longer than 1000 characters."],
+  },
   User_Id: {
     type: mongoose.Schema.Types.ObjectId,
     required: false,

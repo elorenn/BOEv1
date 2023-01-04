@@ -10,10 +10,10 @@ const subscribeSchema = new mongoose.Schema({
     maxlength: [25, "Cannot be longer than 25 characters."],
     validate: {
       validator: function (v) {
-        return /^[a-zA-Z]+$/.test(v);
+        return /^[a-zA-Z- ]+$/.test(v);
       },
       message: (props) =>
-        `should only contain letters. No special characters or numbers.`,
+        `should only contain letters, spaces, or dashes (-). No special characters or numbers.`,
     },
   },
   Last_Name: {
@@ -26,7 +26,7 @@ const subscribeSchema = new mongoose.Schema({
         return /^[a-zA-Z- ]+$/.test(v);
       },
       message: (props) =>
-        `should only contain letters. No special characters or numbers.`,
+        `should only contain letters, spaces, or dashes (-). No special characters or numbers.`,
     },
   },
   Email: {

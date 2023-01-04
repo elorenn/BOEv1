@@ -332,8 +332,10 @@ button.nav-btn.fa-sign-in {
   overflow: scroll;
 }
 
-.lo-container .lo-error-message {
-  color: var(--color-notice);
+.lo-error-message {
+  color: var(--color-notice) !important;
+  max-width: 600px;
+  margin-top: 15px;
 }
 
 .lo-body .lo-container.lo-container-small {

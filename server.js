@@ -96,6 +96,7 @@ app.get("/", async (req, res) => {
     schools: schools,
     title: "Home Page",
     path: "/",
+    appError: req.flash("appError"),
     isAuthenticated: req.isAuthenticated(),
   });
 });
@@ -283,28 +284,42 @@ const {
 app.set("premiumApplicationModel", premiumApplicationModel);
 
 app.post("/", upload.single("resume"), async (req, res) => {
-  const user = await req.app.get("user");
-  let userId;
-  if (user) {
-    userId = user.id;
+  try {
+    const user = await req.app.get("user");
+    let userId;
+    if (user) {
+      userId = user.id;
+    }
+    const PremiumApplication = mongoose.model(
+      "PremiumApplication",
+      premiumApplicationSchema
+    );
+    const premiumApplication = await new PremiumApplication({
+      Organization: req.body.organization,
+      First_Name: req.body.firstname,
+      Last_Name: req.body.lastname,
+      Email: req.body.email,
+      AppliedForTrade: req.body.appliedForTrade,
+      Additional_Comments: req.body.additionalcomments,
+      User_Id: userId,
+      School_Id: req.body.org_id,
+    });
+
+    const err = premiumApplication.validateSync();
+    if (err) {
+      console.log(err.message);
+      req.flash("appError", err.message);
+      return res.redirect("back");
+    } else {
+      // validation passed
+      console.log(premiumApplication);
+      premiumApplication.save();
+      res.redirect("/applicationSubmitted");
+    }
+  } catch (e) {
+    console.log(e);
+    res.redirect("/failure");
   }
-  const PremiumApplication = mongoose.model(
-    "PremiumApplication",
-    premiumApplicationSchema
-  );
-  const premiumApplication = await new PremiumApplication({
-    Organization: req.body.organization,
-    First_Name: req.body.firstname,
-    Last_Name: req.body.lastname,
-    Email: req.body.email,
-    AppliedForTrade: req.body.appliedForTrade,
-    Additional_Comments: req.body.additionalcomments,
-    User_Id: userId,
-    School_Id: req.body.org_id,
-  });
-  console.log(premiumApplication);
-  premiumApplication.save();
-  res.redirect("/applicationSubmitted");
 });
 
 // ------------------------------------- EXTERNAL APPLY - Save to Database ------------------------------------- //

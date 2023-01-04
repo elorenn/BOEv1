@@ -82,9 +82,11 @@ app.get("/", async (req, res) => {
   const schools = await School.find();
   const user = req.app.get("user");
   let name = ":name";
+  let email = "";
   if (user) {
     const userLikes = await UserLike.find({ user_id: user.id });
     name = req.user.name;
+    email = req.user.email;
     schools.forEach((school) => {
       const userLike = userLikes.find((like) =>
         school._id.equals(like.school_id)
@@ -95,6 +97,7 @@ app.get("/", async (req, res) => {
 
   res.render("pages/index", {
     name: name,
+    email: email,
     schools: schools,
     title: "Home Page",
     path: "/",
@@ -105,11 +108,14 @@ app.get("/", async (req, res) => {
 app.get("/subscribe", (req, res) => {
   const user = req.app.get("user");
   let name = ":name";
+  let email = "";
   if (user) {
     name = req.user.name;
+    email = req.user.email;
   }
   res.render("pages/subscribe", {
     name: name,
+    email: email,
     title: "Subscribe",
     path: "/subscribe",
     isAuthenticated: req.isAuthenticated(),

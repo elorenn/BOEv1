@@ -12,13 +12,17 @@
       name="organization"
       value="<%= school.name %>"
     />
-
+    <input 
+      type="hidden" 
+      name="org_id" 
+      value="<%= school._id %>" 
+    />
     <label class="applicationlabel" for="firstname">First Name</label>
     <input
       class="nameinput"
       type="text"
       name="firstname"
-      value=""
+      value="<%= isAuthenticated ? name : "" %>"
       autocomplete="given-name"
       required
     />
@@ -28,7 +32,7 @@
       class="nameinput"
       type="text"
       name="lastname"
-      value=""
+      value="<%= isAuthenticated ? name : "" %>"
       autocomplete="family-name"
       required
     />
@@ -38,7 +42,7 @@
       class="emailinput"
       type="text"
       name="email"
-      value=""
+      value="<%= isAuthenticated ? email : "" %>"
       autocomplete="email"
       required
     />

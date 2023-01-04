@@ -394,7 +394,7 @@ app.post("/login", checkNotAuthenticated, (req, res, next) => {
   })(req, res, next);
 });
 
-// -------------------------------- Register / Sign Up Page - Save to Database - LO ------------------------------------- //
+// -------------------------------- Register / Sign Up Page - Save User to Database ------------------------------------- //
 
 app.get("/register", checkNotAuthenticated, (req, res) => {
   res.render("./pages/register", {

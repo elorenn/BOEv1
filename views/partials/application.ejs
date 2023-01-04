@@ -1,10 +1,11 @@
-<form action="/index.html2" class="applicationbutton" method="post">
+<form action="/externalApp" class="applicationbutton" method="post">
   <input
     class="organizationtextbox"
     type="hidden"
     name="organization"
     value="<%= school.name %>"
   />
+  <input type="hidden" name="org_id" value="<%= school._id %>" />
   <input
     class="orgApplicationURL"
     type="hidden"

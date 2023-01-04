@@ -91,12 +91,14 @@ button.nav-btn.fa-sign-in {
 .lo-body nav {
   display: flex;
   flex-direction: row;
+  flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
   position: sticky;
   top: 0;
   height: 65px;
   width: 100vw;
+  padding: 0;
   z-index: 9999;
   background-color: var(--logo-color) !important;
   border-bottom: 1px solid var(--color-border);
@@ -261,6 +263,17 @@ button.nav-btn.fa-sign-in {
   color: var(--color-link-light);
 }
 
+.lo-body nav .lo-nav-links-wrapper ul.navlist a {
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+  display: block;
+  text-decoration: none;
+}
+
+.lo-body nav .lo-nav-links-wrapper ul.navlist li {
+  list-style: none;
+}
+
 .lo-body nav span,
 .lo-body nav .navbar-brand {
   font-weight: 200;
@@ -332,13 +345,15 @@ button.nav-btn.fa-sign-in {
   overflow: scroll;
 }
 
-.lo-container .lo-error-message {
-  color: var(--color-notice);
+.lo-error-message {
+  color: var(--color-notice) !important;
+  max-width: 600px;
+  margin-top: 15px;
 }
 
 .lo-body .lo-container.lo-container-small {
   width: 350px;
-  height: 420px;
+  min-height: 420px;
 }
 
 .lo-body .lo-container.lo-container-big {
@@ -645,7 +660,10 @@ section.lo-favorites-list li a {
   border: 0;
 }
 
-section.lo-section-half .lo-basic-list li a[aria-current]:not([aria-current="false"]),
+section.lo-section-half
+  .lo-basic-list
+  li
+  a[aria-current]:not([aria-current="false"]),
 section.lo-section-half .lo-basic-list li a:focus,
 section.lo-section-half .lo-basic-list li a:hover,
 section.lo-favorites-list li a:focus,

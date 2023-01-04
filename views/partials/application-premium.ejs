@@ -1,5 +1,10 @@
 <div class="lo-container-ap-premium">
   <h6 class="applicationheader">Apply Now</h6>
+  <p class="lo-error-message">
+    <% if (appError && appError.length !== 0) { %>
+    <span><i class="fa fa-exclamation-triangle" aria-hidden="true"> </i> </span>
+    <%=appError %> <% } %>
+  </p>
   <form
     action="/"
     class="applicationform"
@@ -7,41 +12,23 @@
     enctype="multipart/form-data"
   >
     <input
-      class="organizationtextbox"
       type="hidden"
       name="organization"
       value="<%= school.name %>"
     />
+    <input type="hidden" name="org_id" value="<%= school._id %>" />
 
     <label class="applicationlabel" for="firstname">First Name</label>
-    <input
-      class="nameinput"
-      type="text"
-      name="firstname"
-      value=""
-      autocomplete="given-name"
-      required
-    />
+    <input class="nameinput" type="text" name="firstname" value="<%=
+    isAuthenticated ? firstName : "" %>" autocomplete="given-name" required />
 
     <label class="applicationlabel" for="lastname">Last Name</label>
-    <input
-      class="nameinput"
-      type="text"
-      name="lastname"
-      value=""
-      autocomplete="family-name"
-      required
-    />
+    <input class="nameinput" type="text" name="lastname" value="<%=
+    isAuthenticated ? lastName : "" %>" autocomplete="family-name" required />
 
     <label class="applicationlabel" for="email">Email</label>
-    <input
-      class="emailinput"
-      type="text"
-      name="email"
-      value=""
-      autocomplete="email"
-      required
-    />
+    <input class="emailinput" type="email" name="email" value="<%=
+    isAuthenticated ? email : "" %>" autocomplete="email" required />
 
     <label class="applicationlabel" for="appliedForTrade"
       >Trade of Interest

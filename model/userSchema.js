@@ -1,8 +1,28 @@
 const mongoose = require("mongoose");
 
 const UserSchema = new mongoose.Schema({
-  name: {
+  firstName: {
     type: String,
+    validate: {
+      validator: function (v) {
+        return /^[a-zA-Z]+$/.test(v);
+      },
+      message: (props) =>
+        `should only contain letters. No special characters or numbers.`,
+    },
+    required: true,
+    minlength: 1,
+    maxlength: [20, "Cannot be longer than 20 characters."],
+  },
+  lastName: {
+    type: String,
+    validate: {
+      validator: function (v) {
+        return /^[a-zA-Z]+$/.test(v);
+      },
+      message: (props) =>
+        `should only contain letters. No special characters or numbers.`,
+    },
     required: true,
     minlength: 1,
     maxlength: [20, "Cannot be longer than 20 characters."],
@@ -20,7 +40,10 @@ const UserSchema = new mongoose.Schema({
     minlength: 8,
     maxlength: null,
   },
-  date: String,
+  date: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 const UserModel = mongoose.model("User", UserSchema);

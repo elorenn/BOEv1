@@ -1,8 +1,7 @@
 <section class="lo-favorites-list">
-  <% let toShow = "" %> <% let sortedSchools = [...schools] %> <%
-  sortedSchools.sort((a, b) => { %> <% if (a.name < b.name) { %> <% return -1;%>
-  <% } %> <% }); %> <% let likedSchools = sortedSchools.filter(school => { %> <%
-  return school.is_liked; %> <% }); %> <% let howMany = likedSchools.length; %>
+  <% let likedSchools = schools.filter(school => { %> <% return school.is_liked;
+  %> <% }); %> 
+  <% let howMany = likedSchools.length; %>
   <h5>
     <span>
       <i class="fa fa-heart-o" aria-hidden="true"></i>

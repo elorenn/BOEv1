@@ -13,10 +13,13 @@ const UserLikeSchema = new mongoose.Schema({
     type: Boolean,
     required: true,
   },
+  Date: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 const UserLikeModel = mongoose.model("UserLike", UserLikeSchema);
 
 exports.UserLike = UserLikeModel;
 exports.UserLikeSchema = UserLikeSchema;
-

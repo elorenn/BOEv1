@@ -1,6 +1,5 @@
 const app = require("./app");
 const mongoose = require("mongoose");
-const path = require("path");
 const { UserModel, UserSchema } = require("./model/userSchema");
 const users = [];
 const DB =
@@ -75,10 +74,16 @@ app.use(methodOverride("_method"));
 // -------------------------------- ROUTES ------------------------------------- //
 
 app.get("/", async (req, res) => {
-  const schools = await School.find();
+  const schools = await School.find().sort({ name: 1, _id: 1 });
   const user = req.app.get("user");
+  let firstName = ":firstName";
+  let lastName = ":lastName";
+  let email = "";
   if (user) {
     const userLikes = await UserLike.find({ user_id: user.id });
+    firstName = req.user.firstName;
+    lastName = req.user.lastName;
+    email = req.user.email;
     schools.forEach((school) => {
       const userLike = userLikes.find((like) =>
         school._id.equals(like.school_id)
@@ -88,21 +93,28 @@ app.get("/", async (req, res) => {
   }
 
   res.render("pages/index", {
+    firstName: firstName,
+    lastName: lastName,
+    email: email,
     schools: schools,
     title: "Home Page",
     path: "/",
+    appError: req.flash("appError"),
     isAuthenticated: req.isAuthenticated(),
   });
 });
-app.get("/subscribe", (req, res) => {
-  res.render("pages/subscribe", {
-    title: "Subscribe",
-    path: "/subscribe",
-    isAuthenticated: req.isAuthenticated(),
-  });
-});
+
 app.get("/success", (req, res) => {
+  const user = req.app.get("user");
+  let firstName = ":firstName";
+  let lastName = ":lastName";
+  if (user) {
+    firstName = req.user.firstName;
+    lastName = req.user.lastName;
+  }
   res.render("pages/success", {
+    firstName: firstName,
+    lastName: lastName,
     path: "/success",
     title: "Success",
     isAuthenticated: req.isAuthenticated(),
@@ -110,7 +122,16 @@ app.get("/success", (req, res) => {
 });
 
 app.get("/failure", (req, res) => {
+  const user = req.app.get("user");
+  let firstName = ":firstName";
+  let lastName = ":lastName";
+  if (user) {
+    firstName = req.user.firstName;
+    lastName = req.user.lastName;
+  }
   res.render("pages/failure", {
+    firstName: firstName,
+    lastName: lastName,
     path: "/failure",
     title: "Failure",
     isAuthenticated: req.isAuthenticated(),
@@ -118,31 +139,58 @@ app.get("/failure", (req, res) => {
 });
 
 app.get("/applicationSubmitted", (req, res) => {
+  const user = req.app.get("user");
+  let firstName = ":firstName";
+  let lastName = ":lastName";
+  if (user) {
+    firstName = req.user.firstName;
+    lastName = req.user.lastName;
+  }
   res.render("pages/applicationSubmitted", {
+    firstName: firstName,
+    lastName: lastName,
     path: "/application-submitted",
     title: "Application Submitted",
     isAuthenticated: req.isAuthenticated(),
   });
 });
 
-app.get("/resources", (req, res) => {
-  res.render("pages/resources", {
-    title: "Resources",
-    path: "/resources",
-    isAuthenticated: req.isAuthenticated(),
-  });
-});
+// app.get("/resources", (req, res) => {
+//   const user = req.app.get("user");
+//   let firstName = ":firstName";
+//   let lastName = ":lastName";
+//   if (user) {
+//      firstName = req.user.firstName;
+//      lastName = req.user.lastName;
+//   }
+//   res.render("pages/resources", {
+//     firstName: firstName,
+//     lastName: lastName,
+//     title: "Resources",
+//     path: "/resources",
+//     isAuthenticated: req.isAuthenticated(),
+//   });
+// });
 
 app.get("/contact", (req, res) => {
+  const user = req.app.get("user");
+  let firstName = ":firstName";
+  let lastName = ":lastName";
+  if (user) {
+    firstName = req.user.firstName;
+    lastName = req.user.lastName;
+  }
   res.render("pages/contact", {
+    firstName: firstName,
+    lastName: lastName,
     title: "Contact Us",
     path: "/contact",
     isAuthenticated: req.isAuthenticated(),
   });
 });
 
-app.get("/profile", checkAuthenticated, async (req, res) => {
-  const schools = await School.find();
+app.get(`/profile/:firstName`, checkAuthenticated, async (req, res) => {
+  const schools = await School.find().sort({ name: 1, _id: 1 });
   const user = req.app.get("user");
   if (user) {
     const userLikes = await UserLike.find({ user_id: user.id });
@@ -154,14 +202,175 @@ app.get("/profile", checkAuthenticated, async (req, res) => {
     });
   }
   res.render("pages/profile", {
-    title: req.user.name + " Profile",
+    title: req.body.firstName + " " + req.body.lastName + " Profile",
     path: "/profile",
     schools: schools,
-    name: req.user.name,
+    firstName: req.user.firstName,
+    lastName: req.user.lastName,
     email: req.user.email,
     date: req.user.date,
     isAuthenticated: req.isAuthenticated(),
   });
+});
+
+// ------------------------------------- SUBSCRIBE - Save to Database ------------------------------------- //
+
+const { subscribeModel, subscribeSchema } = require("./model/subscribeSchema");
+app.set("subscribeModel", subscribeModel);
+
+app.get("/subscribe", (req, res) => {
+  const user = req.app.get("user");
+  let firstName = ":firstName";
+  let lastName = ":lastName";
+  let email = "";
+  if (user) {
+    firstName = req.user.firstName;
+    lastName = req.user.lastName;
+    email = req.user.email;
+  }
+  res.render("pages/subscribe", {
+    firstName: firstName,
+    lastName: lastName,
+    email: email,
+    title: "Subscribe",
+    path: "/subscribe",
+    subError: req.flash("subError"),
+    isAuthenticated: req.isAuthenticated(),
+  });
+});
+
+app.post("/usersignup", async (req, res) => {
+  try {
+    const user = await req.app.get("user");
+    let userId;
+    if (user) {
+      userId = user.id;
+    }
+    // store in BOE database for email newsletter
+    const Subscriber = mongoose.model("Subscriber", subscribeSchema);
+    const subscriber = await new Subscriber({
+      First_Name: req.body.fname,
+      Last_Name: req.body.lname,
+      Email: req.body.email,
+      City: req.body.city,
+      Zipcode: req.body.zipcode,
+      SubscriberTradeOfInterest1: req.body.trade1,
+      SubscriberTradeOfInterest2: req.body.trade2,
+      SubscriberTradeOfInterest3: req.body.trade3,
+      User_Id: userId,
+    });
+
+    const err = subscriber.validateSync();
+    if (err) {
+      console.log(err.message);
+      req.flash("subError", err.message);
+      return res.redirect("/subscribe");
+    } else {
+      // validation passed
+      console.log(subscriber);
+      subscriber.save();
+      res.redirect("/success");
+    }
+  } catch (e) {
+    console.log(e);
+    res.redirect("/failure");
+  }
+});
+
+// ------------------------------------- Multer file storage for premium application ------------------------------------- //
+
+const File = require("./model/fileSchema");
+const multer = require("multer");
+
+const multerStorage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "public");
+  },
+  filename: (req, file, cb) => {
+    const ext = file.mimetype.split("/")[1];
+    cb(null, `files/${req.body.organization + "_" + req.body.email}.${ext}`);
+  },
+});
+
+const upload = multer({
+  storage: multerStorage,
+});
+
+// ------------------------------------- PREMIUM APPLY - Save to Database ------------------------------------- //
+
+const {
+  premiumApplicationModel,
+  premiumApplicationSchema,
+} = require("./model/premiumApplicationSchema");
+app.set("premiumApplicationModel", premiumApplicationModel);
+
+app.post("/", upload.single("resume"), async (req, res) => {
+  try {
+    const user = await req.app.get("user");
+    let userId;
+    if (user) {
+      userId = user.id;
+    }
+    const PremiumApplication = mongoose.model(
+      "PremiumApplication",
+      premiumApplicationSchema
+    );
+    const premiumApplication = await new PremiumApplication({
+      Organization: req.body.organization,
+      First_Name: req.body.firstname,
+      Last_Name: req.body.lastname,
+      Email: req.body.email,
+      AppliedForTrade: req.body.appliedForTrade,
+      Additional_Comments: req.body.additionalcomments,
+      User_Id: userId,
+      School_Id: req.body.org_id,
+    });
+
+    const err = premiumApplication.validateSync();
+    if (err) {
+      console.log(err.message);
+      req.flash("appError", err.message);
+      return res.redirect("back");
+    } else {
+      // validation passed
+      console.log(premiumApplication);
+      premiumApplication.save();
+      res.redirect("/applicationSubmitted");
+    }
+  } catch (e) {
+    console.log(e);
+    res.redirect("/failure");
+  }
+});
+
+// ------------------------------------- EXTERNAL APPLY - Save to Database ------------------------------------- //
+
+const {
+  externalApplicationModel,
+  externalApplicationSchema,
+} = require("./model/externalApplicationSchema");
+app.set("externalApplicationModel", externalApplicationModel);
+
+app.post("/externalApp", async (req, res) => {
+  const user = await req.app.get("user");
+  let userId;
+  if (user) {
+    // if user is logged in, save user id with application
+    userId = user.id;
+  }
+  const ExternalApplication = mongoose.model(
+    "ExternalApplication",
+    externalApplicationSchema
+  );
+  const externalApplication = await new ExternalApplication({
+    Organization: req.body.organization,
+    User_Id: userId,
+    School_Id: req.body.org_id,
+  });
+  console.log(externalApplication);
+  externalApplication.save();
+  // Redirect to external application page
+  res.redirect(req.body.orgApplicationURL);
 });
 
 // -------------------------------- LOG IN ------------------------------------- //
@@ -178,6 +387,7 @@ app.get("/login", checkNotAuthenticated, (req, res) => {
 app.post("/login", checkNotAuthenticated, (req, res, next) => {
   passport.authenticate("local-signin", (error, user, msg) => {
     if (error) {
+      console.log(error);
       next(error);
     }
 
@@ -196,15 +406,17 @@ app.post("/login", checkNotAuthenticated, (req, res, next) => {
       }
       req.app.set("user", {
         id: user.id,
-        name: user.name,
+        firstName: user.firstName,
+        lastName: user.lastName,
         email: user.email,
       });
-      res.redirect("/profile");
+
+      res.redirect("/profile/" + user.firstName.toLowerCase());
     });
   })(req, res, next);
 });
 
-// -------------------------------- Register / Sign Up Page - Save to Database - LO ------------------------------------- //
+// -------------------------------- Register / Sign Up Page - Save User to Database ------------------------------------- //
 
 app.get("/register", checkNotAuthenticated, (req, res) => {
   res.render("./pages/register", {
@@ -219,23 +431,16 @@ app.set("UserModel", UserModel);
 
 app.post("/register", checkNotAuthenticated, async (req, res) => {
   try {
-    const postedDate = new Date().toLocaleDateString("en-us", {
-      year: "numeric",
-      month: "numeric",
-      day: "numeric",
-    });
-    const favSchools = [];
     const hashedPassword = await bcrypt.hash(
       req.body.password,
       bcrypt.genSaltSync(8)
     );
     const User = mongoose.model("User", UserSchema);
     const user = new User({
-      name: req.body.name,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
       email: req.body.email,
       password: hashedPassword,
-      date: postedDate,
-      favorites: favSchools,
     });
 
     const err = user.validateSync();
@@ -244,6 +449,7 @@ app.post("/register", checkNotAuthenticated, async (req, res) => {
       return res.redirect("back");
     } else {
       // validation passed
+      console.log(user);
       user.save();
       users.push(user);
       res.redirect("/login");
@@ -316,10 +522,19 @@ function checkNotAuthenticated(req, res, next) {
 // -------------------------------- 404 Error ------------------------------------- //
 
 // must be at the end
-app.use((req, res, next) => {
+app.use(async (req, res, next) => {
+  const user = await req.app.get("user");
+  let firstName;
+  let lastName;
+  if (user) {
+    firstName = user.firstName;
+    lastName = user.lastName;
+  }
   res.render("pages/404", {
     title: "Page Not Found",
     path: "",
+    firstName: firstName,
+    lastName: lastName,
     isAuthenticated: req.isAuthenticated(),
   });
 });

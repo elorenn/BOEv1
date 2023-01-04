@@ -12,20 +12,25 @@
             <!-- insert user profile photo here: -->
             <!-- <img
               class="lo-avatar"
-              src="/images/carousel/healthcareworker.jpeg"
+              src="user.image" // this image variable is an example - not yet coded. must be added to userSchema
               alt="user avatar or profile photo"
             /> -->
           </div>
         </section>
         <section class="lo-profile-card-text-side">
-          <% if (name) { %>
-          <h5><%= name %></h5>
-          <% } %> <% if (email) { %>
+          <h5>
+            <% if (firstName) { %> <%= firstName %> <% } %> <% if (lastName) {
+            %> <%= lastName %> <% } %>
+          </h5>
+          <% if (email) { %>
           <p>
             <a href="mailto:<%=email%>"><%=email%></a>
           </p>
           <% } %> <% if (date) { %>
-          <p>Member since <%= date %></p>
+          <p>
+            Member since <%= date.toLocaleDateString("en-us", { year:'numeric',
+            month: 'long', day: 'numeric' }) %>
+          </p>
           <% } %>
         </section>
         <aside class="lo-dot-menu">

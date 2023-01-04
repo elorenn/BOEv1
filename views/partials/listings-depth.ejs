@@ -1,13 +1,9 @@
 <section class="indepthlist list-group lo-in-depth-list">
   <ul class="galleryUL" id="lo-in-depth-list">
-    <% let toShow = "" %> <% let sortedSchools = [...schools] %> <%
-    sortedSchools.sort((a, b) => { %> <% if (a.name < b.name) { %> <% return -1;
-    %> <% } %> <% }); %> <% sortedSchools.forEach(function(school, i) { %> <% if
-    (i === 0) { %> <% toShow = "show" %> <% } else { %> <% toShow = "" %> <% }
-    %>
+    <% schools.forEach(function(school, i) { %> 
     <li
       data-id=<%= school._id %>
-      class="indepthlistitema list-group-item list-group-item-action <%=toShow%>"
+      class="indepthlistitema list-group-item list-group-item-action <%= (i === 0) ? "show" : "" %>"
       href="#list-item-<%=i%>"
     >
       <div class="indepthlistitemcontainer lo-in-depth-list-top-info">

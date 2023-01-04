@@ -34,6 +34,7 @@ const LoginStrategy = new Strategy(
       }
       return done(null, user);
     } catch (e) {
+      console.log("passport error: " + e);
       return done(null, false, {
         message: "Something went wrong with your sign in. Please try again.",
       });

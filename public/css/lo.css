@@ -91,12 +91,14 @@ button.nav-btn.fa-sign-in {
 .lo-body nav {
   display: flex;
   flex-direction: row;
+  flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
   position: sticky;
   top: 0;
   height: 65px;
   width: 100vw;
+  padding: 0;
   z-index: 9999;
   background-color: var(--logo-color) !important;
   border-bottom: 1px solid var(--color-border);
@@ -259,6 +261,17 @@ button.nav-btn.fa-sign-in {
 
 .lo-body nav .lo-nav-links-wrapper ul.navlist * {
   color: var(--color-link-light);
+}
+
+.lo-body nav .lo-nav-links-wrapper ul.navlist a {
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+  display: block;
+  text-decoration: none;
+}
+
+.lo-body nav .lo-nav-links-wrapper ul.navlist li {
+  list-style: none;
 }
 
 .lo-body nav span,

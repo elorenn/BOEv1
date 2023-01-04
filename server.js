@@ -76,11 +76,13 @@ app.use(methodOverride("_method"));
 app.get("/", async (req, res) => {
   const schools = await School.find().sort({ name: 1, _id: 1 });
   const user = req.app.get("user");
-  let name = ":name";
+  let firstName = ":firstName";
+  let lastName = ":lastName";
   let email = "";
   if (user) {
     const userLikes = await UserLike.find({ user_id: user.id });
-    name = req.user.name;
+    firstName = req.user.firstName;
+    lastName = req.user.lastName;
     email = req.user.email;
     schools.forEach((school) => {
       const userLike = userLikes.find((like) =>
@@ -91,24 +93,29 @@ app.get("/", async (req, res) => {
   }
 
   res.render("pages/index", {
-    name: name,
+    firstName: firstName,
+    lastName: lastName,
     email: email,
     schools: schools,
     title: "Home Page",
     path: "/",
     appError: req.flash("appError"),
     isAuthenticated: req.isAuthenticated(),
+    lo,
   });
 });
 
 app.get("/success", (req, res) => {
   const user = req.app.get("user");
-  let name = ":name";
+  let firstName = ":firstName";
+  let lastName = ":lastName";
   if (user) {
-    name = req.user.name;
+    firstName = req.user.firstName;
+    lastName = req.user.lastName;
   }
   res.render("pages/success", {
-    name: name,
+    firstName: firstName,
+    lastName: lastName,
     path: "/success",
     title: "Success",
     isAuthenticated: req.isAuthenticated(),
@@ -117,12 +124,15 @@ app.get("/success", (req, res) => {
 
 app.get("/failure", (req, res) => {
   const user = req.app.get("user");
-  let name = ":name";
+  let firstName = ":firstName";
+  let lastName = ":lastName";
   if (user) {
-    name = req.user.name;
+    firstName = req.user.firstName;
+    lastName = req.user.lastName;
   }
   res.render("pages/failure", {
-    name: name,
+    firstName: firstName,
+    lastName: lastName,
     path: "/failure",
     title: "Failure",
     isAuthenticated: req.isAuthenticated(),
@@ -131,12 +141,15 @@ app.get("/failure", (req, res) => {
 
 app.get("/applicationSubmitted", (req, res) => {
   const user = req.app.get("user");
-  let name = ":name";
+  let firstName = ":firstName";
+  let lastName = ":lastName";
   if (user) {
-    name = req.user.name;
+    firstName = req.user.firstName;
+    lastName = req.user.lastName;
   }
   res.render("pages/applicationSubmitted", {
-    name: name,
+    firstName: firstName,
+    lastName: lastName,
     path: "/application-submitted",
     title: "Application Submitted",
     isAuthenticated: req.isAuthenticated(),
@@ -145,12 +158,15 @@ app.get("/applicationSubmitted", (req, res) => {
 
 // app.get("/resources", (req, res) => {
 //   const user = req.app.get("user");
-//   let name = ":name";
+//   let firstName = ":firstName";
+//   let lastName = ":lastName";
 //   if (user) {
-//     name = req.user.name;
+//      firstName = req.user.firstName;
+//      lastName = req.user.lastName;
 //   }
 //   res.render("pages/resources", {
-//     name: name,
+//     firstName: firstName,
+//     lastName: lastName,
 //     title: "Resources",
 //     path: "/resources",
 //     isAuthenticated: req.isAuthenticated(),
@@ -159,19 +175,22 @@ app.get("/applicationSubmitted", (req, res) => {
 
 app.get("/contact", (req, res) => {
   const user = req.app.get("user");
-  let name = ":name";
+  let firstName = ":firstName";
+  let lastName = ":lastName";
   if (user) {
-    name = req.user.name;
+    firstName = req.user.firstName;
+    lastName = req.user.lastName;
   }
   res.render("pages/contact", {
-    name: name,
+    firstName: firstName,
+    lastName: lastName,
     title: "Contact Us",
     path: "/contact",
     isAuthenticated: req.isAuthenticated(),
   });
 });
 
-app.get(`/profile/:name`, checkAuthenticated, async (req, res) => {
+app.get(`/profile/:firstName`, checkAuthenticated, async (req, res) => {
   const schools = await School.find().sort({ name: 1, _id: 1 });
   const user = req.app.get("user");
   if (user) {
@@ -184,13 +203,13 @@ app.get(`/profile/:name`, checkAuthenticated, async (req, res) => {
     });
   }
   res.render("pages/profile", {
-    title: req.user.name + " Profile",
+    title: req.body.firstName + " " + req.body.lastName + " Profile",
     path: "/profile",
     schools: schools,
-    name: req.user.name,
+    firstName: req.user.firstName,
+    lastName: req.user.lastName,
     email: req.user.email,
     date: req.user.date,
-    createdAt: req.user.CreatedAt,
     isAuthenticated: req.isAuthenticated(),
   });
 });
@@ -202,14 +221,17 @@ app.set("subscribeModel", subscribeModel);
 
 app.get("/subscribe", (req, res) => {
   const user = req.app.get("user");
-  let name = ":name";
+  let firstName = ":firstName";
+  let lastName = ":lastName";
   let email = "";
   if (user) {
-    name = req.user.name;
+    firstName = req.user.firstName;
+    lastName = req.user.lastName;
     email = req.user.email;
   }
   res.render("pages/subscribe", {
-    name: name,
+    firstName: firstName,
+    lastName: lastName,
     email: email,
     title: "Subscribe",
     path: "/subscribe",
@@ -385,11 +407,12 @@ app.post("/login", checkNotAuthenticated, (req, res, next) => {
       }
       req.app.set("user", {
         id: user.id,
-        name: user.name,
+        firstName: user.firstName,
+        lastName: user.lastName,
         email: user.email,
       });
 
-      res.redirect("/profile/" + user.name.toLowerCase());
+      res.redirect("/profile/" + user.firstName.toLowerCase());
     });
   })(req, res, next);
 });
@@ -409,21 +432,16 @@ app.set("UserModel", UserModel);
 
 app.post("/register", checkNotAuthenticated, async (req, res) => {
   try {
-    const postedDate = new Date().toLocaleDateString("en-us", {
-      year: "numeric",
-      month: "numeric",
-      day: "numeric",
-    });
     const hashedPassword = await bcrypt.hash(
       req.body.password,
       bcrypt.genSaltSync(8)
     );
     const User = mongoose.model("User", UserSchema);
     const user = new User({
-      name: req.body.name,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
       email: req.body.email,
       password: hashedPassword,
-      date: postedDate,
     });
 
     const err = user.validateSync();
@@ -507,14 +525,17 @@ function checkNotAuthenticated(req, res, next) {
 // must be at the end
 app.use(async (req, res, next) => {
   const user = await req.app.get("user");
-  let name;
+  let firstName;
+  let lastName;
   if (user) {
-    name = user.name;
+    firstName = user.firstName;
+    lastName = user.lastName;
   }
   res.render("pages/404", {
     title: "Page Not Found",
     path: "",
-    name: name,
+    firstName: firstName,
+    lastName: lastName,
     isAuthenticated: req.isAuthenticated(),
   });
 });

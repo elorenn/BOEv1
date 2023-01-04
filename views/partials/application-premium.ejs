@@ -12,19 +12,19 @@
     enctype="multipart/form-data"
   >
     <input
-      class="organizationtextbox"
       type="hidden"
       name="organization"
       value="<%= school.name %>"
     />
     <input type="hidden" name="org_id" value="<%= school._id %>" />
+
     <label class="applicationlabel" for="firstname">First Name</label>
     <input class="nameinput" type="text" name="firstname" value="<%=
-    isAuthenticated ? name : "" %>" autocomplete="given-name" required />
+    isAuthenticated ? firstName : "" %>" autocomplete="given-name" required />
 
     <label class="applicationlabel" for="lastname">Last Name</label>
     <input class="nameinput" type="text" name="lastname" value="<%=
-    isAuthenticated ? name : "" %>" autocomplete="family-name" required />
+    isAuthenticated ? lastName : "" %>" autocomplete="family-name" required />
 
     <label class="applicationlabel" for="email">Email</label>
     <input class="emailinput" type="email" name="email" value="<%=

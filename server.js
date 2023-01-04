@@ -388,7 +388,6 @@ app.post("/register", checkNotAuthenticated, async (req, res) => {
       month: "numeric",
       day: "numeric",
     });
-    const favSchools = [];
     const hashedPassword = await bcrypt.hash(
       req.body.password,
       bcrypt.genSaltSync(8)
@@ -399,7 +398,6 @@ app.post("/register", checkNotAuthenticated, async (req, res) => {
       email: req.body.email,
       password: hashedPassword,
       date: postedDate,
-      favorites: favSchools,
     });
 
     const err = user.validateSync();

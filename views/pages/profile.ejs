@@ -18,21 +18,18 @@
           </div>
         </section>
         <section class="lo-profile-card-text-side">
-          <% if (firstName) { %>
-          <h5><%= firstName %></h5>
-          <% } %> 
-          <% if (lastName) { %>
-          <h5><%= lastName %></h5>
-          <% } %>           
+          <h5>
+            <% if (firstName) { %> <%= firstName %> <% } %> <% if (lastName) {
+            %> <%= lastName %> <% } %>
+          </h5>
           <% if (email) { %>
           <p>
             <a href="mailto:<%=email%>"><%=email%></a>
           </p>
-          <% } %> 
-          <% if (date) { %>
+          <% } %> <% if (date) { %>
           <p>
-            Member since <%= date.toLocaleDateString("en-us", {
-            year:'numeric', month: 'long', day: 'numeric' }) %>
+            Member since <%= date.toLocaleDateString("en-us", { year:'numeric',
+            month: 'long', day: 'numeric' }) %>
           </p>
           <% } %>
         </section>

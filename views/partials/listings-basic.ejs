@@ -16,8 +16,9 @@
   </section>
   <ul class="galleryUL" id="lo-basic-list">
     <% let sortedSchools = [...schools] %> <% sortedSchools.sort((a, b) => { %>
-    <% if (a.name < b.name) { %> <% return -1; %> <% } %> <% }); %> <%
-    sortedSchools.forEach(function(school, i) { %>
+    <% if (a.name < b.name) { %> <% return -1; %> <% } %> 
+    <% }); %> 
+    <% sortedSchools.forEach(function(school, i) { %>
     <li 
       class="lo-basic-list-item"
       data-id=<%= school._id %>  

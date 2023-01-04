@@ -74,10 +74,6 @@ app.use(methodOverride("_method"));
 
 // -------------------------------- ROUTES ------------------------------------- //
 
-// app.param("name", (req, res, next, name) => {
-//   params: req.params["name"],
-// });
-
 app.get("/", async (req, res) => {
   const schools = await School.find();
   const user = req.app.get("user");
@@ -101,23 +97,6 @@ app.get("/", async (req, res) => {
     schools: schools,
     title: "Home Page",
     path: "/",
-    isAuthenticated: req.isAuthenticated(),
-  });
-});
-
-app.get("/subscribe", (req, res) => {
-  const user = req.app.get("user");
-  let name = ":name";
-  let email = "";
-  if (user) {
-    name = req.user.name;
-    email = req.user.email;
-  }
-  res.render("pages/subscribe", {
-    name: name,
-    email: email,
-    title: "Subscribe",
-    path: "/subscribe",
     isAuthenticated: req.isAuthenticated(),
   });
 });
@@ -214,6 +193,138 @@ app.get(`/profile/:name`, checkAuthenticated, async (req, res) => {
     createdAt: req.user.CreatedAt,
     isAuthenticated: req.isAuthenticated(),
   });
+});
+
+// ------------------------------------- SUBSCRIBE - Save to Database ------------------------------------- //
+
+const { subscribeModel, subscribeSchema } = require("./model/subscribeSchema");
+app.set("subscribeModel", subscribeModel);
+
+app.get("/subscribe", (req, res) => {
+  const user = req.app.get("user");
+  let name = ":name";
+  let email = "";
+  if (user) {
+    name = req.user.name;
+    email = req.user.email;
+  }
+  res.render("pages/subscribe", {
+    name: name,
+    email: email,
+    title: "Subscribe",
+    path: "/subscribe",
+    isAuthenticated: req.isAuthenticated(),
+  });
+});
+
+app.post("/usersignup", async (req, res) => {
+  try {
+    const user = await req.app.get("user");
+    let userId;
+    if (user) {
+      userId = user.id;
+    }
+    // store in BOE database for email newsletter
+    const Subscriber = mongoose.model("Subscriber", subscribeSchema);
+    const subscriber = await new Subscriber({
+      First_Name: req.body.fname,
+      Last_Name: req.body.lname,
+      Email: req.body.email,
+      City: req.body.city,
+      Zipcode: req.body.zipcode,
+      SubscriberTradeOfInterest1: req.body.trade1,
+      SubscriberTradeOfInterest2: req.body.trade2,
+      SubscriberTradeOfInterest3: req.body.trade3,
+      User_Id: userId,
+    });
+    console.log(subscriber);
+    subscriber.save();
+    res.redirect("/success");
+  } catch {
+    res.redirect("/failure");
+  }
+});
+
+// ------------------------------------- Multer file storage for premium application ------------------------------------- //
+
+const File = require("./model/fileSchema");
+const multer = require("multer");
+
+const multerStorage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "public");
+  },
+  filename: (req, file, cb) => {
+    const ext = file.mimetype.split("/")[1];
+    cb(null, `files/${req.body.organization + "_" + req.body.email}.${ext}`);
+  },
+});
+
+const upload = multer({
+  storage: multerStorage,
+});
+
+// ------------------------------------- PREMIUM APPLY - Save to Database ------------------------------------- //
+
+const {
+  premiumApplicationModel,
+  premiumApplicationSchema,
+} = require("./model/premiumApplicationSchema");
+app.set("premiumApplicationModel", premiumApplicationModel);
+
+app.post("/", upload.single("resume"), async (req, res) => {
+  const user = await req.app.get("user");
+  let userId;
+  if (user) {
+    userId = user.id;
+  }
+  const PremiumApplication = mongoose.model(
+    "PremiumApplication",
+    premiumApplicationSchema
+  );
+  const premiumApplication = await new PremiumApplication({
+    Organization: req.body.organization,
+    First_Name: req.body.firstname,
+    Last_Name: req.body.lastname,
+    Email: req.body.email,
+    AppliedForTrade: req.body.appliedForTrade,
+    Additional_Comments: req.body.additionalcomments,
+    User_Id: userId,
+    School_Id: req.body.org_id,
+  });
+  console.log(premiumApplication);
+  premiumApplication.save();
+  res.redirect("/applicationSubmitted");
+});
+
+// ------------------------------------- EXTERNAL APPLY - Save to Database ------------------------------------- //
+
+const {
+  externalApplicationModel,
+  externalApplicationSchema,
+} = require("./model/externalApplicationSchema");
+app.set("externalApplicationModel", externalApplicationModel);
+
+app.post("/externalApp", async (req, res) => {
+  const user = await req.app.get("user");
+  let userId;
+  if (user) {
+    // if user is logged in, save user id with application
+    userId = user.id;
+  }
+  const ExternalApplication = mongoose.model(
+    "ExternalApplication",
+    externalApplicationSchema
+  );
+  const externalApplication = await new ExternalApplication({
+    Organization: req.body.organization,
+    User_Id: userId,
+    School_Id: req.body.org_id,
+  });
+  console.log(externalApplication);
+  externalApplication.save();
+  // Redirect to external application page
+  res.redirect(req.body.orgApplicationURL);
 });
 
 // -------------------------------- LOG IN ------------------------------------- //

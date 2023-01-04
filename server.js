@@ -1,6 +1,5 @@
 const app = require("./app");
 const mongoose = require("mongoose");
-const path = require("path");
 const { UserModel, UserSchema } = require("./model/userSchema");
 const users = [];
 const DB =

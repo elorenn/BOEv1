@@ -266,12 +266,10 @@ app.post("/usersignup", async (req, res) => {
 
     const err = subscriber.validateSync();
     if (err) {
-      console.log(err.message);
       req.flash("subError", err.message);
       return res.redirect("/subscribe");
     } else {
       // validation passed
-      console.log(subscriber);
       subscriber.save();
       res.redirect("/success");
     }
@@ -332,12 +330,10 @@ app.post("/", upload.single("resume"), async (req, res) => {
 
     const err = premiumApplication.validateSync();
     if (err) {
-      console.log(err.message);
       req.flash("appError", err.message);
       return res.redirect("back");
     } else {
       // validation passed
-      console.log(premiumApplication);
       premiumApplication.save();
       res.redirect("/applicationSubmitted");
     }
@@ -371,7 +367,6 @@ app.post("/externalApp", async (req, res) => {
     User_Id: userId,
     School_Id: req.body.org_id,
   });
-  console.log(externalApplication);
   externalApplication.save();
   // Redirect to external application page
   res.redirect(req.body.orgApplicationURL);
@@ -444,7 +439,6 @@ app.post("/register", checkNotAuthenticated, async (req, res, done) => {
     UserEmail = req.app.get("UserModel");
     let userEmail = await UserEmail.findOne({ email: req.body.email });
     if (userEmail) {
-      console.log(userEmail + " already exists. Please register with another email");
       req.flash(
         "existError",
         req.body.email + " already exists. Please register with another email."
@@ -468,7 +462,6 @@ app.post("/register", checkNotAuthenticated, async (req, res, done) => {
       return res.redirect("back");
     } else {
       // validation passed
-      console.log(user);
       user.save();
       users.push(user);
       res.redirect("/login");

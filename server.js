@@ -432,14 +432,25 @@ app.get("/register", checkNotAuthenticated, (req, res) => {
     title: "Register",
     path: "/register",
     regError: req.flash("regError"),
+    existError: req.flash("existError"),
     isAuthenticated: req.isAuthenticated(),
   });
 });
 
 app.set("UserModel", UserModel);
 
-app.post("/register", checkNotAuthenticated, async (req, res) => {
+app.post("/register", checkNotAuthenticated, async (req, res, done) => {
   try {
+    UserEmail = req.app.get("UserModel");
+    let userEmail = await UserEmail.findOne({ email: req.body.email });
+    if (userEmail) {
+      console.log(userEmail + " already exists. Please register with another email");
+      req.flash(
+        "existError",
+        req.body.email + " already exists. Please register with another email."
+      );
+      return res.redirect("back");
+    }
     const hashedPassword = await bcrypt.hash(
       req.body.password,
       bcrypt.genSaltSync(8)
@@ -451,7 +462,6 @@ app.post("/register", checkNotAuthenticated, async (req, res) => {
       email: req.body.email,
       password: hashedPassword,
     });
-
     const err = user.validateSync();
     if (err) {
       req.flash("regError", err.message);

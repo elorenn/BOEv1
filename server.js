@@ -444,9 +444,7 @@ app.post("/register", checkNotAuthenticated, async (req, res, done) => {
     UserEmail = req.app.get("UserModel");
     let userEmail = await UserEmail.findOne({ email: req.body.email });
     if (userEmail) {
-      console.log(
-        userEmail + " already exists. Please register with another email"
-      );
+      console.log(userEmail + " already exists. Please register with another email");
       req.flash(
         "existError",
         req.body.email + " already exists. Please register with another email."

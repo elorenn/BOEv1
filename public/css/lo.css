@@ -448,6 +448,12 @@ button.nav-btn.fa-sign-in {
   margin: 15px 0;
 }
 
+.lo-trade-section legend {
+  margin-bottom: 0.5rem;
+  font-size: 16px;
+  padding: 0;
+}
+
 .lo-container h3 {
   font-weight: normal;
   color: var(--text-color-dark);
@@ -1097,6 +1103,8 @@ section.lo-favorites-list-empty p {
     font-size: 1.5em;
   }
 
+  .lo-container h3,
+  .lo-trade-section legend,
   .lo-profile-card-sm-h .lo-profile-card-text-side h5,
   .lo-favorites-list h5 {
     font-size: 1em;
@@ -1137,10 +1145,6 @@ section.lo-favorites-list-empty p {
     max-width: none;
     width: 80vw;
     font-size: 2em;
-  }
-
-  .lo-container h3 {
-    font-size: 1em;
   }
 
   .lo-body .lo-container input,

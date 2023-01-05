@@ -10,7 +10,6 @@ function toggleAria(basicSchool) {
   let basicLink = basicSchool.children[0];
   let links = basicSchools.getElementsByTagName("a");
   for (let i = 0; i < links.length; i++) {
-    console.log(links[i]);
     if (links[i] === basicLink) {
       links[i].ariaCurrent = "location";
     } else {

@@ -256,17 +256,21 @@ app.post("/usersignup", async (req, res) => {
       First_Name: req.body.fname,
       Last_Name: req.body.lname,
       Email: req.body.email,
-      City: req.body.city,
-      Zipcode: req.body.zipcode,
-      SubscriberTradeOfInterest1: req.body.trade1,
-      SubscriberTradeOfInterest2: req.body.trade2,
-      SubscriberTradeOfInterest3: req.body.trade3,
+      Location: {
+        State: req.body.state,
+        City: req.body.city,
+        Zipcode: req.body.zipcode,
+      },
+      Trade_Interests: {
+        Trade_Interest_01: req.body.trade1,
+        Trade_Interest_02: req.body.trade2,
+        Trade_Interest_03: req.body.trade3,
+      },
       User_Id: userId,
     });
 
     const err = subscriber.validateSync();
     if (err) {
-      console.log(err.message);
       req.flash("subError", err.message);
       return res.redirect("/subscribe");
     } else {
@@ -332,12 +336,10 @@ app.post("/", upload.single("resume"), async (req, res) => {
 
     const err = premiumApplication.validateSync();
     if (err) {
-      console.log(err.message);
       req.flash("appError", err.message);
       return res.redirect("back");
     } else {
       // validation passed
-      console.log(premiumApplication);
       premiumApplication.save();
       res.redirect("/applicationSubmitted");
     }
@@ -371,7 +373,6 @@ app.post("/externalApp", async (req, res) => {
     User_Id: userId,
     School_Id: req.body.org_id,
   });
-  console.log(externalApplication);
   externalApplication.save();
   // Redirect to external application page
   res.redirect(req.body.orgApplicationURL);
@@ -444,7 +445,6 @@ app.post("/register", checkNotAuthenticated, async (req, res, done) => {
     UserEmail = req.app.get("UserModel");
     let userEmail = await UserEmail.findOne({ email: req.body.email });
     if (userEmail) {
-      console.log(userEmail + " already exists. Please register with another email");
       req.flash(
         "existError",
         req.body.email + " already exists. Please register with another email."
@@ -468,7 +468,6 @@ app.post("/register", checkNotAuthenticated, async (req, res, done) => {
       return res.redirect("back");
     } else {
       // validation passed
-      console.log(user);
       user.save();
       users.push(user);
       res.redirect("/login");

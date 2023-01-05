@@ -464,7 +464,7 @@ button.nav-btn.fa-sign-in {
 
 .lo-container form label {
   margin-bottom: 0.5rem;
-  display: block;
+  display: inline-block;
 }
 
 .lo-container select {
@@ -746,6 +746,7 @@ section.lo-favorites-list .lo-list-text-side p:nth-of-type(3) {
 .lo-container form {
   max-width: 450px;
   margin: auto;
+  width: 100%;
 }
 
 /* ------------------------------ INDEX FAVORITES ------------------------------ */

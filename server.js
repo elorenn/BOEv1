@@ -189,29 +189,33 @@ app.get("/contact", (req, res) => {
   });
 });
 
-app.get(`/profile/:firstName`, checkAuthenticated, async (req, res) => {
-  const schools = await School.find().sort({ name: 1, _id: 1 });
-  const user = req.app.get("user");
-  if (user) {
-    const userLikes = await UserLike.find({ user_id: user.id });
-    schools.forEach((school) => {
-      const userLike = userLikes.find((like) =>
-        school._id.equals(like.school_id)
-      );
-      school.is_liked = userLike ? userLike.is_liked : false;
+app.get(
+  `/profile/:firstName.:lastName`,
+  checkAuthenticated,
+  async (req, res) => {
+    const schools = await School.find().sort({ name: 1, _id: 1 });
+    const user = req.app.get("user");
+    if (user) {
+      const userLikes = await UserLike.find({ user_id: user.id });
+      schools.forEach((school) => {
+        const userLike = userLikes.find((like) =>
+          school._id.equals(like.school_id)
+        );
+        school.is_liked = userLike ? userLike.is_liked : false;
+      });
+    }
+    res.render("pages/profile", {
+      title: req.body.firstName + " " + req.body.lastName + " Profile",
+      path: "/profile",
+      schools: schools,
+      firstName: req.user.firstName,
+      lastName: req.user.lastName,
+      email: req.user.email,
+      date: req.user.date,
+      isAuthenticated: req.isAuthenticated(),
     });
   }
-  res.render("pages/profile", {
-    title: req.body.firstName + " " + req.body.lastName + " Profile",
-    path: "/profile",
-    schools: schools,
-    firstName: req.user.firstName,
-    lastName: req.user.lastName,
-    email: req.user.email,
-    date: req.user.date,
-    isAuthenticated: req.isAuthenticated(),
-  });
-});
+);
 
 // ------------------------------------- SUBSCRIBE - Save to Database ------------------------------------- //
 
@@ -411,7 +415,12 @@ app.post("/login", checkNotAuthenticated, (req, res, next) => {
         email: user.email,
       });
 
-      res.redirect("/profile/" + user.firstName.toLowerCase());
+      res.redirect(
+        "/profile/" +
+          user.firstName.toLowerCase() +
+          "." +
+          user.lastName.toLowerCase()
+      );
     });
   })(req, res, next);
 });
@@ -423,14 +432,25 @@ app.get("/register", checkNotAuthenticated, (req, res) => {
     title: "Register",
     path: "/register",
     regError: req.flash("regError"),
+    existError: req.flash("existError"),
     isAuthenticated: req.isAuthenticated(),
   });
 });
 
 app.set("UserModel", UserModel);
 
-app.post("/register", checkNotAuthenticated, async (req, res) => {
+app.post("/register", checkNotAuthenticated, async (req, res, done) => {
   try {
+    UserEmail = req.app.get("UserModel");
+    let userEmail = await UserEmail.findOne({ email: req.body.email });
+    if (userEmail) {
+      console.log(userEmail + " already exists. Please register with another email");
+      req.flash(
+        "existError",
+        req.body.email + " already exists. Please register with another email."
+      );
+      return res.redirect("back");
+    }
     const hashedPassword = await bcrypt.hash(
       req.body.password,
       bcrypt.genSaltSync(8)
@@ -442,7 +462,6 @@ app.post("/register", checkNotAuthenticated, async (req, res) => {
       email: req.body.email,
       password: hashedPassword,
     });
-
     const err = user.validateSync();
     if (err) {
       req.flash("regError", err.message);

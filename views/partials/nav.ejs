@@ -68,7 +68,11 @@
           <a
             class="navitem nav-link"
             aria-current="<%= path==="/profile" ? "page" : "false" %>"
-            href="/profile/<%= isAuthenticated ? firstName.toLowerCase() : ":firstName" %>"
+            <% if (isAuthenticated) { %>
+              href="/profile/<%= firstName.toLowerCase() %>.<%= lastName.toLowerCase() %>"
+            <% } else { %>
+              href="/profile/:firstName.:lastName"
+            <% } %>  
           >
             <i class="navicon4 fa-solid fa-user"></i>
             <span>Profile</span>

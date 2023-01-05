@@ -1051,12 +1051,82 @@ section.lo-favorites-list-empty p {
 /* ------------------------------ MEDIA QUERY ------------------------------ */
 
 @media screen and (max-width: 991px) {
-  .lo-body nav {
-    height: 80px;
+  .lo-body nav,
+  .lo-body nav .lo-logo-wrapper {
+    height: 100px;
   }
 
-  .lo-body .lo-section-main {
-    margin: auto;
+  .lo-body.lo-body-pop .lo-container {
+    width: 80vw;
+    min-height: 80vw;
+  }
+
+  .lo-body.lo-body-pop h3,
+  .lo-body nav .lo-nav-links-wrapper.show ul.navlist,
+  .lo-body nav .lo-nav-links-wrapper.collapsing ul.navlist {
+    font-size: 3em;
+  }
+
+  .lo-body.lo-body-pop h3 {
+    max-width: 80vw;
+  }
+
+  .lo-body h3,
+  a.navitem.navbar-brand,
+  .lo-body nav .navbar-toggler,
+  .lo-body section.lo-section-half .lo-in-depth-list h2,
+  .lo-profile-card-sm-h .lo-profile-card-text-side p a,
+  section.lo-section-half .lo-basic-list h6,
+  section.lo-favorites-list h6 {
+    font-size: 2em;
+  }
+
+  #lo-search-empty h5,
+  .lo-basic-list .lo-list-text-side p:first-of-type,
+  section.lo-favorites-list .lo-list-text-side p:first-of-type,
+  .lo-basic-list .lo-list-text-side p:nth-of-type(2),
+  section.lo-favorites-list .lo-list-text-side p:nth-of-type(2) {
+    font-size: 1.75em;
+  }
+
+  #lo-search-empty p,
+  .lo-body footer .footercontainer,
+  .lo-basic-list .lo-list-text-side p:nth-of-type(3),
+  section.lo-favorites-list .lo-list-text-side p:nth-of-type(3),
+  .lo-basic-list .lo-list-text-side p:last-of-type {
+    font-size: 1.5em;
+  }
+
+  .lo-profile-card-sm-h .lo-profile-card-text-side h5,
+  .lo-favorites-list h5 {
+    font-size: 1em;
+  }
+
+  .lo-profile-card-sm-h .lo-profile-card-text-side p:last-of-type,
+  .lo-body .lo-profile-card .lo-list-text-side p:last-of-type,
+  .lo-in-depth-list-top-info p:last-of-type,
+  .lo-section-contact a {
+    font-size: 0.75em;
+  }
+
+  .lo-in-depth-list p,
+  .lo-in-depth-list h6,
+  .lo-body .lo-container.lo-container-small aside,
+  .lo-body .lo-container.lo-container-small aside a {
+    font-size: 28px;
+  }
+
+  section.lo-list-img-side {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .lo-profile-card.lo-profile-card-sm-h .lo-avatar-wrapper,
+  section.lo-section-half .lo-basic-list .lo-logo-wrapper,
+  section.lo-favorites-list .lo-logo-wrapper {
+    width: 120px;
+    height: 120px;
   }
 
   .lo-body section.lo-section-half {
@@ -1065,19 +1135,39 @@ section.lo-favorites-list-empty p {
 
   .lo-body .lo-container {
     max-width: none;
-    width: 700px;
+    width: 80vw;
+    font-size: 2em;
+  }
+
+  .lo-container h3 {
+    font-size: 1em;
+  }
+
+  .lo-body .lo-container input,
+  .lo-body .lo-container button {
+    height: 2em;
+    margin-bottom: 1em;
+  }
+
+  .lo-body .lo-container button {
+    margin-top: 1em;
   }
 
   .lo-body .lo-section-main.lo-section-widgets {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    min-height: 100vh;
   }
 
   .lo-body section.lo-section-half.lo-container {
     height: 80vh;
     position: unset;
     justify-content: start;
+  }
+
+  .lo-container form {
+    max-width: 80%;
   }
 
   .lo-body section.lo-section-half .lo-in-depth-list {
@@ -1095,7 +1185,6 @@ section.lo-favorites-list-empty p {
     top: 0;
     background-color: var(--color-link-light-hover);
     z-index: 9;
-    padding: 15px 15px 5px 15px;
   }
 
   #lo-search-empty {

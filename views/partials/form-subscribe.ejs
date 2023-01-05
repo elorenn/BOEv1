@@ -11,20 +11,15 @@
   </p>
   <label for="fname" class="form-label">First Name</label>
   <input type="text" class="fnameinput form-control" name="fname"
-  autocomplete="given-name" value="<%= isAuthenticated ? firstName : "" %>" required
-  />
+  autocomplete="given-name" value="<%= isAuthenticated ? firstName : "" %>"
+  required />
   <label for="lname" class="form-label">Last Name</label>
   <input type="text" class="lnameinput form-control" name="lname"
-  autocomplete="family-name" value="<%= isAuthenticated ? lastName : "" %>" required
-  />
+  autocomplete="family-name" value="<%= isAuthenticated ? lastName : "" %>"
+  required />
   <label for="email" class="form-label">Email</label>
-  <input 
-    type="email" 
-    class="emailinput form-control" 
-    name="email"
-    autocomplete="email" 
-    value="<%= isAuthenticated ? email : "" %>" required 
-  />
+  <input type="email" class="emailinput form-control" name="email"
+  autocomplete="email" value="<%= isAuthenticated ? email : "" %>" required />
   <label for="city" class="form-label">City</label>
   <input
     type="text"
@@ -49,26 +44,64 @@
     >
     <input
       type="text"
-      class="tradeinput form-control"
       placeholder="Enter Trade 1"
       name="trade1"
       autocomplete="off"
+      list="trade1"
       required
     />
+    <datalist id="trade1">
+      <option value="electrical"></option>
+      <option value="welding"></option>
+      <option value="programming"></option>
+      <option value="cosmetology"></option>
+      <option value="construction"></option>
+      <option value="aviation"></option>
+      <option value="data analytics"></option>
+      <option value="plumbing"></option>
+      <option value="nursing"></option>
+      <option value="automotive"></option>
+    </datalist>
+
     <input
       type="text"
-      class="tradeinput form-control"
       placeholder="Enter Trade 2 (optional)"
       autocomplete="off"
       name="trade2"
+      list="trade2"
     />
+    <datalist id="trade2">
+      <option value="electrical"></option>
+      <option value="welding"></option>
+      <option value="programming"></option>
+      <option value="cosmetology"></option>
+      <option value="construction"></option>
+      <option value="aviation"></option>
+      <option value="data analytics"></option>
+      <option value="plumbing"></option>
+      <option value="nursing"></option>
+      <option value="automotive"></option>
+    </datalist>
+
     <input
       type="text"
-      class="tradeinput form-control"
       placeholder="Enter Trade 3 (optional)"
       autocomplete="off"
       name="trade3"
+      list="trade3"
     />
+    <datalist id="trade3">
+      <option value="electrical"></option>
+      <option value="welding"></option>
+      <option value="programming"></option>
+      <option value="cosmetology"></option>
+      <option value="construction"></option>
+      <option value="aviation"></option>
+      <option value="data analytics"></option>
+      <option value="plumbing"></option>
+      <option value="nursing"></option>
+      <option value="automotive"></option>
+    </datalist>
   </section>
   <button type="submit" class="signupbtn">Subscribe</button>
 </form>

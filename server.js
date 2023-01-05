@@ -449,7 +449,7 @@ app.post("/register", checkNotAuthenticated, async (req, res, done) => {
       );
       req.flash(
         "existError",
-        "Email already exists. Please register with another email"
+        req.body.email + " already exists. Please register with another email."
       );
       return res.redirect("back");
     }

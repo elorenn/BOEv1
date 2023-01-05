@@ -2,6 +2,28 @@
 
 const mongoose = require("mongoose");
 
+const TradeInterestsSchema = new mongoose.Schema({
+  Trade_Interest_01: {
+    type: String,
+    required: [
+      true,
+      "Please enter at least one program topic or trade that interests you in order to receive appropriate emails.",
+    ],
+    minlength: 1,
+    maxlength: [50, "Cannot be longer than 50 characters."],
+  },
+  Trade_Interest_02: {
+    type: String,
+    required: false,
+    maxlength: [50, "Cannot be longer than 50 characters."],
+  },
+  Trade_Interest_03: {
+    type: String,
+    required: false,
+    maxlength: [50, "Cannot be longer than 50 characters."],
+  },
+});
+
 const subscribeSchema = new mongoose.Schema({
   First_Name: {
     type: String,
@@ -33,25 +55,7 @@ const subscribeSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please enter your email"],
   },
-  SubscriberTradeOfInterest1: {
-    type: String,
-    required: [
-      true,
-      "Please enter at least one program topic or trade that interests you in order to receive appropriate emails.",
-    ],
-    minlength: 1,
-    maxlength: [50, "Cannot be longer than 50 characters."],
-  },
-  SubscriberTradeOfInterest2: {
-    type: String,
-    required: false,
-    maxlength: [50, "Cannot be longer than 50 characters."],
-  },
-  SubscriberTradeOfInterest3: {
-    type: String,
-    required: false,
-    maxlength: [50, "Cannot be longer than 50 characters."],
-  },
+  Trade_Interests: TradeInterestsSchema,
   City: {
     type: String,
     required: true,

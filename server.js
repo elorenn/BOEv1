@@ -258,18 +258,22 @@ app.post("/usersignup", async (req, res) => {
       Email: req.body.email,
       City: req.body.city,
       Zipcode: req.body.zipcode,
-      SubscriberTradeOfInterest1: req.body.trade1,
-      SubscriberTradeOfInterest2: req.body.trade2,
-      SubscriberTradeOfInterest3: req.body.trade3,
+      Trade_Interests: {
+        Trade_Interest_01: req.body.trade1,
+        Trade_Interest_02: req.body.trade2,
+        Trade_Interest_03: req.body.trade3,
+      },
       User_Id: userId,
     });
 
     const err = subscriber.validateSync();
     if (err) {
+      console.log(err);
       req.flash("subError", err.message);
       return res.redirect("/subscribe");
     } else {
       // validation passed
+      console.log(subscriber);
       subscriber.save();
       res.redirect("/success");
     }

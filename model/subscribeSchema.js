@@ -25,6 +25,17 @@ const TradeInterestsSchema = new mongoose.Schema({
 });
 
 const SubscriberLocationSchema = new mongoose.Schema({
+  State: {
+    type: String,
+    required: [true, "Please enter your State"],
+    validate: {
+      validator: function (v) {
+        return /^[a-zA-Z- ]+$/.test(v);
+      },
+      message: (props) =>
+        `should only contain letters. No special characters or numbers. Please enter a valid state`,
+    },
+  },
   City: {
     type: String,
     required: true,
@@ -32,22 +43,23 @@ const SubscriberLocationSchema = new mongoose.Schema({
     maxlength: [58, "Cannot be longer than 58 characters."],
     validate: {
       validator: function (v) {
-        return /^[a-zA-Z-. ]+$/.test(v);
+        return /^[a-zA-Z- ]+$/.test(v);
       },
       message: (props) =>
-        `should only contain letters. No special characters or numbers.`,
+        `should only contain letters. No special characters or numbers. Please enter a valid city`,
     },
   },
   Zipcode: {
     type: String,
-    required: [true, "Please enter valid zipcode"],
-    minlength: [5, "Please enter valid zipcode"],
-    maxlength: [10, "Please enter valid zipcode"],
+    required: [true, "Please enter valid ZIP code"],
+    minlength: [5, "That looks too short to be a Zip code. Please enter valid ZIP code"],
+    maxlength: [10, "That looks too long to be a Zip code. Please enter valid ZIP code"],
     validate: {
       validator: function (v) {
         return /^[1-9-]+$/.test(v);
       },
-      message: (props) => `should only contain numbers.`,
+      message: (props) =>
+        `should only contain numbers.  Please enter a valid ZIP code`,
     },
   },
 });

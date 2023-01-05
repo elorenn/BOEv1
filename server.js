@@ -257,6 +257,7 @@ app.post("/usersignup", async (req, res) => {
       Last_Name: req.body.lname,
       Email: req.body.email,
       Location: {
+        State: req.body.state,
         City: req.body.city,
         Zipcode: req.body.zipcode,
       },
@@ -274,6 +275,7 @@ app.post("/usersignup", async (req, res) => {
       return res.redirect("/subscribe");
     } else {
       // validation passed
+      console.log(subscriber);
       subscriber.save();
       res.redirect("/success");
     }

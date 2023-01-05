@@ -10,92 +10,69 @@
     <%=subError %> <% } %>
   </p>
   <label for="fname" class="form-label">First Name</label>
-  <input 
-    type="text" 
-    name="fname"
-    autocomplete="given-name" 
-    value="<%= isAuthenticated ? firstName : "" %>"
-    required 
-  />
+  <input type="text" name="fname" autocomplete="given-name" value="<%=
+  isAuthenticated ? firstName : "" %>" required />
   <label for="lname" class="form-label">Last Name</label>
-  <input 
-    type="text" 
-    name="lname"
-    autocomplete="family-name" 
-    value="<%= isAuthenticated ? lastName : "" %>"
-    required 
-  />
+  <input type="text" name="lname" autocomplete="family-name" value="<%=
+  isAuthenticated ? lastName : "" %>" required />
   <label for="email">Email</label>
-  <input 
-    type="email" 
-    name="email"
-    autocomplete="email" 
-    value="<%= isAuthenticated ? email : "" %>" 
-    required 
-  />
-  <label for="city">City</label>
-  <input
-    type="text"
-    name="city"
-    autocomplete="address-level2"
-    required
-  />
-  <label for="zipcode">ZIP Code</label>
-  <input
-    type="text"
-    name="zipcode"
-    autocomplete="postal-code"
-    required
-  />
-  <br />
+  <input type="email" name="email" autocomplete="email" value="<%=
+  isAuthenticated ? email : "" %>" required />
+  <fieldset>
+    <label for="state">State</label>
+    <select name="state" id="state">
+      <option value="Florida">Florida</option>
+    </select>
+    <label for="city">City</label>
+    <input type="text" name="city" autocomplete="address-level2" required />
+    <label for="zipcode">ZIP Code</label>
+    <input type="text" name="zipcode" autocomplete="postal-code" required />
+  </fieldset>
   <hr />
-  <section class="lo-trade-section">
-    <fieldset>
-      <legend>List up to 3 trades that interest you:</legend>
+  <fieldset class="lo-trade-section">
+    <legend>List up to 3 trades that interest you:</legend>
+    <input
+      type="text"
+      placeholder="Enter Trade 1"
+      name="trade1"
+      autocomplete="off"
+      list="trade-options"
+      required
+    />
 
-      <input
-        type="text"
-        placeholder="Enter Trade 1"
-        name="trade1"
-        autocomplete="off"
-        list="trade-options"
-        required
-      />
+    <input
+      type="text"
+      placeholder="Enter Trade 2 (optional)"
+      autocomplete="off"
+      name="trade2"
+      list="trade-options"
+    />
 
-      <input
-        type="text"
-        placeholder="Enter Trade 2 (optional)"
-        autocomplete="off"
-        name="trade2"
-        list="trade-options"
-      />
+    <input
+      type="text"
+      placeholder="Enter Trade 3 (optional)"
+      autocomplete="off"
+      name="trade3"
+      list="trade-options"
+    />
 
-      <input
-        type="text"
-        placeholder="Enter Trade 3 (optional)"
-        autocomplete="off"
-        name="trade3"
-        list="trade-options"
-      />
-
-      <datalist id="trade-options">
-        <option value="electrical"></option>
-        <option value="welding"></option>
-        <option value="programming"></option>
-        <option value="cosmetology"></option>
-        <option value="construction"></option>
-        <option value="aviation"></option>
-        <option value="data analytics"></option>
-        <option value="plumbing"></option>
-        <option value="nursing"></option>
-        <option value="automotive technician"></option>
-        <option value="ux/ui"></option>
-        <option value="pilot"></option>
-        <option value="flight instructor"></option>
-        <option value="patient care technician"></option>
-        <option value="barbering"></option>
-      </datalist>
-    </fieldset>
-  </section>
+    <datalist id="trade-options">
+      <option value="electrical"></option>
+      <option value="welding"></option>
+      <option value="programming"></option>
+      <option value="cosmetology"></option>
+      <option value="construction"></option>
+      <option value="aviation"></option>
+      <option value="data analytics"></option>
+      <option value="plumbing"></option>
+      <option value="nursing"></option>
+      <option value="automotive technician"></option>
+      <option value="ux/ui"></option>
+      <option value="pilot"></option>
+      <option value="flight instructor"></option>
+      <option value="patient care technician"></option>
+      <option value="barbering"></option>
+    </datalist>
+  </fieldset>
   <button type="submit">Subscribe</button>
 </form>

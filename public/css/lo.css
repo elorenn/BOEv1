@@ -462,6 +462,11 @@ button.nav-btn.fa-sign-in {
   margin-bottom: 0.5rem;
 }
 
+.lo-container form label {
+  margin-bottom: 0.5rem;
+  display: inline-block;
+}
+
 /* ------------------------------ SUBSCRIBE GALLERY ------------------------------ */
 
 .lo-body .lo-container.lo-image-gallery {

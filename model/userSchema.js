@@ -5,7 +5,7 @@ const UserSchema = new mongoose.Schema({
     type: String,
     validate: {
       validator: function (v) {
-        return /^[a-zA-Z]+$/.test(v);
+        return /^[a-zA-Z- ]+$/.test(v);
       },
       message: (props) =>
         `should only contain letters. No special characters or numbers.`,
@@ -18,7 +18,7 @@ const UserSchema = new mongoose.Schema({
     type: String,
     validate: {
       validator: function (v) {
-        return /^[a-zA-Z]+$/.test(v);
+        return /^[a-zA-Z- ]+$/.test(v);
       },
       message: (props) =>
         `should only contain letters. No special characters or numbers.`,

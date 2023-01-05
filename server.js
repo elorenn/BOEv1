@@ -256,8 +256,10 @@ app.post("/usersignup", async (req, res) => {
       First_Name: req.body.fname,
       Last_Name: req.body.lname,
       Email: req.body.email,
-      City: req.body.city,
-      Zipcode: req.body.zipcode,
+      Location: {
+        City: req.body.city,
+        Zipcode: req.body.zipcode,
+      },
       Trade_Interests: {
         Trade_Interest_01: req.body.trade1,
         Trade_Interest_02: req.body.trade2,
@@ -268,12 +270,10 @@ app.post("/usersignup", async (req, res) => {
 
     const err = subscriber.validateSync();
     if (err) {
-      console.log(err);
       req.flash("subError", err.message);
       return res.redirect("/subscribe");
     } else {
       // validation passed
-      console.log(subscriber);
       subscriber.save();
       res.redirect("/success");
     }

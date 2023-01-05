@@ -10,28 +10,39 @@
     <%=subError %> <% } %>
   </p>
   <label for="fname" class="form-label">First Name</label>
-  <input type="text" class="fnameinput form-control" name="fname"
-  autocomplete="given-name" value="<%= isAuthenticated ? firstName : "" %>"
-  required />
+  <input 
+    type="text" 
+    name="fname"
+    autocomplete="given-name" 
+    value="<%= isAuthenticated ? firstName : "" %>"
+    required 
+  />
   <label for="lname" class="form-label">Last Name</label>
-  <input type="text" class="lnameinput form-control" name="lname"
-  autocomplete="family-name" value="<%= isAuthenticated ? lastName : "" %>"
-  required />
-  <label for="email" class="form-label">Email</label>
-  <input type="email" class="emailinput form-control" name="email"
-  autocomplete="email" value="<%= isAuthenticated ? email : "" %>" required />
-  <label for="city" class="form-label">City</label>
+  <input 
+    type="text" 
+    name="lname"
+    autocomplete="family-name" 
+    value="<%= isAuthenticated ? lastName : "" %>"
+    required 
+  />
+  <label for="email">Email</label>
+  <input 
+    type="email" 
+    name="email"
+    autocomplete="email" 
+    value="<%= isAuthenticated ? email : "" %>" 
+    required 
+  />
+  <label for="city">City</label>
   <input
     type="text"
-    class="cityinput form-control"
     name="city"
     autocomplete="address-level2"
     required
   />
-  <label for="zipcode" class="form-label">Zip Code</label>
+  <label for="zipcode">ZIP Code</label>
   <input
     type="text"
-    class="zipcodeinput form-control"
     name="zipcode"
     autocomplete="postal-code"
     required
@@ -86,5 +97,5 @@
       </datalist>
     </fieldset>
   </section>
-  <button type="submit" class="signupbtn">Subscribe</button>
+  <button type="submit">Subscribe</button>
 </form>

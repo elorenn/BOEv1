@@ -5,6 +5,17 @@ const users = [];
 const DB =
   "mongodb+srv://boepartners:missyangus123@cluster0.dm8gvgf.mongodb.net/BOE";
 
+const express = require("express");
+
+const bcrypt = require("bcrypt");
+const passport = require("passport");
+const flash = require("express-flash");
+const session = require("express-session");
+const methodOverride = require("method-override");
+const MongoStore = require("connect-mongo");
+const { School } = require("./model/schoolSchema");
+const { UserLike } = require("./model/userLikeSchema");
+
 process.on("uncaughtException", (err) => {
   console.log("UNCAUGHT EXCEPTION, APP SHUTTING NOW!!");
   console.log(err.message, err.name);
@@ -34,16 +45,14 @@ if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
 
-const express = require("express");
-
-const bcrypt = require("bcrypt");
-const passport = require("passport");
-const flash = require("express-flash");
-const session = require("express-session");
-const methodOverride = require("method-override");
-const MongoStore = require("connect-mongo");
-const { School } = require("./model/schoolSchema");
-const { UserLike } = require("./model/userLikeSchema");
+// ------------------ TO REDIRECT HTTP TO HTTPS SECURE CONNECTION IN PRODUCTION ONLY: ------------------ //
+// app.enable("trust proxy");
+// app.use(function (request, response, next) {
+//   if (process.env.NODE_ENV != "development" && !request.secure) {
+//     return response.redirect("https://www.boepartners.com" + request.headers.host + request.url);
+//   }
+//   next();
+// });
 
 app.set("view-engine", "ejs");
 app.use(express.urlencoded({ extended: false }));

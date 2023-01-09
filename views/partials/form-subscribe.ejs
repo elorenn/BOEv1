@@ -57,21 +57,9 @@
     />
 
     <datalist id="trade-options">
-      <option value="electrical"></option>
-      <option value="welding"></option>
-      <option value="programming"></option>
-      <option value="cosmetology"></option>
-      <option value="construction"></option>
-      <option value="aviation"></option>
-      <option value="data analytics"></option>
-      <option value="plumbing"></option>
-      <option value="nursing"></option>
-      <option value="automotive technician"></option>
-      <option value="ux/ui"></option>
-      <option value="pilot"></option>
-      <option value="flight instructor"></option>
-      <option value="patient care technician"></option>
-      <option value="barbering"></option>
+      <% programs.forEach( program => { %>
+        <option value="<%= program %>"></option>
+      <% }); %>
     </datalist>
   </fieldset>
   <button type="submit">Subscribe</button>

@@ -1056,18 +1056,23 @@ section.lo-favorites-list-empty p {
   bottom: 0;
 }
 
-.lo-body footer .footercontainer {
+.lo-body footer .lo-footer-container {
   padding: 10px;
   text-align: center;
 }
 
-.lo-body footer .footercontainer i {
+.lo-body footer .lo-footer-container a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.lo-body footer .lo-footer-container i {
   color: var(--text-color-dark);
   margin: 0 15px;
   font-size: 1.5em;
 }
 
-.lo-body footer .footercontainer i:hover {
+.lo-body footer .lo-footer-container i:hover {
   color: var(--logo-color);
 }
 
@@ -1104,7 +1109,6 @@ section.lo-favorites-list-empty p {
     font-size: 2em;
   }
 
-  #lo-search-empty h5,
   .lo-basic-list .lo-list-text-side p:first-of-type,
   section.lo-favorites-list .lo-list-text-side p:first-of-type,
   .lo-basic-list .lo-list-text-side p:nth-of-type(2),
@@ -1112,7 +1116,6 @@ section.lo-favorites-list-empty p {
     font-size: 1.75em;
   }
 
-  #lo-search-empty p,
   .lo-body footer .footercontainer,
   .lo-basic-list .lo-list-text-side p:nth-of-type(3),
   section.lo-favorites-list .lo-list-text-side p:nth-of-type(3),
@@ -1130,12 +1133,15 @@ section.lo-favorites-list-empty p {
   .lo-profile-card-sm-h .lo-profile-card-text-side p:last-of-type,
   .lo-body .lo-profile-card .lo-list-text-side p:last-of-type,
   .lo-in-depth-list-top-info p:last-of-type,
+  section.lo-favorites-list-empty a,
   .lo-section-contact a {
     font-size: 0.75em;
   }
 
   .lo-in-depth-list p,
   .lo-in-depth-list h6,
+  #lo-search-empty p,
+  section.lo-favorites-list-empty p,
   .lo-body .lo-container.lo-container-small aside,
   .lo-body .lo-container.lo-container-small aside a {
     font-size: 28px;

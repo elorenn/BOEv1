@@ -22,7 +22,7 @@ const basicSchools = document.getElementById("lo-basic-list");
 const depthSchoolsPage = document.getElementById("lo-in-depth-list");
 const depthSchools = depthSchoolsPage.querySelectorAll("li");
 
-let basicId, depthListItem;
+let basicId;
 
 basicSchools.addEventListener("click", function (event) {
   if (event.target.closest(".lo-basic-list-item")) {

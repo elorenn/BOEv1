@@ -30,8 +30,6 @@ app.listen(port, function () {
   console.log("Server has started");
 });
 
-// register sign up
-
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }

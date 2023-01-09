@@ -1109,7 +1109,6 @@ section.lo-favorites-list-empty p {
     font-size: 2em;
   }
 
-  #lo-search-empty h5,
   .lo-basic-list .lo-list-text-side p:first-of-type,
   section.lo-favorites-list .lo-list-text-side p:first-of-type,
   .lo-basic-list .lo-list-text-side p:nth-of-type(2),
@@ -1117,7 +1116,6 @@ section.lo-favorites-list-empty p {
     font-size: 1.75em;
   }
 
-  #lo-search-empty p,
   .lo-body footer .footercontainer,
   .lo-basic-list .lo-list-text-side p:nth-of-type(3),
   section.lo-favorites-list .lo-list-text-side p:nth-of-type(3),
@@ -1142,6 +1140,7 @@ section.lo-favorites-list-empty p {
 
   .lo-in-depth-list p,
   .lo-in-depth-list h6,
+  #lo-search-empty p,
   section.lo-favorites-list-empty p,
   .lo-body .lo-container.lo-container-small aside,
   .lo-body .lo-container.lo-container-small aside a {

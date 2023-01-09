@@ -222,7 +222,7 @@ app.get(
 const { subscribeModel, subscribeSchema } = require("./model/subscribeSchema");
 app.set("subscribeModel", subscribeModel);
 
-app.get("/subscribe", (req, res) => {
+app.get("/subscribe", async (req, res) => {
   const user = req.app.get("user");
   let firstName = ":firstName";
   let lastName = ":lastName";
@@ -232,12 +232,22 @@ app.get("/subscribe", (req, res) => {
     lastName = req.user.lastName;
     email = req.user.email;
   }
+
+  const schools = await School.find();
+  const programs = [];
+  schools.forEach((school) => {
+    if (programs.indexOf(school.program) === -1) {
+      programs.push(school.program);
+    }
+  });
+
   res.render("pages/subscribe", {
     firstName: firstName,
     lastName: lastName,
     email: email,
     title: "Subscribe",
     path: "/subscribe",
+    programs: programs.sort(),
     subError: req.flash("subError"),
     isAuthenticated: req.isAuthenticated(),
   });

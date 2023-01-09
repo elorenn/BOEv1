@@ -1,6 +1,6 @@
 <section class="indepthlist list-group lo-in-depth-list">
   <ul class="galleryUL" id="lo-in-depth-list">
-    <% schools.forEach(function(school, i) { %> 
+    <% schools.forEach((school, i) => { %> 
     <li
       data-id=<%= school._id %>
       class="indepthlistitema list-group-item list-group-item-action <%= (i === 0) ? "show" : "" %>"

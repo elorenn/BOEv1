@@ -542,11 +542,11 @@ function checkNotAuthenticated(req, res, next) {
 // must be at the end
 app.use(async (req, res, next) => {
   const user = await req.app.get("user");
-  let firstName;
-  let lastName;
+  let firstName = ":firstName";
+  let lastName = ":lastName";
   if (user) {
-    firstName = user.firstName;
-    lastName = user.lastName;
+    firstName = req.user.firstName;
+    lastName = req.user.lastName;
   }
   res.render("pages/404", {
     title: "Page Not Found",

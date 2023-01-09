@@ -59,8 +59,9 @@ const SchoolSchema = new mongoose.Schema({
   },
   location: LocationSchema,
   pointOfContact: ContactSchema,
-  programs: {
-    type: Array,
+  program: {
+    type: String,
+    required: true,
   },
   premiumMembership: Boolean,
 });

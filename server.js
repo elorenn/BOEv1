@@ -35,7 +35,7 @@ app.enable("trust proxy");
 app.use(function (request, response, next) {
   if (process.env.NODE_ENV != "development" && !request.secure) {
     return response.redirect(
-      "https://www.boepartners.com" + request.headers.host + request.url
+      "https://" + request.headers.host + request.url
     );
   }
 

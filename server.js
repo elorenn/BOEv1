@@ -38,9 +38,9 @@ app.use(function (request, response, next) {
       "https://" + request.headers.host + request.url
     );
   }
-
   next();
 });
+
 
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();

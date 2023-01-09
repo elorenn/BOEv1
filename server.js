@@ -30,8 +30,6 @@ app.listen(port, function () {
   console.log("Server has started");
 });
 
-// register sign up
-
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
@@ -222,7 +220,7 @@ app.get(
 const { subscribeModel, subscribeSchema } = require("./model/subscribeSchema");
 app.set("subscribeModel", subscribeModel);
 
-app.get("/subscribe", (req, res) => {
+app.get("/subscribe", async (req, res) => {
   const user = req.app.get("user");
   let firstName = ":firstName";
   let lastName = ":lastName";
@@ -232,12 +230,22 @@ app.get("/subscribe", (req, res) => {
     lastName = req.user.lastName;
     email = req.user.email;
   }
+
+  const schools = await School.find();
+  const programs = [];
+  schools.forEach((school) => {
+    if (programs.indexOf(school.program) === -1) {
+      programs.push(school.program);
+    }
+  });
+
   res.render("pages/subscribe", {
     firstName: firstName,
     lastName: lastName,
     email: email,
     title: "Subscribe",
     path: "/subscribe",
+    programs: programs.sort(),
     subError: req.flash("subError"),
     isAuthenticated: req.isAuthenticated(),
   });
@@ -542,11 +550,11 @@ function checkNotAuthenticated(req, res, next) {
 // must be at the end
 app.use(async (req, res, next) => {
   const user = await req.app.get("user");
-  let firstName;
-  let lastName;
+  let firstName = ":firstName";
+  let lastName = ":lastName";
   if (user) {
-    firstName = user.firstName;
-    lastName = user.lastName;
+    firstName = req.user.firstName;
+    lastName = req.user.lastName;
   }
   res.render("pages/404", {
     title: "Page Not Found",

@@ -1,11 +1,23 @@
 <section class="lo-section-contact">
   <h6 class="pointofcontactlabel">Point of Contact</h6>
-  <p><%= school.pointOfContact.name %></p>
-  <a href="tel:<%= school.pointOfContact.number %>"
-    ><%= school.pointOfContact.number %></a
-  >
-  <a href="mailto:<%= school.pointOfContact.email %>"
-    ><%= school.pointOfContact.email %></a
-  >
-  <a href="<%= school.pointOfContact.contactUrl %>">Request information</a>
+
+  <% if (school.pointOfContact.name.length > 0) { %>
+      <p><%= school.pointOfContact.name %></p>
+  <% } %>  
+
+  <% if (school.pointOfContact.number.length > 0) { %>
+    <a href="tel:<%= school.pointOfContact.number %>"
+      ><%= school.pointOfContact.number %></a
+    >
+  <% } %>  
+ 
+  <% if (school.pointOfContact.email.length > 0) { %>
+    <a href="mailto:<%= school.pointOfContact.email %>"
+      ><%= school.pointOfContact.email %></a
+    > 
+  <% } %>  
+
+  <% if (school.pointOfContact.contactUrl.length > 0) { %>
+    <a href="<%= school.pointOfContact.contactUrl %>">Request information</a>
+  <% } %>  
 </section>

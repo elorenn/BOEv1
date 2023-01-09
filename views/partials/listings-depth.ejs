@@ -1,6 +1,6 @@
 <section class="indepthlist list-group lo-in-depth-list">
   <ul class="galleryUL" id="lo-in-depth-list">
-    <% schools.forEach(function(school, i) { %> 
+    <% schools.forEach((school, i) => { %> 
     <li
       data-id=<%= school._id %>
       class="indepthlistitema list-group-item list-group-item-action <%= (i === 0) ? "show" : "" %>"
@@ -35,8 +35,8 @@
       <h6 class="descriptionlabel">Description</h6>
       <p class="description"><%= school.description %></p>
       <hr />
-      <h6 class="tradesofferedlabel">Programs</h6>
-      <p class="tradesoffered"><%= school.programs %></p>
+      <h6 class="tradesofferedlabel">Program</h6>
+      <p class="tradesoffered"><%= school.program %></p>
       <hr />
       <%- include('./point-of-contact', {school: school}); %>
       <hr />
@@ -48,9 +48,11 @@
       <aside class="lo-save-listing">
         <form action="/user-likes" method="POST">
           <input type="hidden" name="school_id" value="<%= school._id %>" />
-          <button class="icon-button" type="submit">
+          <button class="icon-button" type="submit" aria-label="like" alt="like">
             <i
-              class="fa-solid fa-heart <%= school.is_liked ? 'liked' : '' %>"
+              class="fa-solid fa-heart <%= school.is_liked ? 'liked' : '' %>" 
+              aria-label="like"
+              alt="like"
             ></i>
           </button>
         </form>

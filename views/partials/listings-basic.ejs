@@ -11,7 +11,7 @@
     <p><span id="">2 </span>results</p>
   </section>
   <section id="lo-search-empty">
-    <h5>Sorry - no programs found</h5>
+    <h3>Sorry - no programs found</h3>
     <p>Please try a different search term</p>
   </section>
   <ul class="galleryUL" id="lo-basic-list">
@@ -29,7 +29,7 @@
         <section class="basiclistitemtextcontainer lo-list-text-side">
           <h6 class="basiclistitemOrganization"><%= school.name %></h6>
           <p class="basiclistitemCategory"><%= school.type %></p>
-          <p class="basiclistitemTrade"><%= school.programs %></p>
+          <p class="basiclistitemTrade"><%= school.program %></p>
           <p class="basiclistitemCity">
             <%= school.location.city %>, <%= school.location.state %>
           </p>
@@ -38,8 +38,11 @@
       <aside class="lo-save-listing">
         <form action="/user-likes" method="POST">
           <input type="hidden" name="school_id" value= "<%= school._id %>" />
-          <button class="icon-button" type="submit">
-            <i class="fa-solid fa-heart <%= school.is_liked ? 'liked' : '' %>"></i>          
+          <button class="icon-button" type="submit" aria-label="like" alt="like">
+            <i class="fa-solid fa-heart <%= school.is_liked ? 'liked' : '' %>"
+               aria-label="like"
+               alt="like"
+            ></i>          
           </button>
         </form>
       </aside>

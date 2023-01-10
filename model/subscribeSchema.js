@@ -62,7 +62,7 @@ const SubscriberLocationSchema = new mongoose.Schema({
     ],
     validate: {
       validator: function (v) {
-        return /^[1-9- ]+$/.test(v);
+        return /^[0-9- ]+$/.test(v);
       },
       message: (props) =>
         `should only contain numbers.  Please enter a valid ZIP code`,

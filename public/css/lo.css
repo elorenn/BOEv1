@@ -609,6 +609,7 @@ section.lo-section-main .carousel__image {
 .lo-in-depth-list ul,
 .lo-favorites-list ul {
   padding: 0;
+  min-width: 100%;
 }
 
 .lo-body section.lo-section-half .lo-basic-list {

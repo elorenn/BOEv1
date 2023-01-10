@@ -386,9 +386,8 @@ button.nav-btn.fa-sign-in {
 
 input::file-selector-button {
   height: 100%;
-  background-color: var(--logo-color);
+  background-color: var(--logo-color-disabled);
   border: none;
-  color: var(--color-link-light-hover);
   cursor: pointer;
   border-radius: 5px;
 }
@@ -412,7 +411,6 @@ input::file-selector-button {
   cursor: pointer;
 }
 
-input::file-selector-button:hover,
 .lo-body .lo-container button:hover {
   background-color: var(--logo-color-hover);
 }

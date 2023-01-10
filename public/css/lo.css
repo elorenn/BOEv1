@@ -381,6 +381,15 @@ button.nav-btn.fa-sign-in {
 .lo-body .lo-container textarea {
   margin: 2px 0 15px;
   border: 1px solid var(--color-border);
+  width: 100%;
+}
+
+input::file-selector-button {
+  height: 100%;
+  background-color: var(--logo-color-disabled);
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
 .lo-body .lo-container input,
@@ -476,6 +485,7 @@ button.nav-btn.fa-sign-in {
   line-height: 1em;
   margin: 2px 0 15px;
   border: 1px solid var(--color-border);
+  background-color: transparent;
 }
 
 /* ------------------------------ SUBSCRIBE GALLERY ------------------------------ */
@@ -609,6 +619,7 @@ section.lo-section-main .carousel__image {
 .lo-in-depth-list ul,
 .lo-favorites-list ul {
   padding: 0;
+  min-width: 100%;
 }
 
 .lo-body section.lo-section-half .lo-basic-list {
@@ -1153,6 +1164,7 @@ section.lo-favorites-list-empty p {
     justify-content: center;
   }
 
+  section.lo-section-half .lo-in-depth-list .lo-logo-wrapper,
   .lo-profile-card.lo-profile-card-sm-h .lo-avatar-wrapper,
   section.lo-section-half .lo-basic-list .lo-logo-wrapper,
   section.lo-favorites-list .lo-logo-wrapper {
@@ -1171,7 +1183,8 @@ section.lo-favorites-list-empty p {
   }
 
   .lo-body .lo-container input,
-  .lo-body .lo-container button {
+  .lo-body .lo-container button,
+  .lo-container select {
     height: 2em;
     margin-bottom: 1em;
   }

@@ -31,16 +31,16 @@ app.listen(port, function () {
 });
 
 // ------------------ TO REDIRECT HTTP TO HTTPS SECURE CONNECTION IN PRODUCTION ONLY: ------------------ //
-app.enable("trust proxy");
-app.use(function (request, response, next) {
-  if (process.env.NODE_ENV != "development" && !request.secure) {
-    return response.redirect(
-      "https://" + request.headers.host + request.url
-    );
-  }
+// app.enable("trust proxy");
+// app.use(function (request, response, next) {
+//   if (process.env.NODE_ENV != "development" && !request.secure) {
+//     return response.redirect(
+//       "https://" + request.headers.host + request.url
+//     );
+//   }
+//   next();
+// });
 
-  next();
-});
 
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();

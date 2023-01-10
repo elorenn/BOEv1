@@ -295,7 +295,6 @@ app.post("/usersignup", async (req, res) => {
       return res.redirect("/subscribe");
     } else {
       // validation passed
-      console.log(subscriber);
       subscriber.save();
       res.redirect("/success");
     }

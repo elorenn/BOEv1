@@ -52,11 +52,17 @@ const SubscriberLocationSchema = new mongoose.Schema({
   Zipcode: {
     type: String,
     required: [true, "Please enter valid ZIP code"],
-    minlength: [5, "That looks too short to be a Zip code. Please enter valid ZIP code"],
-    maxlength: [10, "That looks too long to be a Zip code. Please enter valid ZIP code"],
+    minlength: [
+      5,
+      "That looks too short to be a Zip code. Please enter valid ZIP code",
+    ],
+    maxlength: [
+      10,
+      "That looks too long to be a Zip code. Please enter valid ZIP code",
+    ],
     validate: {
       validator: function (v) {
-        return /^[1-9-]+$/.test(v);
+        return /^[0-9- ]+$/.test(v);
       },
       message: (props) =>
         `should only contain numbers.  Please enter a valid ZIP code`,
